@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f8edf0">
+<meta name="theme-color" content="#4b1673">
 <meta name="description" content="Pheline’s Haven — discover skincare, makeup, haircare, fragrance and beauty essentials in Kenya.">
 <meta property="og:title" content="Pheline’s Haven | Beauty & Cosmetics">
 <meta property="og:description" content="Your beauty ritual starts here. Explore skincare, makeup, haircare and more.">
@@ -372,13 +372,42 @@ body{background:#fffaf9;color:#33212b}
 @media(max-width:900px){.market-hero{grid-template-columns:1fr}.market-cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.market-cats h3{grid-column:1/-1}.market-side{display:grid;grid-template-columns:1fr 1fr;gap:12px}.market-banner{height:340px}}
 @media(max-width:600px){.market-hero{padding-top:12px;gap:10px}.market-cats{grid-template-columns:repeat(2,minmax(0,1fr))}.market-cats a{font-size:10px;padding:10px}.market-banner{height:365px}.market-banner-copy{width:72%;padding:28px 0 28px 22px}.market-banner-copy h1{font-size:47px}.market-banner-photo{opacity:.42}.market-side{grid-template-columns:1fr 1fr}.hot-cats,.section{padding-top:42px;padding-bottom:42px}.hot-cat-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.hot-cat-row a{padding:10px 4px;font-size:9px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.category-card{height:240px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 11px}.product-image{height:220px}.filter-list{overflow-x:auto;flex-wrap:nowrap;width:100%;padding-bottom:5px}.filter{flex:0 0 auto}.shop-top{display:block}.shop-top .section-head{margin-bottom:15px}.shop-controls{width:100%}}
 
+
+/* Adenzo-inspired purple & magenta storefront refresh */
+:root{--ink:#35105f;--muted:#716879;--paper:#fff;--cream:#faf6fc;--sand:#eadcf2;--clay:#c51b9b;--olive:#7137a0;--line:#eee4f2;--shadow:0 18px 55px #35105f12}
+body{background:#fff;color:#261335}
+.announcement{background:linear-gradient(90deg,#40106d,#74249d 55%,#b31386);color:#fff}
+.announcement strong{color:#ffd4f0}
+.header{background:#ffffffef;border-bottom-color:#eadcf2}
+.masthead{min-height:84px}
+.brand{display:flex;align-items:center;justify-content:center;gap:9px;font:inherit;letter-spacing:0;white-space:nowrap}
+.brand-mark{display:inline-flex;width:42px;height:42px;filter:drop-shadow(0 4px 8px #8b39b533)}
+.brand-mark svg{width:100%;height:100%}
+.brand-word{display:block;font:700 23px/.9 var(--serif);letter-spacing:.5px;color:#4b1673}
+.brand-word span{display:block;font:800 8px var(--sans);letter-spacing:5px;margin-top:7px;color:#d21a9a}
+.icon-btn{color:#4b1673}.bag-count{background:#d21a9a;color:#fff}
+.nav{background:#fff;border-color:#f0e6f4}.nav a{color:#4b1673}.nav a:hover{color:#d21a9a}
+.searchbox{border-color:#c9b4d7}.searchbox input{color:#35105f}
+.market-hero{gap:16px}.market-cats{border:1px solid #eee2f3;border-radius:8px;background:#fff;box-shadow:0 8px 25px #35105f08;padding:16px}
+.market-cats h3{color:#4b1673}.market-cats a{border-bottom-color:#f2eaf5}.market-cats a:hover{color:#c51b9b;background:#fcf6fd}
+.market-banner{background:linear-gradient(110deg,#f8eefa 0%,#f3e5f8 48%,#ead7f3 100%);border-radius:8px;overflow:hidden}
+.market-banner-copy>span,.eyebrow{color:#a51485}.market-banner h1{color:#35105f}.market-banner h1 em{color:#d21a9a}.market-cta,.btn,.filter.active,.filter:hover{background:linear-gradient(100deg,#4b1673,#9c239d);border-color:#4b1673;color:#fff}
+.market-cta:hover,.btn:hover{background:#d21a9a;border-color:#d21a9a}
+.mini-promos a{background:#fff;border:1px solid #eee2f3;border-radius:7px}.mini-promos b{color:#8b2a9c}.mini-promos span{color:#756b7c}
+.market-side .welcome-card{border-radius:8px;background:linear-gradient(145deg,#4b1673,#8e249b);color:#fff}
+.product-image{background:#f7f0fa;border-radius:7px}.product-tag{color:#4b1673;border-radius:3px}.wish{color:#7d2596}.wish.saved{color:#d21a9a}
+.quick{background:#4b1673;color:#fff;border-radius:4px}.quick:hover{background:#d21a9a}
+.product h3,.section-head h2{color:#35105f}.price{color:#4b1673}.sale,.product-tag.sale{background:#d21a9a;color:#fff}
+.category-card,.collection-card,.edit-card{border-radius:8px;overflow:hidden}
+footer,.footer{background:#321052;color:#fff}footer a,.footer a{color:#f5dff6}
+@media(max-width:760px){.brand-mark{width:34px;height:34px}.brand-word{font-size:19px}.brand-word span{font-size:7px;letter-spacing:4px}.market-banner{border-radius:6px}.market-cats{border-radius:6px}}
 </style>
 </head>
 <body>
 <div class="announcement">YOUR BEAUTY, YOUR RITUAL <strong>✦ A little luxury in every day</strong></div>
 <header class="header"><div class="shell masthead">
 <div class="header-left"><button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button><label class="searchbox" aria-label="Search products"><span>⌕</span><input id="searchTop" type="search" placeholder="Search the Haven"></label></div>
-<a class="brand" href="#home">PHELINE’S<span>H A V E N</span></a>
+<a class="brand" href="#home" aria-label="Pheline’s Haven home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><linearGradient id="phg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8b39b5"/><stop offset="1" stop-color="#ed168f"/></linearGradient></defs><path d="M24 3 28 10 37 8 35 17 44 23 35 29 37 39 27 37 24 45 19 37 10 39 12 29 4 23 13 17 11 8 20 10Z" fill="url(#phg)"/><path d="M17 34V14h8c6 0 9 3 9 8s-3 8-9 8h-3v4Zm5-9h3c3 0 4-1 4-3s-1-3-4-3h-3Z" fill="#fff"/></svg></span><span class="brand-word">PHELINE’S<span>H A V E N</span></span></a>
 <div class="header-right"><button class="icon-btn" onclick="showWishlist()" aria-label="Wishlist">♡</button><button class="icon-btn" onclick="openCart()" aria-label="Shopping bag">♧<span class="bag-count" id="bagCount">0</span></button></div>
 </div><nav class="nav" id="nav"><a href="#home">Home</a><a href="#collections">Beauty categories</a><a href="#shop">Shop all</a><a href="#edit">Beauty edit</a><a href="#journal">Beauty journal</a><a href="#contact">Contact</a></nav></header>
 <main id="home">
