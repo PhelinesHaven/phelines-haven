@@ -401,13 +401,18 @@ body{background:#fff;color:#261335}
 .category-card,.collection-card,.edit-card{border-radius:8px;overflow:hidden}
 footer,.footer{background:#321052;color:#fff}footer a,.footer a{color:#f5dff6}
 @media(max-width:760px){.brand-mark{width:34px;height:34px}.brand-word{font-size:19px}.brand-word span{font-size:7px;letter-spacing:4px}.market-banner{border-radius:6px}.market-cats{border-radius:6px}}
+
+/* Official Pheline’s Haven logo artwork */
+.brand{display:flex;align-items:center;justify-content:center;min-width:0;padding:3px 0}
+.brand-logo-image{display:block;width:112px;height:78px;object-fit:contain;object-position:center;mix-blend-mode:multiply}
+@media(max-width:760px){.brand-logo-image{width:88px;height:62px}}
 </style>
 </head>
 <body>
 <div class="announcement">YOUR BEAUTY, YOUR RITUAL <strong>✦ A little luxury in every day</strong></div>
 <header class="header"><div class="shell masthead">
 <div class="header-left"><button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button><label class="searchbox" aria-label="Search products"><span>⌕</span><input id="searchTop" type="search" placeholder="Search the Haven"></label></div>
-<a class="brand" href="#home" aria-label="Pheline’s Haven home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><defs><linearGradient id="phg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8b39b5"/><stop offset="1" stop-color="#ed168f"/></linearGradient></defs><path d="M24 3 28 10 37 8 35 17 44 23 35 29 37 39 27 37 24 45 19 37 10 39 12 29 4 23 13 17 11 8 20 10Z" fill="url(#phg)"/><path d="M17 34V14h8c6 0 9 3 9 8s-3 8-9 8h-3v4Zm5-9h3c3 0 4-1 4-3s-1-3-4-3h-3Z" fill="#fff"/></svg></span><span class="brand-word">PHELINE’S<span>H A V E N</span></span></a>
+<a class="brand" href="#home" aria-label="Pheline’s Haven home"><img class="brand-logo-image" src="assets/phelines-haven-logo.jpg" alt="Pheline’s Haven logo"></a>
 <div class="header-right"><button class="icon-btn" onclick="showWishlist()" aria-label="Wishlist">♡</button><button class="icon-btn" onclick="openCart()" aria-label="Shopping bag">♧<span class="bag-count" id="bagCount">0</span></button></div>
 </div><nav class="nav" id="nav"><a href="#home">Home</a><a href="#collections">Beauty categories</a><a href="#shop">Shop all</a><a href="#edit">Beauty edit</a><a href="#journal">Beauty journal</a><a href="#contact">Contact</a></nav></header>
 <main id="home">
