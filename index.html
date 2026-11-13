@@ -169,6 +169,144 @@ body{background:#f5f5f5;color:#292929;font-family:Arial,Helvetica,sans-serif}
 .footer-grid{grid-template-columns:1fr 1fr}
 }
 
+
+/* Creative retail direction: Haven Market */
+:root{--ink:#17233a;--muted:#687386;--paper:#fff;--cream:#f4f6f9;--sand:#edf0f4;--clay:#f26a21;--olive:#17233a;--line:#e7eaf0;--shadow:0 8px 28px #17233a0c;--max:1400px}
+body{background:#f3f5f8;color:var(--ink);font-family:Inter,Arial,sans-serif}
+.announcement{background:#17233a;color:#fff;padding:8px 14px;font-size:9px;letter-spacing:1.1px}
+.announcement strong{color:#ffb36d}
+.header{box-shadow:0 3px 16px #17233a0a}
+.masthead{height:82px}
+.brand{font-size:25px;color:#17233a;letter-spacing:-1.2px}
+.brand:before{content:"✦";display:inline-grid;place-items:center;background:#f26a21;color:white;width:25px;height:25px;border-radius:7px;margin-right:7px;font-size:14px;vertical-align:2px}
+.brand span{color:#f26a21;letter-spacing:3.5px;font-size:8px}
+.searchbox{height:46px;border:1px solid #dce1e9;background:#f7f8fa;border-radius:7px;padding:0 13px}
+.searchbox:focus-within{border-color:#f26a21;box-shadow:0 0 0 3px #f26a2118}
+.searchbox input{font-size:12px}
+.searchbox input::placeholder{color:#8b94a2}
+.icon-btn{border-radius:8px;background:#f6f7f9;font-size:19px}
+.icon-btn:hover{background:#fff0e7;color:#e75d14}
+.bag-count{background:#f26a21}
+.nav{height:44px;background:#17233a;padding:0 max(20px,calc((100vw - var(--max))/2));gap:34px}
+.nav a{font-size:9px;letter-spacing:1px;color:#f7f8fa}
+.nav a:first-child{color:#ffb36d}
+.market-hero{padding-top:20px;grid-template-columns:236px minmax(0,1fr) 206px;gap:15px}
+.market-cats,.welcome-card,.side-promo,.market-banner,.mini-promos a,.hot-cats{border-radius:9px;box-shadow:var(--shadow)}
+.market-cats{overflow:hidden;padding-bottom:8px}
+.market-cats h3{background:#17233a;color:#fff;padding:17px 17px;font-size:10px;letter-spacing:1.3px;border:0;margin:0 0 5px}
+.market-cats a{padding:11px 16px;font-size:11px;color:#4e596a;transition:.18s}
+.market-cats a:hover{background:#fff3e9;color:#e85f18;padding-left:20px}
+.market-cats a b{color:#aab2bf}
+.market-banner{height:354px;background:#f8e6d7;border-radius:10px}
+.market-banner-copy{padding-left:39px;width:57%}
+.market-banner-copy>span{display:inline-block;background:#fff8f1;color:#d65d19;padding:7px 10px;border-radius:3px;font-size:8px;letter-spacing:1.4px}
+.market-banner h1{font-size:clamp(34px,3.5vw,54px);line-height:.99;letter-spacing:-2.3px;margin:17px 0 13px;color:#17233a}
+.market-banner h1 em{color:#ed681f}
+.market-banner p{font-size:11px;max-width:255px;line-height:1.8;color:#626b78}
+.market-banner-photo{inset:0 0 0 42%;background-position:center 30%;clip-path:polygon(13% 0,100% 0,100% 100%,0 100%)}
+.market-banner-photo:before{background:linear-gradient(90deg,#f8e6d7 0%,#f8e6d766 22%,transparent 58%)}
+.market-cta{background:#f26a21;border-radius:5px;padding:13px 19px;box-shadow:0 6px 16px #e76b2633}
+.market-cta:hover{background:#d95311}
+.banner-dots{color:#f26a21;left:47%;bottom:14px}
+.mini-promos{gap:9px}
+.mini-promos a{border:1px solid #edf0f4;padding:13px 12px;min-height:67px;justify-content:center}
+.mini-promos b{font-size:9px;color:#17233a}
+.mini-promos span{font-size:8px}
+.market-side{gap:10px}
+.welcome-card{padding:20px 12px;border:1px solid #edf0f4}
+.welcome-icon{background:#fff0e6;color:#f26a21}
+.welcome-card h3{font-size:14px;color:#17233a}
+.welcome-card a{background:#17233a;border-radius:5px}
+.side-promo{background:linear-gradient(145deg,#17233a,#293f61);padding:18px 15px}
+.side-promo span{color:#ffc08f}
+.side-promo strong{color:#fff;font-size:20px}
+.side-promo a{color:#ffc08f}
+.hot-cats{margin-top:16px;padding:19px 22px}
+.market-section-title h2{font-size:15px;letter-spacing:.4px}
+.market-section-title a{color:#e9651d;font-weight:700}
+.hot-cat-row{gap:9px}
+.hot-cat-row a{font-size:9px;font-weight:700;color:#4c586a}
+.hot-cat-row i{width:59px;height:59px;background:#f4f6f9;border:1px solid #edf0f4;border-radius:17px;font-size:24px;transition:.2s}
+.hot-cat-row a:hover i{background:#fff0e6;border-color:#ffd7be;transform:translateY(-3px)}
+.section{padding:37px 0}
+.section-head h2{font-size:22px;color:#17233a}
+.section-head p{font-size:10px;color:#788292}
+.eyebrow{color:#e9651d;font-weight:800}
+.category-grid{gap:14px}
+.category-card{height:190px;border-radius:8px;box-shadow:var(--shadow)}
+.category-card:after{inset:30% 0 0;background:linear-gradient(transparent,#101b2dcc)}
+.category-label{left:17px;bottom:17px}
+.category-label h3{font-size:20px}
+.shop-section{padding-top:27px}
+.shop-top{padding:21px 22px 14px;border-radius:9px 9px 0 0}
+.shop-controls{padding:0 22px 13px}
+.filter{border-radius:5px;background:#f7f8fa;border-color:#edf0f4;color:#687386}
+.filter.active,.filter:hover{background:#17233a;border-color:#17233a;color:#fff}
+.sort{border-radius:5px;background:#f7f8fa;border-color:#e7eaf0}
+.product-grid{padding:12px 15px 23px;border-radius:0 0 9px 9px;gap:15px}
+.product{border:1px solid #edf0f4;border-radius:7px;overflow:hidden;padding:0;background:#fff}
+.product-image{height:245px;background:#f5f6f8}
+.product-image img{transition:transform .45s}
+.product:hover .product-image img{transform:scale(1.055)}
+.product-tag{top:10px;left:10px;background:#fff;color:#e9651d;border-radius:3px;font-size:7px;letter-spacing:.8px}
+.wish{top:9px;right:9px;box-shadow:0 2px 8px #17233a12}
+.quick{left:8px;right:8px;bottom:8px;border-radius:4px;background:#17233a;color:white;font-size:8px}
+.product-info{padding:11px 11px 12px}
+.product-category{color:#e9651d;font-size:7px;letter-spacing:1.2px}
+.product h3{font-size:12px;min-height:31px;color:#253149}
+.price{color:#e9651d;font-size:14px}
+.add{border-radius:4px;background:#fff4eb;border-color:#ffddc7;color:#d85b18}
+.add:hover{background:#f26a21;color:white;border-color:#f26a21}
+.catalog-note{border-radius:0 0 9px 9px;font-size:9px}
+.newsletter{background:#fff0e5}
+.newsletter h2{font:700 31px Arial,sans-serif;color:#17233a}
+.newsletter p{color:#687386}
+.signup input{border-radius:5px 0 0 5px}
+.signup button{background:#f26a21;border-radius:0 5px 5px 0}
+.footer{background:#17233a}
+.footer-grid h4{color:#ffb36d}
+.footer-grid p,.footer-grid a{color:#c1cad7}
+.copyright{border-color:#ffffff20;color:#9eabbc}
+@media(max-width:1000px){.market-hero{grid-template-columns:205px minmax(0,1fr)}.market-banner{height:320px}}
+@media(max-width:650px){
+.announcement{font-size:8px}
+.masthead{padding:10px 0;min-height:106px}
+.brand{font-size:21px}
+.brand:before{width:22px;height:22px;font-size:12px}
+.header-right .icon-btn{background:#f5f6f8}
+.searchbox{height:40px;border-radius:6px}
+.nav{top:105px;padding:17px 20px;gap:15px}
+.market-hero{padding-top:11px}
+.market-banner{height:260px;border-radius:8px}
+.market-banner-copy{padding-left:17px;width:65%}
+.market-banner h1{font-size:31px;letter-spacing:-1.4px}
+.market-banner p{font-size:9px;max-width:170px}
+.market-banner-photo{left:40%}
+.market-cta{padding:10px 13px;font-size:8px}
+.mini-promos{gap:6px}
+.mini-promos a{border-radius:6px;min-height:66px;padding:9px 7px}
+.mini-promos b{font-size:7px;line-height:1.3}
+.mini-promos span{font-size:7px;line-height:1.4}
+.hot-cats{border-radius:8px;padding:15px 10px}
+.market-section-title h2{font-size:13px}
+.hot-cat-row{gap:14px 5px}
+.hot-cat-row i{width:47px;height:47px;border-radius:14px;font-size:21px}
+.hot-cat-row a{font-size:8px}
+.section{padding:25px 0}
+.category-card{height:140px;border-radius:7px}
+.category-label h3{font-size:16px}
+.shop-top{padding:16px 11px 10px;border-radius:7px 7px 0 0}
+.shop-controls{padding:0 11px 10px}
+.product-grid{padding:7px;gap:8px;border-radius:0 0 7px 7px}
+.product{border-radius:6px}
+.product-image{height:clamp(160px,49vw,225px)}
+.product-info{padding:9px 8px 10px}
+.product h3{font-size:11px}
+.price{font-size:13px}
+.add{font-size:7px;padding:8px 7px}
+.quick{font-size:7px}
+}
+
 </style>
 </head>
 <body>
