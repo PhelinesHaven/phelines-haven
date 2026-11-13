@@ -31,6 +31,144 @@
 @media(max-width:1000px){.nav{gap:23px}.hero-copy{padding-left:38px}.category-card{height:310px}.product-image{height:285px}.shop-top{display:block}.shop-controls{margin-top:20px}.footer-grid{grid-template-columns:1.5fr 1fr 1fr}.footer-grid>div:last-child{grid-column:1/-1}}
 @media(max-width:650px){.shell{width:calc(100% - 34px)}.announcement{font-size:7px;letter-spacing:1.1px}.masthead{height:69px;grid-template-columns:1fr auto 1fr;gap:4px}.brand{font-size:27px}.brand span{font-size:7px;margin-top:7px}.header-left{gap:2px}.header-right{gap:2px}.searchbox{display:none}.icon-btn{width:35px;height:35px;font-size:19px}.menu-btn{display:grid}.nav{display:none;position:absolute;top:69px;left:0;right:0;height:auto;background:var(--paper);padding:19px 25px 24px;flex-direction:column;align-items:flex-start;gap:19px;border-bottom:1px solid var(--line)}.nav.open{display:flex}.nav a{font-size:10px}.hero{grid-template-columns:1fr}.hero-copy{padding:49px 26px 39px}.hero h1{font-size:61px;margin:18px 0}.hero-copy p{font-size:11px}.hero-image{min-height:390px;background-position:center 29%}.hero-stamp{right:14px;bottom:14px;padding:13px 16px;font-size:16px}.trustbar{grid-template-columns:repeat(2,1fr);row-gap:16px;padding:18px 0}.trustbar div:nth-child(2){border:0}.section{padding:61px 0}.section-head{margin-bottom:27px}.section-head h2{font-size:42px}.category-grid{grid-template-columns:repeat(2,1fr);gap:10px}.category-card{height:245px}.category-label{left:14px;bottom:16px}.category-label h3{font-size:29px}.campaign-inner{grid-template-columns:1fr}.campaign-photo{min-height:290px}.campaign-copy{padding:38px 27px 43px}.campaign-copy h2{font-size:48px}.shop-controls{display:block}.filter-list{overflow-x:auto;flex-wrap:nowrap;padding-bottom:7px}.sort{margin-top:9px;width:100%}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 11px}.product-image{height:clamp(190px,58vw,285px)}.product h3{font-size:19px}.quick{opacity:1;transform:none;bottom:7px;left:7px;right:7px;padding:9px}.product-tag{top:8px;left:8px;font-size:6px}.wish{top:8px;right:8px;width:31px;height:31px}.add{padding:8px 7px;font-size:7px}.editorial{grid-template-columns:1fr}.editorial-photo{min-height:310px}.editorial-copy{padding:40px 27px}.editorial-copy h2{font-size:47px}.journal-grid{grid-template-columns:1fr;gap:27px}.journal-card img{height:240px}.newsletter{padding:55px 18px}.newsletter h2{font-size:39px}.signup button{padding:0 12px;font-size:7px}.footer-grid{grid-template-columns:1fr 1fr;gap:22px}.footer-grid>div:first-child{grid-column:1/-1}.footer-grid>div:last-child{grid-column:auto}.copyright{font-size:7px}.mobile-nav{display:flex;position:fixed;z-index:39;bottom:0;left:0;right:0;justify-content:space-around;background:#fffefaed;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:8px 3px calc(8px + env(safe-area-inset-bottom))}.mobile-nav a{display:grid;gap:2px;text-align:center;text-decoration:none;color:var(--muted);font-size:7px}.mobile-nav b{font-size:17px;color:var(--ink)}body{padding-bottom:58px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Marketplace-inspired visual refresh */
+:root{--ink:#292929;--muted:#777;--paper:#fff;--cream:#f6f6f6;--sand:#f2f2f2;--clay:#f28b22;--olive:#f28b22;--line:#e9e9e9;--serif:var(--sans);--shadow:0 2px 12px #0000000d;--max:1380px}
+body{background:#f5f5f5;color:#292929;font-family:Arial,Helvetica,sans-serif}
+.announcement{background:#fff7ed;color:#8c4b12;font-size:10px;letter-spacing:.5px;padding:8px 15px;text-transform:none}
+.announcement strong{color:#e87512}
+.header{background:#fff;backdrop-filter:none}
+.masthead{height:78px;grid-template-columns:1fr 2fr 1fr;gap:28px}
+.brand{justify-self:start;font:800 26px/1 Arial,sans-serif;letter-spacing:-1px;color:#ed7d16}
+.brand span{font:700 8px Arial,sans-serif;letter-spacing:3px;color:#777}
+.header-left{order:2}.brand{order:1}.header-right{order:3}
+.searchbox{width:100%;max-width:650px;border:2px solid #f28b22;border-radius:4px;height:42px;padding:0 12px;gap:10px}
+.searchbox input{font-size:12px}
+.searchbox span{font-size:20px;color:#ed7d16}
+.icon-btn{font-size:22px}
+.bag-count{background:#f28b22}
+.nav{height:42px;background:#f28b22;border:0;justify-content:flex-start;padding:0 max(20px,calc((100vw - var(--max))/2);gap:32px}
+.nav a{color:white;font-size:10px;letter-spacing:.5px}
+.nav a:hover{color:#fff2e4}
+.market-hero{display:grid;grid-template-columns:225px minmax(0,1fr) 210px;gap:14px;padding-top:17px}
+.market-cats,.welcome-card,.side-promo,.market-banner,.mini-promos a{background:white;border-radius:4px}
+.market-cats{padding:0 0 8px;box-shadow:var(--shadow)}
+.market-cats h3{font-size:12px;background:#fff;padding:17px 16px;margin:0 0 5px;border-bottom:1px solid var(--line);color:#333}
+.market-cats a{display:flex;align-items:center;gap:11px;padding:10px 15px;text-decoration:none;font-size:12px;color:#555}
+.market-cats a:hover{background:#fff4e8;color:#e87512}
+.market-cats a b{margin-left:auto;font-size:18px;font-weight:400;color:#aaa}
+.market-main{min-width:0}
+.market-banner{height:330px;position:relative;overflow:hidden;display:flex;align-items:center;background:#f6e9db}
+.market-banner-copy{position:relative;z-index:2;padding:35px 0 35px 36px;width:53%}
+.market-banner-copy>span{font-size:10px;font-weight:800;letter-spacing:2px;color:#a35b24}
+.market-banner h1{font:800 clamp(32px,3.4vw,52px)/1.02 Arial,sans-serif;letter-spacing:-1.7px;margin:17px 0 12px;color:#292929}
+.market-banner h1 em{font-style:normal;color:#e77b18}
+.market-banner p{font-size:12px;color:#665b51;line-height:1.6}
+.market-banner-photo{position:absolute;inset:0 0 0 43%;background:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=88') center 32%/cover}
+.market-banner-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#f6e9db 0%,#f6e9dbaa 18%,transparent 65%)}
+.market-cta{display:inline-block;background:#f28b22;color:#fff;text-decoration:none;padding:12px 20px;border-radius:3px;font-size:10px;font-weight:800;letter-spacing:.6px;margin-top:8px}
+.banner-dots{position:absolute;bottom:13px;left:50%;font-size:10px;color:#e77b18;letter-spacing:5px}
+.mini-promos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.mini-promos a{padding:13px 12px;text-decoration:none;display:flex;flex-direction:column;gap:6px}
+.mini-promos b{font-size:10px;color:#e77b18}
+.mini-promos span{font-size:9px;color:#777}
+.market-side{display:flex;flex-direction:column;gap:12px}
+.welcome-card{text-align:center;padding:22px 12px;box-shadow:var(--shadow)}
+.welcome-icon{margin:auto;background:#fff2e5;color:#e77b18;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:25px}
+.welcome-card h3{font-size:15px;line-height:1.3;margin:12px 0 6px}
+.welcome-card p{font-size:10px;color:#888;line-height:1.5}
+.welcome-card a{display:inline-block;background:#f28b22;color:#fff;text-decoration:none;border-radius:3px;padding:10px 14px;font-size:9px;font-weight:800;margin-top:6px}
+.side-promo{flex:1;min-height:130px;padding:20px 15px;background:#fff0df;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.side-promo span{font-size:9px;letter-spacing:1.5px;color:#b16b2d;font-weight:700}
+.side-promo strong{font-size:19px;line-height:1.15;color:#4a3321}
+.side-promo a{font-size:9px;color:#df7615;text-decoration:none;font-weight:800}
+.hot-cats{background:white;margin-top:16px;padding:18px 22px;border-radius:4px}
+.market-section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}
+.market-section-title h2{font-size:17px;margin:0;text-transform:uppercase}
+.market-section-title a{font-size:10px;color:#e77b18;text-decoration:none}
+.hot-cat-row{display:grid;grid-template-columns:repeat(8,1fr);gap:12px}
+.hot-cat-row a{display:flex;align-items:center;flex-direction:column;gap:8px;text-decoration:none;color:#555;font-size:10px}
+.hot-cat-row i{width:55px;height:55px;background:#fff5eb;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:25px}
+.hot-cat-row a:hover i{background:#ffe7ce}
+.section{padding:35px 0}
+.section-head{text-align:left;margin:0 0 18px}
+.section-head h2{font:bold 21px Arial,sans-serif;margin:7px 0;color:#292929;letter-spacing:0}
+.section-head p{font-size:10px}
+.eyebrow{font-size:9px;color:#e77b18;letter-spacing:1.3px}
+.category-grid{gap:12px}
+.category-card{height:180px;border-radius:4px}
+.category-label h3{font:bold 20px Arial,sans-serif}
+.campaign{display:none}
+.shop-section{background:transparent}
+.shop-top{display:block;background:white;padding:20px 20px 13px;margin-bottom:0;border-radius:4px 4px 0 0}
+.shop-controls{background:white;padding:0 20px 13px}
+.filter{border-radius:3px;padding:9px 13px;font-size:10px}
+.filter.active,.filter:hover{background:#f28b22;border-color:#f28b22}
+.sort{border-radius:3px}
+.product-grid{background:white;padding:10px 15px 22px;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.product{border:1px solid #f0f0f0;padding:8px;transition:box-shadow .2s}
+.product:hover{box-shadow:0 3px 14px #00000012}
+.product-image{height:230px;background:#f7f7f7}
+.product-tag{background:#fff0e1;color:#dc7414;border-radius:2px;font-weight:700}
+.wish{background:#fff;border:1px solid #eee}
+.quick{background:#f28b22;color:white;opacity:1;transform:none;border-radius:2px}
+.product-info{padding:10px 2px 3px}
+.product-category{color:#999;font-size:8px}
+.product h3{font:bold 12px/1.35 Arial,sans-serif;min-height:32px;margin:6px 0}
+.price{color:#e87512;font-size:14px}
+.add{background:#fff8f0;border-color:#f3c99f;color:#d56e0e;border-radius:2px}
+.add:hover{background:#f28b22;border-color:#f28b22}
+.catalog-note{background:white;margin:0;padding:12px 18px 22px}
+.editorial{display:none}
+.journal-grid{background:white;padding:15px}
+.newsletter{background:#fff0df}
+.newsletter h2{font:bold 30px Arial,sans-serif}
+.footer{background:#292929}
+.btn{background:#f28b22;border-color:#f28b22;border-radius:3px}
+.btn:hover{background:#df7410;border-color:#df7410}
+.text-link{color:#df7410}
+@media(max-width:1000px){.market-hero{grid-template-columns:190px minmax(0,1fr)}.market-side{display:none}.market-banner{height:300px}.market-banner-copy{padding-left:25px}.hot-cat-row{grid-template-columns:repeat(4,1fr);row-gap:18px}}
+@media(max-width:650px){
+.masthead{height:auto;min-height:68px;grid-template-columns:1fr auto;gap:5px;padding-top:9px;padding-bottom:9px}
+.brand{font-size:22px}.brand span{font-size:7px}
+.header-left{grid-column:1/-1;grid-row:2;order:3;width:100%}
+.header-right{grid-column:2;grid-row:1}
+.searchbox{display:flex;width:100%;max-width:none;height:39px}
+.nav{top:115px;left:0;right:0;height:auto;padding:15px 20px;gap:16px;flex-direction:column;align-items:flex-start}
+.market-hero{display:block;padding-top:10px}
+.market-cats{display:none}
+.market-banner{height:255px}
+.market-banner-copy{padding:20px 0 20px 18px;width:63%}
+.market-banner h1{font-size:30px;margin:10px 0}
+.market-banner p{font-size:9px;max-width:190px}
+.market-banner-photo{left:42%}
+.market-cta{padding:10px 13px;font-size:9px}
+.banner-dots{left:45%;font-size:8px}
+.mini-promos{gap:6px;margin-top:8px}
+.mini-promos a{padding:10px 8px;min-height:62px}
+.mini-promos b{font-size:8px}.mini-promos span{font-size:8px}
+.hot-cats{margin-top:10px;padding:15px 12px}
+.hot-cat-row{grid-template-columns:repeat(4,1fr);gap:16px 7px}
+.hot-cat-row i{width:47px;height:47px;font-size:22px}
+.hot-cat-row a{font-size:9px}
+.section{padding:24px 0}
+.category-card{height:135px}
+.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px;gap:9px}
+.product{padding:6px}
+.product-image{height:clamp(155px,48vw,225px)}
+.product h3{font-size:11px}
+.quick{font-size:7px;padding:8px}
+.shop-top{padding:16px 12px 10px}
+.shop-controls{padding:0 12px 10px}
+.filter-list{gap:5px}
+.filter{padding:8px 10px;font-size:9px}
+.sort{width:100%}
+.section-head h2{font-size:19px}
+.journal-grid{grid-template-columns:1fr;padding:10px}
+.newsletter h2{font-size:25px}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+
 </style>
 </head>
 <body>
@@ -41,8 +179,25 @@
 <div class="header-right"><button class="icon-btn" onclick="showWishlist()" aria-label="Wishlist">♡</button><button class="icon-btn" onclick="openCart()" aria-label="Shopping bag">♧<span class="bag-count" id="bagCount">0</span></button></div>
 </div><nav class="nav" id="nav"><a href="#home">Home</a><a href="#collections">Shop by category</a><a href="#shop">Shop all</a><a href="#edit">The Haven edit</a><a href="#journal">Journal</a><a href="#contact">Contact</a></nav></header>
 <main id="home">
-<section class="hero"><div class="hero-copy"><div class="eyebrow">Welcome to a more beautiful everyday</div><h1>Style that feels<br><i>like you.</i></h1><p>Discover a thoughtful mix of fashion, beauty and finishing touches. Pieces to love, wear and make your own — wherever life takes you.</p><div class="button-row"><a class="btn" href="#shop">Shop the collection <span>→</span></a><a class="btn btn-light" href="#collections">Explore categories</a></div></div><div class="hero-image" role="img" aria-label="Fashion editorial campaign"><div class="hero-stamp">The art of everyday style.</div></div></section>
-<div class="shell"><div class="trustbar"><div><b>THE HAVEN EDIT</b>Thoughtfully selected finds</div><div><b>STYLE FOR EVERY YOU</b>Beauty, fashion & more</div><div><b>SHOP WITH EASE</b>Simple mobile-first browsing</div><div><b>PERSONAL SERVICE</b>Friendly order enquiries</div></div></div>
+<section class="market-hero shell" id="home">
+<aside class="market-cats"><h3>SHOP BY CATEGORY</h3>
+<a href="#shop" onclick="setCategory('Fashion')">👗 <span>Fashion & Clothing</span> <b>›</b></a>
+<a href="#shop" onclick="setCategory('Beauty')">💄 <span>Beauty & Personal Care</span> <b>›</b></a>
+<a href="#shop" onclick="setCategory('Accessories')">👜 <span>Bags & Accessories</span> <b>›</b></a>
+<a href="#shop" onclick="setCategory('Lifestyle')">🏠 <span>Home & Lifestyle</span> <b>›</b></a>
+<a href="#shop" onclick="setCategory('All')">⌚ <span>Watches & Jewellery</span> <b>›</b></a>
+<a href="#shop" onclick="setCategory('All')">🎁 <span>Gifts & Special Finds</span> <b>›</b></a>
+<a href="#shop" onclick="setCategory('All')">✨ <span>New Arrivals</span> <b>›</b></a>
+</aside>
+<div class="market-main">
+<div class="market-banner"><div class="market-banner-copy"><span>THE PHELINE’S HAVEN EDIT</span><h1>Find your<br>everyday <em>favourites.</em></h1><p>Fashion, beauty and little things worth discovering.</p><a href="#shop" class="market-cta">SHOP NOW&nbsp; →</a></div><div class="market-banner-photo" role="img" aria-label="Fashion collection"></div><div class="banner-dots">● ○ ○</div></div>
+<div class="mini-promos"><a href="#shop"><b>⚡ DAILY DEALS</b><span>Fresh finds, lovely prices</span></a><a href="#collections"><b>♡ HOT CATEGORIES</b><span>Explore what you love</span></a><a href="#contact"><b>☏ CUSTOMER CARE</b><span>We’re here to help</span></a></div>
+</div>
+<aside class="market-side"><div class="welcome-card"><div class="welcome-icon">♙</div><h3>Welcome to<br>Pheline’s Haven</h3><p>Discover something lovely today.</p><a href="#shop">START SHOPPING</a></div><div class="side-promo"><span>THE LITTLE EXTRAS</span><strong>Make every day feel special.</strong><a href="#collections">EXPLORE NOW →</a></div></aside>
+</section>
+<section class="hot-cats shell" id="collections"><div class="market-section-title"><h2>Hot categories</h2><a href="#shop">View all&nbsp; →</a></div><div class="hot-cat-row">
+<a href="#shop" onclick="setCategory('Fashion')"><i>👗</i><span>Fashion</span></a><a href="#shop" onclick="setCategory('Beauty')"><i>💄</i><span>Beauty</span></a><a href="#shop" onclick="setCategory('Accessories')"><i>👜</i><span>Bags</span></a><a href="#shop" onclick="setCategory('Accessories')"><i>💍</i><span>Accessories</span></a><a href="#shop" onclick="setCategory('Lifestyle')"><i>🧴</i><span>Self care</span></a><a href="#shop" onclick="setCategory('Lifestyle')"><i>🏡</i><span>Lifestyle</span></a><a href="#shop" onclick="setCategory('All')"><i>🎁</i><span>Gift ideas</span></a><a href="#shop" onclick="setCategory('All')"><i>✨</i><span>New in</span></a>
+</div></section>
 <section class="section shell" id="collections"><div class="section-head"><div class="eyebrow">Find your next favourite</div><h2>Explore the collections</h2><p>A little inspiration for every mood, moment and version of you.</p></div><div class="category-grid">
 <a class="category-card" href="#shop" onclick="setCategory('Fashion')"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=88" alt="Women's fashion collection" loading="lazy"><div class="category-label"><small>Dress like yourself</small><h3>Fashion</h3></div></a>
 <a class="category-card" href="#shop" onclick="setCategory('Beauty')"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=88" alt="Beauty and makeup collection" loading="lazy"><div class="category-label"><small>Your beauty, your rules</small><h3>Beauty</h3></div></a>
