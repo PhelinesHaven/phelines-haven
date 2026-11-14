@@ -57,7 +57,23 @@ header{position:sticky;top:0}.head{height:74px;grid-template-columns:46px 1fr 92
 }
 @media(max-width:360px){.head{grid-template-columns:40px 1fr 76px}.brand{width:108px}.nav{gap:17px}.hero h1{font-size:46px}.hero-copy{padding-left:20px;padding-right:20px}.actions{gap:7px}.btn{padding:0 14px}}
 </style>
-</head>
+<!-- SEO_PRODUCT_SCHEMA_START -->
+<script type="application/ld+json" id="product-structured-data">{"@context":"https://schema.org","@graph":[]}</script>
+<script>
+(function(){
+  function clean(v){return String(v||"").replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})}
+  window.updateProductSEO=function(products){
+    var graph=(products||[]).filter(function(p){return p&&p.n&&p.p}).slice(0,50).map(function(p){
+      var url=location.origin+location.pathname+"?product="+encodeURIComponent(p.slug||p.id||p.n.toLowerCase().replace(/[^a-z0-9]+/g,"-"));
+      var img=p.i||"";
+      return {"@type":"Product","name":p.n,"description":p.d||("Shop "+p.n+" at Pheline's Haven."),"image":img?[img]:[],"sku":String(p.id||p.n),"brand":{"@type":"Brand","name":"Pheline's Haven"},"offers":{"@type":"Offer","priceCurrency":"KES","price":Number(p.p)||0,"availability":"https://schema.org/InStock","url":url}};
+    });
+    var el=document.getElementById("product-structured-data");
+    if(el) el.textContent=JSON.stringify({"@context":"https://schema.org","@graph":graph});
+  };
+})();
+</script>
+<!-- SEO_PRODUCT_SCHEMA_START --></head>
 <body>
 <div class="topbar">Free delivery on selected orders <span>✦</span> Secure shopping in Kenya <span>✦</span> WhatsApp ordering available</div>
 <header><div class="wrap head">
