@@ -146,7 +146,7 @@ function update(){document.getElementById("cart").innerHTML=bag.length?bag.map(x
 function change(id,d){let x=bag.find(i=>i.id===id);x.q+=d;bag=bag.filter(i=>i.q>0);update()}function openCart(){document.getElementById("drawer").classList.add("open");update()}function closeCart(){document.getElementById("drawer").classList.remove("open")}
 function checkout(){if(!bag.length)return toast("Your bag is empty");let msg="Hello Pheline's Haven! I'd like to enquire about:\n"+bag.map(x=>{let p=P.find(y=>y.id===x.id);return p.n+" x"+x.q+" — "+money(p.p*x.q)}).join("\n");window.open("https://wa.me/254116400947?text="+encodeURIComponent(msg),"_blank")}
 function subscribe(e){e.preventDefault();toast("Welcome to the Haven ♡");e.target.reset()}
-render();update();
+render();update(); if(window.updateProductSEO) updateProductSEO(P);
 </script>
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
@@ -157,7 +157,7 @@ async function loadHavenCatalog(){
  if(error){console.warn("PhelinesHaven catalog connection:",error.message);return}
  if(!Array.isArray(data)||!data.length)return;
  const live=data.map(p=>({id:p.id,n:p.name,c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),i:(p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||""}));
- P.splice(0,P.length,...live);render();
+ P.splice(0,P.length,...live);render(); if(window.updateProductSEO) updateProductSEO(P);
 }
 loadHavenCatalog();window.PhelinesHavenSupabase=supabase;
 </script>
