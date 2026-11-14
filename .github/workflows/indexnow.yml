@@ -1,0 +1,16 @@
+name: Notify search engines after deployment
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify IndexNow
+        env:
+          INDEXNOW_KEY: 7f2c9d41a6e8b3c5f1d4a9e2b6c8f0a3
+        run: |
+          curl -sS -X POST "https://api.indexnow.org/indexnow"             -H "Content-Type: application/json; charset=utf-8"             --data '{"host":"phelineshaven.co.ke","key":"'"$INDEXNOW_KEY"'","keyLocation":"https://phelineshaven.co.ke/phelineshaven-indexnow-7f2c9d41a6e8b3c5f1d4a9e2b6c8f0a3.txt","urlList":["https://phelineshaven.co.ke/","https://phelineshaven.co.ke/blog.html","https://phelineshaven.co.ke/sitemap.xml"]}'
