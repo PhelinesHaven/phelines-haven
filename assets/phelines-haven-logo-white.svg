@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="t d">
+<title id="t">Pheline's Haven</title><desc id="d">Purple and magenta luxury Pheline's Haven logo on white</desc>
+<defs>
+ <linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#210044"/><stop offset=".45" stop-color="#7a16c8"/><stop offset="1" stop-color="#c14cff"/></linearGradient>
+ <linearGradient id="m" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ff149d"/><stop offset=".5" stop-color="#ff4fc3"/><stop offset="1" stop-color="#d90087"/></linearGradient>
+ <filter id="s"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#7a16c8" flood-opacity=".22"/></filter>
+</defs>
+<rect width="1200" height="720" fill="#fff"/>
+<g filter="url(#s)">
+ <path d="M455 82l-20-52-25 42-47-13 32 39-28 38 50-12 20 48 21-48 50 12-29-38 32-39z" fill="url(#p)"/>
+ <circle cx="425" cy="38" r="7" fill="#ff4fc3"/><circle cx="360" cy="92" r="7" fill="#ff4fc3"/><circle cx="490" cy="92" r="7" fill="#ff4fc3"/>
+ <path d="M275 315c0-103 84-187 187-187h72c103 0 187 84 187 187s-84 187-187 187h-72c-103 0-187-84-187-187z" fill="none" stroke="url(#p)" stroke-width="30"/>
+ <path d="M360 421c50-20 78-60 78-111 0-54-33-95-86-119 27-35 68-55 117-55 87 0 158 71 158 158s-71 158-158 158c-41 0-78-16-106-42z" fill="#fff" stroke="url(#p)" stroke-width="18"/>
+ <path d="M445 247c-18 22-24 43-19 65 5 24 24 38 47 39-18 17-24 34-18 52 6 19 23 30 45 30 15 0 28-5 39-15" fill="none" stroke="#5d1198" stroke-width="10" stroke-linecap="round"/>
+ <path d="M475 458c145-83 250-142 355-142 76 0 120 24 143 58-42-18-82-23-125-11-62 17-122 58-196 102-63 38-125 66-191 57-31-4-57-16-78-32z" fill="url(#m)"/>
+ <path d="M846 315c35-41 61-68 91-84-8 35-25 64-50 88 28-12 55-16 83-11-26 28-56 43-91 46-14 20-31 36-50 50 8-33 11-60 17-89z" fill="url(#m)"/>
+ <path d="M905 322l12-25 13 25 25 12-25 13-13 25-12-25-25-13z" fill="#ff4fc3"/>
+</g>
+<text x="600" y="590" text-anchor="middle" fill="#4c087c" font-family="Georgia,serif" font-size="82" font-weight="700" letter-spacing="5">PHELINE'S</text>
+<text x="600" y="660" text-anchor="middle" fill="url(#m)" font-family="Georgia,serif" font-size="68" font-weight="700" letter-spacing="20">HAVEN</text>
+</svg>
