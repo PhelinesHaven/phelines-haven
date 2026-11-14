@@ -3,491 +3,126 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#4b1673">
-<meta name="description" content="Pheline’s Haven — discover skincare, makeup, haircare, fragrance and beauty essentials in Kenya.">
-<meta property="og:title" content="Pheline’s Haven | Beauty & Cosmetics">
-<meta property="og:description" content="Your beauty ritual starts here. Explore skincare, makeup, haircare and more.">
-<meta property="og:type" content="website">
-<title>Pheline’s Haven | Beauty & Cosmetics</title>
+<meta name="theme-color" content="#5b176f">
+<meta name="description" content="Pheline's Haven — a modern beauty, fashion and lifestyle boutique in Kenya.">
+<title>Pheline's Haven | Beauty, Fashion & Lifestyle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#26231f;--muted:#777168;--paper:#fffefa;--cream:#f6f2eb;--sand:#e9dfd2;--clay:#ad6858;--olive:#686d55;--line:#e9e3da;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Manrope",Arial,sans-serif;--max:1320px;--shadow:0 18px 60px #29201614}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:120px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:inherit}.shell{width:min(var(--max),calc(100% - 64px));margin:auto}
-.announcement{background:var(--ink);color:#f8f4ed;text-align:center;padding:10px 15px;font-size:9px;letter-spacing:1.8px;text-transform:uppercase}.announcement strong{color:#e3b8a7;font-weight:700}
-.header{position:sticky;top:0;z-index:40;background:#fffefaed;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.masthead{height:83px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px}.header-left,.header-right{display:flex;align-items:center;gap:13px}.header-right{justify-content:flex-end}.brand{text-decoration:none;text-align:center;font:600 34px/.8 var(--serif);letter-spacing:1.2px;white-space:nowrap}.brand span{display:block;font:700 8px var(--sans);letter-spacing:4px;margin-top:9px;color:var(--clay)}.icon-btn{border:0;background:transparent;width:39px;height:39px;display:grid;place-items:center;font-size:20px;position:relative;color:var(--ink)}.icon-btn:hover{color:var(--clay)}.bag-count{position:absolute;top:0;right:0;background:var(--clay);color:white;border-radius:50%;min-width:17px;height:17px;padding:0 4px;font:700 9px var(--sans);display:grid;place-items:center}.searchbox{display:flex;align-items:center;border-bottom:1px solid #bcb4a9;width:205px;gap:8px}.searchbox input{border:0;background:transparent;outline:0;width:100%;padding:9px 0;font-size:10px}.nav{height:43px;display:flex;justify-content:center;align-items:center;gap:37px;border-top:1px solid #f1ede7}.nav a{text-decoration:none;text-transform:uppercase;letter-spacing:1.6px;font-size:9px;font-weight:700;color:#4b453d}.nav a:hover{color:var(--clay)}.menu-btn{display:none}
-.hero{display:grid;grid-template-columns:.93fr 1.07fr;min-height:620px;background:var(--cream)}.hero-copy{padding:80px 8vw 76px max(32px,calc((100vw - var(--max))/2));display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.eyebrow{font-size:9px;letter-spacing:2.6px;text-transform:uppercase;color:var(--clay);font-weight:800}.hero h1{font:500 clamp(55px,6vw,91px)/.91 var(--serif);letter-spacing:-2px;margin:24px 0 20px;max-width:590px}.hero h1 i{font-weight:400;color:var(--clay)}.hero-copy p{font-size:12px;line-height:2;color:var(--muted);max-width:390px;margin:0}.button-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:29px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:17px;background:var(--ink);border:1px solid var(--ink);color:white;text-decoration:none;padding:15px 22px;font-size:9px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;transition:.25s}.btn:hover{background:var(--clay);border-color:var(--clay);transform:translateY(-2px)}.btn-light{background:transparent;color:var(--ink)}.hero-image{min-height:560px;position:relative;background:#d9cabe url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1800&q=90') center 28%/cover}.hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1c171000 50%,#1c171414)}.hero-stamp{position:absolute;right:30px;bottom:30px;z-index:1;background:var(--paper);padding:18px 22px;box-shadow:var(--shadow);font:italic 19px var(--serif)}
-.trustbar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);padding:22px 0;gap:12px}.trustbar div{text-align:center;border-right:1px solid var(--line);font-size:9px;color:var(--muted)}.trustbar div:last-child{border:0}.trustbar b{display:block;color:var(--ink);font-size:9px;margin-bottom:5px;letter-spacing:.4px}
-.section{padding:88px 0}.section-head{text-align:center;margin:0 auto 37px}.section-head h2{font:500 clamp(37px,4.5vw,58px)/.98 var(--serif);margin:12px 0 13px;letter-spacing:-.7px}.section-head p{font-size:11px;line-height:1.9;color:var(--muted);margin:0}
-.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.category-card{height:370px;position:relative;overflow:hidden;text-decoration:none;background:var(--sand)}.category-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s}.category-card:hover img{transform:scale(1.06)}.category-card:after{content:"";position:absolute;inset:38% 0 0;background:linear-gradient(transparent,#17130f9c)}.category-label{position:absolute;bottom:24px;left:22px;color:white;z-index:1}.category-label small{font-size:8px;letter-spacing:2px;text-transform:uppercase}.category-label h3{font:500 34px/.95 var(--serif);margin:8px 0 0}
-.campaign{background:#eee6dc;padding:0}.campaign-inner{display:grid;grid-template-columns:1.05fr .95fr;min-height:420px}.campaign-photo{background:url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=88') center 34%/cover}.campaign-copy{padding:65px 9%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.campaign-copy h2{font:500 clamp(40px,5vw,63px)/.92 var(--serif);margin:16px 0}.campaign-copy p{font-size:11px;line-height:2;color:var(--muted);max-width:370px}
-.shop-section{background:#faf8f4}.shop-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:27px}.shop-top .section-head{text-align:left;margin:0}.shop-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.filter-list{display:flex;gap:7px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:transparent;padding:10px 13px;border-radius:30px;font-size:9px;color:var(--muted);white-space:nowrap}.filter.active,.filter:hover{background:var(--ink);border-color:var(--ink);color:white}.sort{border:1px solid var(--line);background:white;padding:10px 12px;font-size:9px;color:var(--muted)}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 17px}.product{min-width:0}.product-image{height:330px;position:relative;background:#eee8df;overflow:hidden}.product-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.product:hover .product-image img{transform:scale(1.045)}.product-tag{position:absolute;top:12px;left:12px;background:var(--paper);padding:7px 9px;font-size:7px;letter-spacing:1.3px;text-transform:uppercase}.wish{position:absolute;right:12px;top:12px;border:0;border-radius:50%;background:#fffefaed;width:35px;height:35px;font-size:19px;color:var(--ink)}.wish.saved{color:#b65f64}.quick{position:absolute;left:10px;right:10px;bottom:10px;border:0;background:#fffefaed;padding:12px;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.2s}.product:hover .quick{opacity:1;transform:translateY(0)}.product-info{padding:13px 1px}.product-category{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:var(--clay);font-weight:700}.product h3{font:600 21px/1.05 var(--serif);margin:7px 0 9px}.product-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px}.price{font-size:11px;font-weight:800}.add{border:1px solid var(--line);background:transparent;padding:9px 10px;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase}.add:hover{background:var(--ink);color:white;border-color:var(--ink)}.catalog-note{text-align:center;color:var(--muted);font-size:9px;margin:28px 0 0;line-height:1.8}.empty{grid-column:1/-1;padding:55px 10px;text-align:center;color:var(--muted);font-size:11px}
-.editorial{display:grid;grid-template-columns:1fr 1fr;background:var(--cream)}.editorial-photo{min-height:490px;background:url('https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1400&q=88') center/cover}.editorial-copy{padding:70px 10%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}.editorial-copy h2{font:500 clamp(39px,4.6vw,59px)/.94 var(--serif);margin:15px 0}.editorial-copy p{font-size:11px;line-height:2.1;color:var(--muted);max-width:420px}.text-link{font-size:9px;letter-spacing:1.7px;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--clay);padding-bottom:7px;margin-top:14px}
-.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.journal-card img{width:100%;height:230px;object-fit:cover}.journal-card small{display:block;color:var(--clay);font-size:8px;letter-spacing:1.5px;margin-top:15px}.journal-card h3{font:600 25px/1 var(--serif);margin:9px 0}.journal-card p{font-size:10px;line-height:1.9;color:var(--muted);margin:0}
-.newsletter{background:#e9dfd2;text-align:center;padding:73px 20px}.newsletter h2{font:500 46px/.95 var(--serif);margin:14px 0}.newsletter p{font-size:10px;color:#70675e;line-height:1.8}.signup{display:flex;width:min(450px,100%);margin:22px auto 0}.signup input{flex:1;min-width:0;border:1px solid #d3c7b9;background:#fffefa;padding:15px;outline:0;font-size:10px}.signup button{border:0;background:var(--ink);color:white;padding:0 20px;font-size:8px;font-weight:800;letter-spacing:1.4px}
-.footer{background:#28241f;color:#f7f1e8;padding:58px 0 25px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:35px}.footer-logo{font:600 32px/.85 var(--serif);letter-spacing:1px}.footer-logo span{display:block;font:700 8px var(--sans);letter-spacing:3px;color:#d49a85;margin-top:9px}.footer-grid p,.footer-grid a{font-size:9px;line-height:2.2;color:#c8bdb1;text-decoration:none;display:block}.footer-grid h4{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#d49a85;margin:5px 0 14px}.footer-grid a:hover{color:white}.copyright{border-top:1px solid #ffffff20;margin-top:38px;padding-top:19px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#a99d91;font-size:8px;letter-spacing:.4px}
-.overlay{position:fixed;inset:0;background:#17130f99;z-index:70;display:none}.overlay.open{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(460px,100%);overflow:auto;background:var(--paper);padding:25px}.drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px}.drawer-head h2{font:600 30px var(--serif);margin:0}.close{border:0;background:none;font-size:27px}.cart-item{display:flex;gap:13px;padding:16px 0;border-bottom:1px solid var(--line)}.cart-item img{width:72px;height:85px;object-fit:cover}.cart-item h4{font:600 19px var(--serif);margin:5px 0}.cart-item small{font-size:9px;color:var(--muted)}.qty{display:flex;align-items:center;gap:9px;margin-top:8px;font-size:10px}.qty button{width:25px;height:25px;background:white;border:1px solid var(--line)}.cart-total{display:flex;justify-content:space-between;padding:20px 0;font-size:11px;font-weight:800}.checkout{width:100%;border:0}.drawer-note{font-size:9px;line-height:1.8;color:var(--muted)}.toast{position:fixed;z-index:90;bottom:25px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:white;padding:13px 19px;font-size:10px;opacity:0;transition:.25s;pointer-events:none;text-align:center;max-width:90%}.toast.show{opacity:1;transform:translate(-50%,0)}.mobile-nav{display:none}
-@media(max-width:1000px){.nav{gap:23px}.hero-copy{padding-left:38px}.category-card{height:310px}.product-image{height:285px}.shop-top{display:block}.shop-controls{margin-top:20px}.footer-grid{grid-template-columns:1.5fr 1fr 1fr}.footer-grid>div:last-child{grid-column:1/-1}}
-@media(max-width:650px){.shell{width:calc(100% - 34px)}.announcement{font-size:7px;letter-spacing:1.1px}.masthead{height:69px;grid-template-columns:1fr auto 1fr;gap:4px}.brand{font-size:27px}.brand span{font-size:7px;margin-top:7px}.header-left{gap:2px}.header-right{gap:2px}.searchbox{display:none}.icon-btn{width:35px;height:35px;font-size:19px}.menu-btn{display:grid}.nav{display:none;position:absolute;top:69px;left:0;right:0;height:auto;background:var(--paper);padding:19px 25px 24px;flex-direction:column;align-items:flex-start;gap:19px;border-bottom:1px solid var(--line)}.nav.open{display:flex}.nav a{font-size:10px}.hero{grid-template-columns:1fr}.hero-copy{padding:49px 26px 39px}.hero h1{font-size:61px;margin:18px 0}.hero-copy p{font-size:11px}.hero-image{min-height:390px;background-position:center 29%}.hero-stamp{right:14px;bottom:14px;padding:13px 16px;font-size:16px}.trustbar{grid-template-columns:repeat(2,1fr);row-gap:16px;padding:18px 0}.trustbar div:nth-child(2){border:0}.section{padding:61px 0}.section-head{margin-bottom:27px}.section-head h2{font-size:42px}.category-grid{grid-template-columns:repeat(2,1fr);gap:10px}.category-card{height:245px}.category-label{left:14px;bottom:16px}.category-label h3{font-size:29px}.campaign-inner{grid-template-columns:1fr}.campaign-photo{min-height:290px}.campaign-copy{padding:38px 27px 43px}.campaign-copy h2{font-size:48px}.shop-controls{display:block}.filter-list{overflow-x:auto;flex-wrap:nowrap;padding-bottom:7px}.sort{margin-top:9px;width:100%}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 11px}.product-image{height:clamp(190px,58vw,285px)}.product h3{font-size:19px}.quick{opacity:1;transform:none;bottom:7px;left:7px;right:7px;padding:9px}.product-tag{top:8px;left:8px;font-size:6px}.wish{top:8px;right:8px;width:31px;height:31px}.add{padding:8px 7px;font-size:7px}.editorial{grid-template-columns:1fr}.editorial-photo{min-height:310px}.editorial-copy{padding:40px 27px}.editorial-copy h2{font-size:47px}.journal-grid{grid-template-columns:1fr;gap:27px}.journal-card img{height:240px}.newsletter{padding:55px 18px}.newsletter h2{font-size:39px}.signup button{padding:0 12px;font-size:7px}.footer-grid{grid-template-columns:1fr 1fr;gap:22px}.footer-grid>div:first-child{grid-column:1/-1}.footer-grid>div:last-child{grid-column:auto}.copyright{font-size:7px}.mobile-nav{display:flex;position:fixed;z-index:39;bottom:0;left:0;right:0;justify-content:space-around;background:#fffefaed;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:8px 3px calc(8px + env(safe-area-inset-bottom))}.mobile-nav a{display:grid;gap:2px;text-align:center;text-decoration:none;color:var(--muted);font-size:7px}.mobile-nav b{font-size:17px;color:var(--ink)}body{padding-bottom:58px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
-
-/* Marketplace-inspired visual refresh */
-:root{--ink:#292929;--muted:#777;--paper:#fff;--cream:#f6f6f6;--sand:#f2f2f2;--clay:#f28b22;--olive:#f28b22;--line:#e9e9e9;--serif:var(--sans);--shadow:0 2px 12px #0000000d;--max:1380px}
-body{background:#f5f5f5;color:#292929;font-family:Arial,Helvetica,sans-serif}
-.announcement{background:#fff7ed;color:#8c4b12;font-size:10px;letter-spacing:.5px;padding:8px 15px;text-transform:none}
-.announcement strong{color:#e87512}
-.header{background:#fff;backdrop-filter:none}
-.masthead{height:78px;grid-template-columns:1fr 2fr 1fr;gap:28px}
-.brand{justify-self:start;font:800 26px/1 Arial,sans-serif;letter-spacing:-1px;color:#ed7d16}
-.brand span{font:700 8px Arial,sans-serif;letter-spacing:3px;color:#777}
-.header-left{order:2}.brand{order:1}.header-right{order:3}
-.searchbox{width:100%;max-width:650px;border:2px solid #f28b22;border-radius:4px;height:42px;padding:0 12px;gap:10px}
-.searchbox input{font-size:12px}
-.searchbox span{font-size:20px;color:#ed7d16}
-.icon-btn{font-size:22px}
-.bag-count{background:#f28b22}
-.nav{height:42px;background:#f28b22;border:0;justify-content:flex-start;padding:0 max(20px,calc((100vw - var(--max))/2);gap:32px}
-.nav a{color:white;font-size:10px;letter-spacing:.5px}
-.nav a:hover{color:#fff2e4}
-.market-hero{display:grid;grid-template-columns:225px minmax(0,1fr) 210px;gap:14px;padding-top:17px}
-.market-cats,.welcome-card,.side-promo,.market-banner,.mini-promos a{background:white;border-radius:4px}
-.market-cats{padding:0 0 8px;box-shadow:var(--shadow)}
-.market-cats h3{font-size:12px;background:#fff;padding:17px 16px;margin:0 0 5px;border-bottom:1px solid var(--line);color:#333}
-.market-cats a{display:flex;align-items:center;gap:11px;padding:10px 15px;text-decoration:none;font-size:12px;color:#555}
-.market-cats a:hover{background:#fff4e8;color:#e87512}
-.market-cats a b{margin-left:auto;font-size:18px;font-weight:400;color:#aaa}
-.market-main{min-width:0}
-.market-banner{height:330px;position:relative;overflow:hidden;display:flex;align-items:center;background:#f6e9db}
-.market-banner-copy{position:relative;z-index:2;padding:35px 0 35px 36px;width:53%}
-.market-banner-copy>span{font-size:10px;font-weight:800;letter-spacing:2px;color:#a35b24}
-.market-banner h1{font:800 clamp(32px,3.4vw,52px)/1.02 Arial,sans-serif;letter-spacing:-1.7px;margin:17px 0 12px;color:#292929}
-.market-banner h1 em{font-style:normal;color:#e77b18}
-.market-banner p{font-size:12px;color:#665b51;line-height:1.6}
-.market-banner-photo{position:absolute;inset:0 0 0 43%;background:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1100&q=88') center 32%/cover}
-.market-banner-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#f6e9db 0%,#f6e9dbaa 18%,transparent 65%)}
-.market-cta{display:inline-block;background:#f28b22;color:#fff;text-decoration:none;padding:12px 20px;border-radius:3px;font-size:10px;font-weight:800;letter-spacing:.6px;margin-top:8px}
-.banner-dots{position:absolute;bottom:13px;left:50%;font-size:10px;color:#e77b18;letter-spacing:5px}
-.mini-promos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-.mini-promos a{padding:13px 12px;text-decoration:none;display:flex;flex-direction:column;gap:6px}
-.mini-promos b{font-size:10px;color:#e77b18}
-.mini-promos span{font-size:9px;color:#777}
-.market-side{display:flex;flex-direction:column;gap:12px}
-.welcome-card{text-align:center;padding:22px 12px;box-shadow:var(--shadow)}
-.welcome-icon{margin:auto;background:#fff2e5;color:#e77b18;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:25px}
-.welcome-card h3{font-size:15px;line-height:1.3;margin:12px 0 6px}
-.welcome-card p{font-size:10px;color:#888;line-height:1.5}
-.welcome-card a{display:inline-block;background:#f28b22;color:#fff;text-decoration:none;border-radius:3px;padding:10px 14px;font-size:9px;font-weight:800;margin-top:6px}
-.side-promo{flex:1;min-height:130px;padding:20px 15px;background:#fff0df;display:flex;flex-direction:column;justify-content:center;gap:10px}
-.side-promo span{font-size:9px;letter-spacing:1.5px;color:#b16b2d;font-weight:700}
-.side-promo strong{font-size:19px;line-height:1.15;color:#4a3321}
-.side-promo a{font-size:9px;color:#df7615;text-decoration:none;font-weight:800}
-.hot-cats{background:white;margin-top:16px;padding:18px 22px;border-radius:4px}
-.market-section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}
-.market-section-title h2{font-size:17px;margin:0;text-transform:uppercase}
-.market-section-title a{font-size:10px;color:#e77b18;text-decoration:none}
-.hot-cat-row{display:grid;grid-template-columns:repeat(8,1fr);gap:12px}
-.hot-cat-row a{display:flex;align-items:center;flex-direction:column;gap:8px;text-decoration:none;color:#555;font-size:10px}
-.hot-cat-row i{width:55px;height:55px;background:#fff5eb;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:25px}
-.hot-cat-row a:hover i{background:#ffe7ce}
-.section{padding:35px 0}
-.section-head{text-align:left;margin:0 0 18px}
-.section-head h2{font:bold 21px Arial,sans-serif;margin:7px 0;color:#292929;letter-spacing:0}
-.section-head p{font-size:10px}
-.eyebrow{font-size:9px;color:#e77b18;letter-spacing:1.3px}
-.category-grid{gap:12px}
-.category-card{height:180px;border-radius:4px}
-.category-label h3{font:bold 20px Arial,sans-serif}
-.campaign{display:none}
-.shop-section{background:transparent}
-.shop-top{display:block;background:white;padding:20px 20px 13px;margin-bottom:0;border-radius:4px 4px 0 0}
-.shop-controls{background:white;padding:0 20px 13px}
-.filter{border-radius:3px;padding:9px 13px;font-size:10px}
-.filter.active,.filter:hover{background:#f28b22;border-color:#f28b22}
-.sort{border-radius:3px}
-.product-grid{background:white;padding:10px 15px 22px;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
-.product{border:1px solid #f0f0f0;padding:8px;transition:box-shadow .2s}
-.product:hover{box-shadow:0 3px 14px #00000012}
-.product-image{height:230px;background:#f7f7f7}
-.product-tag{background:#fff0e1;color:#dc7414;border-radius:2px;font-weight:700}
-.wish{background:#fff;border:1px solid #eee}
-.quick{background:#f28b22;color:white;opacity:1;transform:none;border-radius:2px}
-.product-info{padding:10px 2px 3px}
-.product-category{color:#999;font-size:8px}
-.product h3{font:bold 12px/1.35 Arial,sans-serif;min-height:32px;margin:6px 0}
-.price{color:#e87512;font-size:14px}
-.add{background:#fff8f0;border-color:#f3c99f;color:#d56e0e;border-radius:2px}
-.add:hover{background:#f28b22;border-color:#f28b22}
-.catalog-note{background:white;margin:0;padding:12px 18px 22px}
-.editorial{display:none}
-.journal-grid{background:white;padding:15px}
-.newsletter{background:#fff0df}
-.newsletter h2{font:bold 30px Arial,sans-serif}
-.footer{background:#292929}
-.btn{background:#f28b22;border-color:#f28b22;border-radius:3px}
-.btn:hover{background:#df7410;border-color:#df7410}
-.text-link{color:#df7410}
-@media(max-width:1000px){.market-hero{grid-template-columns:190px minmax(0,1fr)}.market-side{display:none}.market-banner{height:300px}.market-banner-copy{padding-left:25px}.hot-cat-row{grid-template-columns:repeat(4,1fr);row-gap:18px}}
-@media(max-width:650px){
-.masthead{height:auto;min-height:68px;grid-template-columns:1fr auto;gap:5px;padding-top:9px;padding-bottom:9px}
-.brand{font-size:22px}.brand span{font-size:7px}
-.header-left{grid-column:1/-1;grid-row:2;order:3;width:100%}
-.header-right{grid-column:2;grid-row:1}
-.searchbox{display:flex;width:100%;max-width:none;height:39px}
-.nav{top:115px;left:0;right:0;height:auto;padding:15px 20px;gap:16px;flex-direction:column;align-items:flex-start}
-.market-hero{display:block;padding-top:10px}
-.market-cats{display:none}
-.market-banner{height:255px}
-.market-banner-copy{padding:20px 0 20px 18px;width:63%}
-.market-banner h1{font-size:30px;margin:10px 0}
-.market-banner p{font-size:9px;max-width:190px}
-.market-banner-photo{left:42%}
-.market-cta{padding:10px 13px;font-size:9px}
-.banner-dots{left:45%;font-size:8px}
-.mini-promos{gap:6px;margin-top:8px}
-.mini-promos a{padding:10px 8px;min-height:62px}
-.mini-promos b{font-size:8px}.mini-promos span{font-size:8px}
-.hot-cats{margin-top:10px;padding:15px 12px}
-.hot-cat-row{grid-template-columns:repeat(4,1fr);gap:16px 7px}
-.hot-cat-row i{width:47px;height:47px;font-size:22px}
-.hot-cat-row a{font-size:9px}
-.section{padding:24px 0}
-.category-card{height:135px}
-.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px;gap:9px}
-.product{padding:6px}
-.product-image{height:clamp(155px,48vw,225px)}
-.product h3{font-size:11px}
-.quick{font-size:7px;padding:8px}
-.shop-top{padding:16px 12px 10px}
-.shop-controls{padding:0 12px 10px}
-.filter-list{gap:5px}
-.filter{padding:8px 10px;font-size:9px}
-.sort{width:100%}
-.section-head h2{font-size:19px}
-.journal-grid{grid-template-columns:1fr;padding:10px}
-.newsletter h2{font-size:25px}
-.footer-grid{grid-template-columns:1fr 1fr}
-}
-
-
-/* Creative retail direction: Haven Market */
-:root{--ink:#17233a;--muted:#687386;--paper:#fff;--cream:#f4f6f9;--sand:#edf0f4;--clay:#f26a21;--olive:#17233a;--line:#e7eaf0;--shadow:0 8px 28px #17233a0c;--max:1400px}
-body{background:#f3f5f8;color:var(--ink);font-family:Inter,Arial,sans-serif}
-.announcement{background:#17233a;color:#fff;padding:8px 14px;font-size:9px;letter-spacing:1.1px}
-.announcement strong{color:#ffb36d}
-.header{box-shadow:0 3px 16px #17233a0a}
-.masthead{height:82px}
-.brand{font-size:25px;color:#17233a;letter-spacing:-1.2px}
-.brand:before{content:"✦";display:inline-grid;place-items:center;background:#f26a21;color:white;width:25px;height:25px;border-radius:7px;margin-right:7px;font-size:14px;vertical-align:2px}
-.brand span{color:#f26a21;letter-spacing:3.5px;font-size:8px}
-.searchbox{height:46px;border:1px solid #dce1e9;background:#f7f8fa;border-radius:7px;padding:0 13px}
-.searchbox:focus-within{border-color:#f26a21;box-shadow:0 0 0 3px #f26a2118}
-.searchbox input{font-size:12px}
-.searchbox input::placeholder{color:#8b94a2}
-.icon-btn{border-radius:8px;background:#f6f7f9;font-size:19px}
-.icon-btn:hover{background:#fff0e7;color:#e75d14}
-.bag-count{background:#f26a21}
-.nav{height:44px;background:#17233a;padding:0 max(20px,calc((100vw - var(--max))/2));gap:34px}
-.nav a{font-size:9px;letter-spacing:1px;color:#f7f8fa}
-.nav a:first-child{color:#ffb36d}
-.market-hero{padding-top:20px;grid-template-columns:236px minmax(0,1fr) 206px;gap:15px}
-.market-cats,.welcome-card,.side-promo,.market-banner,.mini-promos a,.hot-cats{border-radius:9px;box-shadow:var(--shadow)}
-.market-cats{overflow:hidden;padding-bottom:8px}
-.market-cats h3{background:#17233a;color:#fff;padding:17px 17px;font-size:10px;letter-spacing:1.3px;border:0;margin:0 0 5px}
-.market-cats a{padding:11px 16px;font-size:11px;color:#4e596a;transition:.18s}
-.market-cats a:hover{background:#fff3e9;color:#e85f18;padding-left:20px}
-.market-cats a b{color:#aab2bf}
-.market-banner{height:354px;background:#f8e6d7;border-radius:10px}
-.market-banner-copy{padding-left:39px;width:57%}
-.market-banner-copy>span{display:inline-block;background:#fff8f1;color:#d65d19;padding:7px 10px;border-radius:3px;font-size:8px;letter-spacing:1.4px}
-.market-banner h1{font-size:clamp(34px,3.5vw,54px);line-height:.99;letter-spacing:-2.3px;margin:17px 0 13px;color:#17233a}
-.market-banner h1 em{color:#ed681f}
-.market-banner p{font-size:11px;max-width:255px;line-height:1.8;color:#626b78}
-.market-banner-photo{inset:0 0 0 42%;background-position:center 30%;clip-path:polygon(13% 0,100% 0,100% 100%,0 100%)}
-.market-banner-photo:before{background:linear-gradient(90deg,#f8e6d7 0%,#f8e6d766 22%,transparent 58%)}
-.market-cta{background:#f26a21;border-radius:5px;padding:13px 19px;box-shadow:0 6px 16px #e76b2633}
-.market-cta:hover{background:#d95311}
-.banner-dots{color:#f26a21;left:47%;bottom:14px}
-.mini-promos{gap:9px}
-.mini-promos a{border:1px solid #edf0f4;padding:13px 12px;min-height:67px;justify-content:center}
-.mini-promos b{font-size:9px;color:#17233a}
-.mini-promos span{font-size:8px}
-.market-side{gap:10px}
-.welcome-card{padding:20px 12px;border:1px solid #edf0f4}
-.welcome-icon{background:#fff0e6;color:#f26a21}
-.welcome-card h3{font-size:14px;color:#17233a}
-.welcome-card a{background:#17233a;border-radius:5px}
-.side-promo{background:linear-gradient(145deg,#17233a,#293f61);padding:18px 15px}
-.side-promo span{color:#ffc08f}
-.side-promo strong{color:#fff;font-size:20px}
-.side-promo a{color:#ffc08f}
-.hot-cats{margin-top:16px;padding:19px 22px}
-.market-section-title h2{font-size:15px;letter-spacing:.4px}
-.market-section-title a{color:#e9651d;font-weight:700}
-.hot-cat-row{gap:9px}
-.hot-cat-row a{font-size:9px;font-weight:700;color:#4c586a}
-.hot-cat-row i{width:59px;height:59px;background:#f4f6f9;border:1px solid #edf0f4;border-radius:17px;font-size:24px;transition:.2s}
-.hot-cat-row a:hover i{background:#fff0e6;border-color:#ffd7be;transform:translateY(-3px)}
-.section{padding:37px 0}
-.section-head h2{font-size:22px;color:#17233a}
-.section-head p{font-size:10px;color:#788292}
-.eyebrow{color:#e9651d;font-weight:800}
-.category-grid{gap:14px}
-.category-card{height:190px;border-radius:8px;box-shadow:var(--shadow)}
-.category-card:after{inset:30% 0 0;background:linear-gradient(transparent,#101b2dcc)}
-.category-label{left:17px;bottom:17px}
-.category-label h3{font-size:20px}
-.shop-section{padding-top:27px}
-.shop-top{padding:21px 22px 14px;border-radius:9px 9px 0 0}
-.shop-controls{padding:0 22px 13px}
-.filter{border-radius:5px;background:#f7f8fa;border-color:#edf0f4;color:#687386}
-.filter.active,.filter:hover{background:#17233a;border-color:#17233a;color:#fff}
-.sort{border-radius:5px;background:#f7f8fa;border-color:#e7eaf0}
-.product-grid{padding:12px 15px 23px;border-radius:0 0 9px 9px;gap:15px}
-.product{border:1px solid #edf0f4;border-radius:7px;overflow:hidden;padding:0;background:#fff}
-.product-image{height:245px;background:#f5f6f8}
-.product-image img{transition:transform .45s}
-.product:hover .product-image img{transform:scale(1.055)}
-.product-tag{top:10px;left:10px;background:#fff;color:#e9651d;border-radius:3px;font-size:7px;letter-spacing:.8px}
-.wish{top:9px;right:9px;box-shadow:0 2px 8px #17233a12}
-.quick{left:8px;right:8px;bottom:8px;border-radius:4px;background:#17233a;color:white;font-size:8px}
-.product-info{padding:11px 11px 12px}
-.product-category{color:#e9651d;font-size:7px;letter-spacing:1.2px}
-.product h3{font-size:12px;min-height:31px;color:#253149}
-.price{color:#e9651d;font-size:14px}
-.add{border-radius:4px;background:#fff4eb;border-color:#ffddc7;color:#d85b18}
-.add:hover{background:#f26a21;color:white;border-color:#f26a21}
-.catalog-note{border-radius:0 0 9px 9px;font-size:9px}
-.newsletter{background:#fff0e5}
-.newsletter h2{font:700 31px Arial,sans-serif;color:#17233a}
-.newsletter p{color:#687386}
-.signup input{border-radius:5px 0 0 5px}
-.signup button{background:#f26a21;border-radius:0 5px 5px 0}
-.footer{background:#17233a}
-.footer-grid h4{color:#ffb36d}
-.footer-grid p,.footer-grid a{color:#c1cad7}
-.copyright{border-color:#ffffff20;color:#9eabbc}
-@media(max-width:1000px){.market-hero{grid-template-columns:205px minmax(0,1fr)}.market-banner{height:320px}}
-@media(max-width:650px){
-.announcement{font-size:8px}
-.masthead{padding:10px 0;min-height:106px}
-.brand{font-size:21px}
-.brand:before{width:22px;height:22px;font-size:12px}
-.header-right .icon-btn{background:#f5f6f8}
-.searchbox{height:40px;border-radius:6px}
-.nav{top:105px;padding:17px 20px;gap:15px}
-.market-hero{padding-top:11px}
-.market-banner{height:260px;border-radius:8px}
-.market-banner-copy{padding-left:17px;width:65%}
-.market-banner h1{font-size:31px;letter-spacing:-1.4px}
-.market-banner p{font-size:9px;max-width:170px}
-.market-banner-photo{left:40%}
-.market-cta{padding:10px 13px;font-size:8px}
-.mini-promos{gap:6px}
-.mini-promos a{border-radius:6px;min-height:66px;padding:9px 7px}
-.mini-promos b{font-size:7px;line-height:1.3}
-.mini-promos span{font-size:7px;line-height:1.4}
-.hot-cats{border-radius:8px;padding:15px 10px}
-.market-section-title h2{font-size:13px}
-.hot-cat-row{gap:14px 5px}
-.hot-cat-row i{width:47px;height:47px;border-radius:14px;font-size:21px}
-.hot-cat-row a{font-size:8px}
-.section{padding:25px 0}
-.category-card{height:140px;border-radius:7px}
-.category-label h3{font-size:16px}
-.shop-top{padding:16px 11px 10px;border-radius:7px 7px 0 0}
-.shop-controls{padding:0 11px 10px}
-.product-grid{padding:7px;gap:8px;border-radius:0 0 7px 7px}
-.product{border-radius:6px}
-.product-image{height:clamp(160px,49vw,225px)}
-.product-info{padding:9px 8px 10px}
-.product h3{font-size:11px}
-.price{font-size:13px}
-.add{font-size:7px;padding:8px 7px}
-.quick{font-size:7px}
-}
-
-
-/* Pheline's Haven beauty-store art direction */
-:root{--ink:#33212b;--muted:#806d77;--paper:#fffaf9;--cream:#f8edf0;--sand:#f1dfe5;--clay:#a34e70;--olive:#8b6a78;--line:#f0dfe5;--shadow:0 18px 55px #54283a12}
-body{background:#fffaf9;color:#33212b}
-.announcement{background:#3b2633;color:#fff8f7}
-.announcement strong,.brand span{color:#c77b98}
-.brand{color:#382431}
-.nav{background:#f5e5eb;border-color:#f0dce4}
-.nav a{color:#593b4a}
-.nav a:hover{color:#a34e70}
-.searchbox{background:#fff;border-color:#ead8e0;border-radius:30px}
-.searchbox:focus-within{border-color:#bd7893;box-shadow:0 0 0 3px #bd78931c}
-.icon-btn{color:#593b4a}
-.market-hero{grid-template-columns:230px minmax(0,1fr) 205px;gap:16px;padding-top:22px}
-.market-cats,.welcome-card,.side-promo,.market-banner,.mini-promos a{border-radius:13px}
-.market-cats{border:1px solid #f0e1e6;box-shadow:0 10px 32px #5a304010}
-.market-cats h3{background:#fff7f8;color:#684452;border-radius:13px 13px 0 0}
-.market-cats a:hover{background:#fff0f4;color:#a34e70}
-.market-banner{height:370px;background:linear-gradient(100deg,#f7e8ed 0%,#f4dfe6 52%,#ead0da 100%);border-radius:16px}
-.market-banner-copy{padding-left:42px;width:58%}
-.market-banner-copy>span{color:#9a5872}
-.market-banner-copy h1{font:500 clamp(43px,5vw,66px)/.92 var(--serif);color:#422c38;letter-spacing:-1px}
-.market-banner-copy h1 em{color:#a34e70}
-.market-banner-copy p{color:#725b67;line-height:1.9}
-.market-banner-photo{background-image:linear-gradient(90deg,#f4dfe600,#f4dfe600),url('https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1100&q=88');background-position:center;background-size:cover;opacity:.96}
-.market-cta,.welcome-card>a{background:#9e4f70;color:white;border-radius:30px;padding:14px 22px}
-.market-cta:hover,.welcome-card>a:hover{background:#71384f}
-.welcome-card{background:#fff;border:1px solid #f1e1e7}
-.welcome-icon{background:#f8e9ee;color:#a34e70;border-radius:50%}
-.welcome-card h3{color:#422c38}
-.welcome-card p,.side-promo{color:#806d77}
-.side-promo{background:#f7e9ee;border:1px solid #f0dce4}
-.side-promo strong{color:#593b4a}
-.mini-promos a{border:1px solid #f0e1e6;background:#fff}
-.mini-promos b{color:#9e4f70}
-.hot-cats,.section{padding-top:62px;padding-bottom:62px}
-.market-section-title h2,.section-head h2{color:#432d39}
-.hot-cat-row a{background:#fff;border:1px solid #f1e3e8;border-radius:13px;box-shadow:0 8px 24px #54283a08}
-.hot-cat-row a:hover{border-color:#d9a8ba;transform:translateY(-3px)}
-.hot-cat-row i{background:#f9edf1;color:#a34e70;border-radius:50%}
-.category-card{border-radius:15px;height:340px}
-.category-card:after{background:linear-gradient(transparent,#281722b8)}
-.category-label h3{font-size:38px}
-.shop-section{background:#fff5f7}
-.filter{border-radius:30px;border-color:#ead8e0;color:#755b68}
-.filter.active,.filter:hover{background:#8f4665;border-color:#8f4665}
-.product-grid{gap:27px 18px}
-.product-image{height:300px;border-radius:13px;background:#f5e9ed}
-.product-image img{transition:transform .5s}
-.product:hover .product-image img{transform:scale(1.045)}
-.product-tag{background:#fff;color:#914764;border-radius:20px}
-.wish{border-radius:50%;background:#fff}
-.quick{background:#3b2633;color:white;border-radius:30px}
-.add{background:#934766;color:#fff;border-radius:25px}
-.add:hover{background:#69354c}
-.price{color:#432d39}
-.editorial{background:#f6e9ee}
-.editorial-copy h2{color:#432d39}
-.newsletter{background:#f2dfe6}
-.newsletter button{background:#8f4665}
-.footer{background:#382632}
-.mobile-nav{background:#fffaf9;border-top:1px solid #f0dfe5}
-@media(max-width:900px){.market-hero{grid-template-columns:1fr}.market-cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.market-cats h3{grid-column:1/-1}.market-side{display:grid;grid-template-columns:1fr 1fr;gap:12px}.market-banner{height:340px}}
-@media(max-width:600px){.market-hero{padding-top:12px;gap:10px}.market-cats{grid-template-columns:repeat(2,minmax(0,1fr))}.market-cats a{font-size:10px;padding:10px}.market-banner{height:365px}.market-banner-copy{width:72%;padding:28px 0 28px 22px}.market-banner-copy h1{font-size:47px}.market-banner-photo{opacity:.42}.market-side{grid-template-columns:1fr 1fr}.hot-cats,.section{padding-top:42px;padding-bottom:42px}.hot-cat-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.hot-cat-row a{padding:10px 4px;font-size:9px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.category-card{height:240px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 11px}.product-image{height:220px}.filter-list{overflow-x:auto;flex-wrap:nowrap;width:100%;padding-bottom:5px}.filter{flex:0 0 auto}.shop-top{display:block}.shop-top .section-head{margin-bottom:15px}.shop-controls{width:100%}}
-
-
-/* Adenzo-inspired purple & magenta storefront refresh */
-:root{--ink:#35105f;--muted:#716879;--paper:#fff;--cream:#faf6fc;--sand:#eadcf2;--clay:#c51b9b;--olive:#7137a0;--line:#eee4f2;--shadow:0 18px 55px #35105f12}
-body{background:#fff;color:#261335}
-.announcement{background:linear-gradient(90deg,#40106d,#74249d 55%,#b31386);color:#fff}
-.announcement strong{color:#ffd4f0}
-.header{background:#ffffffef;border-bottom-color:#eadcf2}
-.masthead{min-height:84px}
-.brand{display:flex;align-items:center;justify-content:center;gap:9px;font:inherit;letter-spacing:0;white-space:nowrap}
-.brand-mark{display:inline-flex;width:42px;height:42px;filter:drop-shadow(0 4px 8px #8b39b533)}
-.brand-mark svg{width:100%;height:100%}
-.brand-word{display:block;font:700 23px/.9 var(--serif);letter-spacing:.5px;color:#4b1673}
-.brand-word span{display:block;font:800 8px var(--sans);letter-spacing:5px;margin-top:7px;color:#d21a9a}
-.icon-btn{color:#4b1673}.bag-count{background:#d21a9a;color:#fff}
-.nav{background:#fff;border-color:#f0e6f4}.nav a{color:#4b1673}.nav a:hover{color:#d21a9a}
-.searchbox{border-color:#c9b4d7}.searchbox input{color:#35105f}
-.market-hero{gap:16px}.market-cats{border:1px solid #eee2f3;border-radius:8px;background:#fff;box-shadow:0 8px 25px #35105f08;padding:16px}
-.market-cats h3{color:#4b1673}.market-cats a{border-bottom-color:#f2eaf5}.market-cats a:hover{color:#c51b9b;background:#fcf6fd}
-.market-banner{background:linear-gradient(110deg,#f8eefa 0%,#f3e5f8 48%,#ead7f3 100%);border-radius:8px;overflow:hidden}
-.market-banner-copy>span,.eyebrow{color:#a51485}.market-banner h1{color:#35105f}.market-banner h1 em{color:#d21a9a}.market-cta,.btn,.filter.active,.filter:hover{background:linear-gradient(100deg,#4b1673,#9c239d);border-color:#4b1673;color:#fff}
-.market-cta:hover,.btn:hover{background:#d21a9a;border-color:#d21a9a}
-.mini-promos a{background:#fff;border:1px solid #eee2f3;border-radius:7px}.mini-promos b{color:#8b2a9c}.mini-promos span{color:#756b7c}
-.market-side .welcome-card{border-radius:8px;background:linear-gradient(145deg,#4b1673,#8e249b);color:#fff}
-.product-image{background:#f7f0fa;border-radius:7px}.product-tag{color:#4b1673;border-radius:3px}.wish{color:#7d2596}.wish.saved{color:#d21a9a}
-.quick{background:#4b1673;color:#fff;border-radius:4px}.quick:hover{background:#d21a9a}
-.product h3,.section-head h2{color:#35105f}.price{color:#4b1673}.sale,.product-tag.sale{background:#d21a9a;color:#fff}
-.category-card,.collection-card,.edit-card{border-radius:8px;overflow:hidden}
-footer,.footer{background:#321052;color:#fff}footer a,.footer a{color:#f5dff6}
-@media(max-width:760px){.brand-mark{width:34px;height:34px}.brand-word{font-size:19px}.brand-word span{font-size:7px;letter-spacing:4px}.market-banner{border-radius:6px}.market-cats{border-radius:6px}}
-
-/* Official Pheline’s Haven logo artwork */
-.brand{display:flex;align-items:center;justify-content:center;min-width:0;padding:3px 0}
-.brand-logo-image{display:block;width:112px;height:78px;object-fit:contain;object-position:center;mix-blend-mode:multiply}
-@media(max-width:760px){.brand-logo-image{width:88px;height:62px}}
+:root{--purple:#5b176f;--purple2:#8d249d;--pink:#df168f;--ink:#241a26;--muted:#746b77;--bg:#faf8fb;--card:#fff;--line:#eee7f0;--soft:#f3eaf5;--gold:#c69b52;--max:1320px;--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;--shadow:0 16px 50px rgba(58,22,68,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:125px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}.container{width:min(var(--max),calc(100% - 44px));margin:auto}
+.topbar{background:linear-gradient(90deg,var(--purple),#7e1e91,var(--pink));color:#fff;text-align:center;padding:9px 15px;font-size:10px;font-weight:600;letter-spacing:.8px}.topbar span{opacity:.9}
+.header{position:sticky;top:0;z-index:50;background:rgba(250,248,251,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.head{height:82px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px}.brand img{width:108px;height:72px;display:block;object-fit:contain;margin:auto}.head-left,.head-right{display:flex;align-items:center;gap:14px}.head-right{justify-content:flex-end}.search{height:43px;width:min(360px,100%);border:1px solid #ddd2e1;border-radius:999px;background:#fff;display:flex;align-items:center;padding:0 15px;gap:10px}.search input{border:0;outline:0;background:transparent;width:100%;font-size:12px}.search b{font-size:18px;color:var(--purple)}.icon{border:0;background:transparent;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--ink);font-size:21px;position:relative}.icon:hover{background:var(--soft);color:var(--purple)}.count{position:absolute;top:1px;right:0;min-width:17px;height:17px;padding:0 4px;border-radius:20px;background:var(--pink);color:#fff;font-size:9px;font-weight:800;display:grid;place-items:center}.nav{border-top:1px solid var(--line);height:44px;display:flex;align-items:center;justify-content:center;gap:34px}.nav a{text-decoration:none;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}.nav a:hover{color:var(--pink)}.menu{display:none}
+.hero{margin-top:18px;display:grid;grid-template-columns:1.03fr .97fr;min-height:590px;background:linear-gradient(135deg,#f1e8f4,#f9eef8);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.hero-copy{padding:70px 8%;display:flex;justify-content:center;flex-direction:column;position:relative}.eyebrow{font-size:9px;letter-spacing:2.4px;text-transform:uppercase;font-weight:800;color:var(--purple)}.hero h1{font:600 clamp(52px,6.2vw,88px)/.94 var(--serif);letter-spacing:-2.5px;margin:18px 0 20px;max-width:650px}.hero h1 em{font-style:italic;color:var(--pink)}.hero p{max-width:470px;color:var(--muted);font-size:13px;line-height:1.9;margin:0}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:0 22px;border-radius:999px;border:1px solid var(--purple);background:var(--purple);color:#fff;text-decoration:none;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;transition:.2s}.btn:hover{transform:translateY(-2px);background:var(--pink);border-color:var(--pink)}.btn.alt{background:#fff;color:var(--purple);border-color:#dbc9df}.hero-art{position:relative;min-height:590px;background:#18091e url("assets/phelines-haven-logo.jpg") center/430px auto no-repeat}.hero-art:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 52% 42%,rgba(221,18,143,.6),transparent 36%),radial-gradient(circle at 50% 45%,rgba(105,20,130,.9),transparent 63%),linear-gradient(135deg,#18091e,#4d1163 55%,#110711)}.hero-art:after{content:"";position:absolute;inset:15%;border:1px solid rgba(255,255,255,.14);border-radius:50%;transform:rotate(-18deg)}.hero-badge{position:absolute;right:26px;bottom:26px;z-index:2;background:#fff;color:var(--purple);padding:15px 18px;border-radius:12px;font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;box-shadow:var(--shadow)}
+.perks{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:16px;overflow:hidden}.perk{padding:20px 18px;text-align:center;border-right:1px solid var(--line)}.perk:last-child{border:0}.perk b{display:block;font-size:10px;margin-bottom:5px}.perk span{font-size:9px;color:var(--muted)}
+.section{padding:76px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}.section-head h2{font:600 clamp(34px,4.5vw,55px)/1 var(--serif);letter-spacing:-1px;margin:8px 0 0;color:#34103e}.section-head p{font-size:11px;color:var(--muted);line-height:1.8;margin:8px 0 0;max-width:520px}.view{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;text-decoration:none;border-bottom:1px solid var(--pink);padding-bottom:6px;white-space:nowrap}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.cat{min-height:285px;border-radius:14px;overflow:hidden;position:relative;text-decoration:none;background:linear-gradient(145deg,#3d104d,#b9289e);isolation:isolate}.cat:nth-child(2){background:linear-gradient(145deg,#5b176f,#e11a8f)}.cat:nth-child(3){background:linear-gradient(145deg,#27112f,#8f269d)}.cat:nth-child(4){background:linear-gradient(145deg,#4b1859,#cf197f)}.cat:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(17,4,21,.78));z-index:-1}.cat .shape{position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.08);right:-45px;top:-40px}.cat .copy{position:absolute;left:23px;right:23px;bottom:22px;color:#fff}.cat small{font-size:8px;letter-spacing:1.6px;text-transform:uppercase;opacity:.8}.cat h3{font:500 32px/1 var(--serif);margin:8px 0 0}.cat:hover{transform:translateY(-4px);transition:.25s;box-shadow:var(--shadow)}
+.shop{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:24px}.filters{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.filter{border:1px solid var(--line);background:#fff;color:var(--muted);padding:10px 14px;border-radius:999px;font-size:9px;font-weight:700;white-space:nowrap}.filter.active,.filter:hover{background:var(--purple);border-color:var(--purple);color:#fff}.sort{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-size:9px;color:var(--muted)}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 17px}.product{min-width:0}.photo{aspect-ratio:4/4.6;background:#f4eef6;border-radius:12px;position:relative;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover;transition:.55s}.product:hover .photo img{transform:scale(1.045)}.pill{position:absolute;top:12px;left:12px;background:#fff;color:var(--purple);border-radius:999px;padding:7px 10px;font-size:7px;font-weight:800;letter-spacing:1px}.heart{position:absolute;top:10px;right:10px;border:0;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--purple);font-size:18px}.heart.saved{color:var(--pink)}.quick{position:absolute;left:12px;right:12px;bottom:12px;border:0;background:var(--purple);color:#fff;border-radius:999px;padding:11px;font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.2s}.product:hover .quick{opacity:1;transform:none}.info{padding:14px 2px}.catname{font-size:8px;color:var(--pink);font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.info h3{font:600 21px/1.1 var(--serif);margin:6px 0 9px;color:#32113d}.bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}.price{font-size:11px;font-weight:800;color:var(--purple)}.add{border:1px solid #dacbdd;background:#fff;color:var(--purple);padding:9px 11px;border-radius:999px;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.8px}.add:hover{background:var(--purple);color:#fff}.empty{grid-column:1/-1;text-align:center;padding:55px;color:var(--muted)}
+.feature{margin:76px 0;display:grid;grid-template-columns:.9fr 1.1fr;background:linear-gradient(135deg,#2e0c39,#6d187f);border-radius:18px;overflow:hidden;color:#fff}.feature-visual{min-height:430px;background:radial-gradient(circle at 55% 45%,#d81a91 0,#6d187f 34%,#23082d 75%);position:relative}.feature-visual:before{content:"PH";font:700 180px/1 var(--serif);position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.08)}.feature-copy{padding:65px 8%;display:flex;justify-content:center;flex-direction:column}.feature-copy .eyebrow{color:#f3c2ec}.feature-copy h2{font:600 clamp(39px,5vw,64px)/.95 var(--serif);margin:15px 0}.feature-copy p{color:#ead9ed;font-size:11px;line-height:2;max-width:460px}.feature-copy .btn{background:#fff;color:var(--purple);border-color:#fff}
+.trust{padding:0 0 75px}.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.trust-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px}.trust-card b{font-size:11px}.trust-card p{font-size:10px;color:var(--muted);line-height:1.8;margin-bottom:0}
+.newsletter{background:linear-gradient(135deg,#f2e7f4,#fff0f7);padding:65px 20px;text-align:center}.newsletter h2{font:600 46px/.95 var(--serif);margin:12px 0}.newsletter p{font-size:10px;color:var(--muted)}.signup{display:flex;width:min(470px,100%);margin:22px auto 0;background:#fff;border:1px solid #dfd2e2;border-radius:999px;padding:5px}.signup input{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:0 14px;font-size:10px}.signup button{border:0;background:var(--purple);color:#fff;border-radius:999px;padding:12px 17px;font-size:8px;font-weight:800;letter-spacing:1px}
+.footer{background:#200924;color:#fff;padding:58px 0 24px}.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:35px}.footer-brand img{width:105px;height:72px;object-fit:contain;filter:brightness(1.1)}.footer p,.footer a{display:block;color:#cdbdce;font-size:9px;line-height:2.1;text-decoration:none}.footer a:hover{color:#fff}.footer h4{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:#ed86c9;margin:4px 0 14px}.copyright{border-top:1px solid rgba(255,255,255,.12);margin-top:35px;padding-top:18px;display:flex;justify-content:space-between;gap:10px;color:#9d8ba0;font-size:8px}
+.overlay{position:fixed;inset:0;background:rgba(22,7,27,.6);z-index:80;display:none}.overlay.open{display:block}.drawer{position:absolute;right:0;top:0;width:min(460px,100%);height:100%;background:#fff;overflow:auto;padding:25px}.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:16px}.drawer-head h2{font:600 30px var(--serif);margin:0;color:#32113d}.close{border:0;background:transparent;font-size:28px}.cart-item{display:flex;gap:13px;padding:16px 0;border-bottom:1px solid var(--line)}.cart-item img{width:74px;height:84px;object-fit:cover;border-radius:8px}.cart-item h4{font:600 18px var(--serif);margin:4px 0}.cart-item small{font-size:9px;color:var(--muted)}.qty{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:10px}.qty button{width:26px;height:26px;border:1px solid var(--line);background:#fff;border-radius:50%}.remove{border:0;background:transparent;margin-left:auto;color:var(--muted);font-size:9px}.total{display:flex;justify-content:space-between;font-weight:800;font-size:11px;padding:20px 0}.checkout{width:100%}.note{font-size:9px;color:var(--muted);line-height:1.8}.toast{position:fixed;left:50%;bottom:24px;z-index:100;transform:translate(-50%,20px);background:#27102e;color:#fff;border-radius:999px;padding:12px 18px;font-size:9px;opacity:0;pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.mobile-nav{display:none}
+@media(max-width:900px){.head{grid-template-columns:auto 1fr auto}.head-left{order:1}.brand{order:2}.head-right{order:3}.search{display:none}.nav{gap:20px}.hero{grid-template-columns:1fr}.hero-art{min-height:430px}.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1.4fr 1fr 1fr}.footer-grid>div:last-child{grid-column:1/-1}.trust-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.container{width:calc(100% - 28px)}.topbar{font-size:8px}.head{height:70px}.brand img{width:88px;height:60px}.menu{display:grid}.nav{display:none;height:auto;position:absolute;left:0;right:0;top:70px;background:#fff;padding:18px 22px;flex-direction:column;align-items:flex-start;gap:18px}.nav.open{display:flex}.nav a{font-size:9px}.hero{margin-top:12px;border-radius:12px;min-height:0}.hero-copy{padding:48px 25px}.hero h1{font-size:55px}.hero p{font-size:11px}.hero-art{min-height:360px;background-size:300px auto}.hero-badge{right:14px;bottom:14px}.perks{grid-template-columns:repeat(2,1fr)}.perk:nth-child(2){border-right:0}.perk:nth-child(-n+2){border-bottom:1px solid var(--line)}.section{padding:57px 0}.section-head{display:block}.view{display:inline-block;margin-top:15px}.categories{gap:9px}.cat{min-height:210px}.cat h3{font-size:26px}.cat .copy{left:15px;bottom:16px}.shop .section-head h2{font-size:39px}.toolbar{align-items:stretch}.filters{width:100%}.sort{width:100%}.products{gap:24px 10px}.photo{border-radius:9px}.quick{opacity:1;transform:none;left:7px;right:7px;bottom:7px}.info h3{font-size:18px}.add{padding:8px 9px;font-size:7px}.feature{grid-template-columns:1fr;margin:55px 0;border-radius:12px}.feature-visual{min-height:260px}.feature-copy{padding:42px 26px}.feature-copy h2{font-size:46px}.newsletter{padding:52px 15px}.newsletter h2{font-size:39px}.signup{height:48px}.signup button{padding:0 13px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.footer-grid>div:first-child{grid-column:1/-1}.footer-grid>div:last-child{grid-column:1/-1}.copyright{flex-direction:column}.mobile-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:7px 4px calc(7px + env(safe-area-inset-bottom));justify-content:space-around}.mobile-nav a{text-decoration:none;text-align:center;color:var(--muted);font-size:7px}.mobile-nav b{display:block;color:var(--purple);font-size:17px;margin-bottom:1px}body{padding-bottom:57px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="announcement">YOUR BEAUTY, YOUR RITUAL <strong>✦ A little luxury in every day</strong></div>
-<header class="header"><div class="shell masthead">
-<div class="header-left"><button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button><label class="searchbox" aria-label="Search products"><span>⌕</span><input id="searchTop" type="search" placeholder="Search the Haven"></label></div>
-<a class="brand" href="#home" aria-label="Pheline’s Haven home"><img class="brand-logo-image" src="assets/phelines-haven-logo.jpg" alt="Pheline’s Haven logo"></a>
-<div class="header-right"><button class="icon-btn" onclick="showWishlist()" aria-label="Wishlist">♡</button><button class="icon-btn" onclick="openCart()" aria-label="Shopping bag">♧<span class="bag-count" id="bagCount">0</span></button></div>
-</div><nav class="nav" id="nav"><a href="#home">Home</a><a href="#collections">Beauty categories</a><a href="#shop">Shop all</a><a href="#edit">Beauty edit</a><a href="#journal">Beauty journal</a><a href="#contact">Contact</a></nav></header>
-<main id="home">
-<section class="market-hero shell" id="home">
-<aside class="market-cats"><h3>SHOP BY CATEGORY</h3>
-<a href="#shop" onclick="setCategory('Skincare')">🧴 <span>Skincare</span> <b>›</b></a>
-<a href="#shop" onclick="setCategory('Makeup')">💄 <span>Makeup & Cosmetics</span> <b>›</b></a>
-<a href="#shop" onclick="setCategory('Haircare')">🪮 <span>Haircare</span> <b>›</b></a>
-<a href="#shop" onclick="setCategory('Fragrance')">🌸 <span>Perfume & Fragrance</span> <b>›</b></a>
-<a href="#shop" onclick="setCategory('Bodycare')">🧼 <span>Body Care</span> <b>›</b></a>
-<a href="#shop" onclick="setCategory('Tools')">🪞 <span>Beauty Tools</span> <b>›</b></a>
-<a href="#shop" onclick="setCategory('All')">✨ <span>New Arrivals</span> <b>›</b></a>
-</aside>
-<div class="market-main">
-<div class="market-banner"><div class="market-banner-copy"><span>THE PHELINE’S HAVEN BEAUTY EDIT</span><h1>Your glow.<br>Your <em>ritual.</em></h1><p>Discover feel-good skincare, beautiful makeup and everyday beauty essentials.</p><a href="#shop" class="market-cta">SHOP NOW&nbsp; →</a></div><div class="market-banner-photo" role="img" aria-label="Luxury beauty and skincare collection"></div><div class="banner-dots">● ○ ○</div></div>
-<div class="mini-promos"><a href="#shop"><b>✦ BEAUTY FAVOURITES</b><span>Discover your next must-have</span></a><a href="#collections"><b>♡ SHOP BY ROUTINE</b><span>Find the right beauty edit</span></a><a href="#contact"><b>☏ CUSTOMER CARE</b><span>We’re here to help</span></a></div>
+<div class="topbar">WELCOME TO PHELINE'S HAVEN <span>✦ Luxury beauty, fashion & lifestyle — made for your everyday.</span></div>
+<header class="header">
+<div class="container head">
+<div class="head-left"><button class="icon menu" id="menu" aria-label="Menu">☰</button><label class="search"><b>⌕</b><input id="search" type="search" placeholder="Search products, categories..."></label></div>
+<a class="brand" href="#home" aria-label="Pheline's Haven"><img src="assets/phelines-haven-logo.jpg" alt="Pheline's Haven logo"></a>
+<div class="head-right"><button class="icon" onclick="showWishlist()" aria-label="Wishlist">♡</button><button class="icon" onclick="openCart()" aria-label="Shopping bag">♧<span class="count" id="count">0</span></button></div>
 </div>
-<aside class="market-side"><div class="welcome-card"><div class="welcome-icon">♙</div><h3>Welcome to<br>Pheline’s Haven</h3><p>Discover something lovely today.</p><a href="#shop">START SHOPPING</a></div><div class="side-promo"><span>YOUR DAILY GLOW</span><strong>Small rituals. Beautiful results.</strong><a href="#collections">EXPLORE NOW →</a></div></aside>
+<nav class="nav" id="nav"><a href="#home">Home</a><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#about">Our story</a><a href="#journal">Journal</a><a href="#contact">Contact</a></nav>
+</header>
+<main id="home">
+<div class="container">
+<section class="hero">
+<div class="hero-copy"><div class="eyebrow">The new Pheline's Haven</div><h1>Beauty that feels <em>beautiful.</em></h1><p>Discover thoughtfully selected skincare, makeup, haircare, fragrance and lifestyle essentials — presented with a little more elegance and a lot more you.</p><div class="actions"><a class="btn" href="#shop">Shop the collection&nbsp; →</a><a class="btn alt" href="#categories">Explore categories</a></div></div>
+<div class="hero-art"><div class="hero-badge">Your beauty · Your ritual</div></div>
 </section>
-<section class="hot-cats shell" id="collections"><div class="market-section-title"><h2>Shop beauty categories</h2><a href="#shop">View all&nbsp; →</a></div><div class="hot-cat-row">
-<a href="#shop" onclick="setCategory('Skincare')"><i>🧴</i><span>Skincare</span></a><a href="#shop" onclick="setCategory('Makeup')"><i>💄</i><span>Makeup</span></a><a href="#shop" onclick="setCategory('Haircare')"><i>🪮</i><span>Haircare</span></a><a href="#shop" onclick="setCategory('Fragrance')"><i>🌸</i><span>Fragrance</span></a><a href="#shop" onclick="setCategory('Bodycare')"><i>🧼</i><span>Body care</span></a><a href="#shop" onclick="setCategory('Tools')"><i>🪞</i><span>Beauty tools</span></a><a href="#shop" onclick="setCategory('All')"><i>🎁</i><span>Gift sets</span></a><a href="#shop" onclick="setCategory('All')"><i>✨</i><span>New in</span></a>
-</div></section>
-<section class="section shell" id="collections"><div class="section-head"><div class="eyebrow">Find your next favourite</div><h2>Beauty, curated beautifully</h2><p>Build a routine that feels good, looks beautiful and works for you.</p></div><div class="category-grid">
-<a class="category-card" href="#shop" onclick="setCategory('Skincare')"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=88" alt="Skincare products" loading="lazy"><div class="category-label"><small>Care for your glow</small><h3>Skincare</h3></div></a>
-<a class="category-card" href="#shop" onclick="setCategory('Makeup')"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=88" alt="Makeup collection" loading="lazy"><div class="category-label"><small>Colour your confidence</small><h3>Makeup</h3></div></a>
-<a class="category-card" href="#shop" onclick="setCategory('Accessories')"><img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=88" alt="Jewellery and accessories" loading="lazy"><div class="category-label"><small>The finishing touch</small><h3>Accessories</h3></div></a>
-<a class="category-card" href="#shop" onclick="setCategory('Lifestyle')"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=88" alt="Self care and lifestyle" loading="lazy"><div class="category-label"><small>Make time for you</small><h3>Lifestyle</h3></div></a>
-</div></section>
-<section class="campaign" id="edit"><div class="campaign-inner"><div class="campaign-photo" role="img" aria-label="Fashion campaign editorial"></div><div class="campaign-copy"><div class="eyebrow">A little more you</div><h2>Good taste.<br>Great feeling.</h2><p>From everyday essentials to the pieces that make an entrance, discover a considered edit designed to bring a little joy to getting dressed.</p><a class="btn" href="#shop">Discover the edit <span>→</span></a></div></div></section>
-<section class="section shop-section" id="shop"><div class="shell"><div class="shop-top"><div class="section-head"><div class="eyebrow">THE BEAUTY SHOP</div><h2>Find your new favourites</h2><p>Explore skincare, makeup and beauty essentials for your routine.</p></div><div class="shop-controls"><div class="filter-list" id="filters"><button class="filter active" data-cat="All">All beauty</button><button class="filter" data-cat="Skincare">Skincare</button><button class="filter" data-cat="Makeup">Makeup</button><button class="filter" data-cat="Haircare">Haircare</button><button class="filter" data-cat="Fragrance">Fragrance</button><button class="filter" data-cat="Bodycare">Body care</button><button class="filter" data-cat="Tools">Tools</button></div></div></div><div class="shop-controls"><select class="sort" id="sort" aria-label="Sort products"><option value="featured">Sort: Featured</option><option value="low">Price: Low to high</option><option value="high">Price: High to low</option><option value="az">Name: A to Z</option></select></div><div class="product-grid" id="products"></div><p class="catalog-note">You’re viewing a sample storefront preview. Product names, images and prices are illustrative and must be replaced with your real catalogue before taking customer orders.</p></div></section>
-<section class="editorial"><div class="editorial-photo" role="img" aria-label="Beauty and self care editorial"></div><div class="editorial-copy"><div class="eyebrow">The Pheline’s Haven philosophy</div><h2>It’s not about more.<br><i>It’s about what matters.</i></h2><p>We believe personal style should feel effortless, beauty should feel individual and the little things should bring you joy. Pheline’s Haven is your space to discover pieces that feel just right.</p><a class="text-link" href="#contact">Get to know the Haven&nbsp; →</a></div></section>
-<section class="section shell" id="journal"><div class="section-head"><div class="eyebrow">Notes from the Haven</div><h2>Inspiration for your everyday</h2><p>Fresh ideas, thoughtful rituals and little reminders to make it yours.</p></div><div class="journal-grid">
-<article class="journal-card"><img src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=900&q=85" alt="Skincare essentials" loading="lazy"><small>BEAUTY · EVERYDAY RITUALS</small><h3>A softer kind of self-care</h3><p>Small, consistent rituals can make everyday feel a little more considered. Start with what feels good to you.</p></article>
-<article class="journal-card"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=85" alt="Makeup and beauty" loading="lazy"><small>BEAUTY · PERSONAL STYLE</small><h3>Your beauty, your way</h3><p>There are no rules to feeling beautiful. Find the colours, textures and routines that make you feel confident.</p></article>
-<article class="journal-card"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85" alt="Fashion styling" loading="lazy"><small>STYLE · WHAT TO WEAR</small><h3>Build a wardrobe that feels like you</h3><p>Choose pieces you love reaching for. Personal style is less about trends and more about how you feel.</p></article>
-</div></section>
-<section class="newsletter"><div class="eyebrow">A little note from us</div><h2>Stay in the Haven loop.</h2><p>Be first to hear about new arrivals, thoughtful edits and inspiration.</p><form class="signup" onsubmit="subscribe(event)"><input type="email" required placeholder="Enter your email address" aria-label="Email address"><button type="submit">KEEP ME POSTED</button></form><p id="newsletterNote">Newsletter preview only — email subscriptions will be enabled when a mailing service is connected.</p></section>
+<section class="perks"><div class="perk"><b>Curated quality</b><span>Beautiful products, carefully selected.</span></div><div class="perk"><b>Made for Kenya</b><span>Local-friendly shopping experience.</span></div><div class="perk"><b>Easy ordering</b><span>Add to bag and enquire in seconds.</span></div><div class="perk"><b>Personal care</b><span>Support when you need it.</span></div></section>
+</div>
+
+<section class="section container" id="categories">
+<div class="section-head"><div><div class="eyebrow">Shop your way</div><h2>Find your beauty edit</h2><p>Start with a category and discover pieces that fit your routine, mood and style.</p></div><a class="view" href="#shop">View all products →</a></div>
+<div class="categories">
+<a class="cat" href="#shop" onclick="setCategory('Skincare')"><span class="shape"></span><div class="copy"><small>Glow & care</small><h3>Skincare</h3></div></a>
+<a class="cat" href="#shop" onclick="setCategory('Makeup')"><span class="shape"></span><div class="copy"><small>Colour & confidence</small><h3>Makeup</h3></div></a>
+<a class="cat" href="#shop" onclick="setCategory('Haircare')"><span class="shape"></span><div class="copy"><small>Healthy rituals</small><h3>Haircare</h3></div></a>
+<a class="cat" href="#shop" onclick="setCategory('Fragrance')"><span class="shape"></span><div class="copy"><small>Your signature</small><h3>Fragrance</h3></div></a>
+</div>
+</section>
+
+<section class="shop" id="shop">
+<div class="section container">
+<div class="section-head"><div><div class="eyebrow">The Haven shop</div><h2>New favourites</h2><p>Explore our sample storefront. Replace the sample catalogue with your live inventory when you're ready to sell.</p></div></div>
+<div class="toolbar"><div class="filters" id="filters"><button class="filter active" data-cat="All">All</button><button class="filter" data-cat="Skincare">Skincare</button><button class="filter" data-cat="Makeup">Makeup</button><button class="filter" data-cat="Haircare">Haircare</button><button class="filter" data-cat="Fragrance">Fragrance</button><button class="filter" data-cat="Bodycare">Body care</button><button class="filter" data-cat="Tools">Beauty tools</button></div><select class="sort" id="sort" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="az">Name: A to Z</option></select></div>
+<div class="products" id="products"></div>
+</div>
+</section>
+
+<div class="container">
+<section class="feature" id="about"><div class="feature-visual"></div><div class="feature-copy"><div class="eyebrow">The Haven philosophy</div><h2>Less noise.<br>More <i>you.</i></h2><p>Pheline's Haven is designed as a modern destination for the things that make everyday life feel a little more considered. Beauty is personal. Your shop should be too.</p><a class="btn" href="#shop">Discover your edit&nbsp; →</a></div></section>
+</div>
+
+<section class="trust container">
+<div class="section-head"><div><div class="eyebrow">Why shop with us</div><h2>A better kind of boutique</h2></div></div>
+<div class="trust-grid"><article class="trust-card"><b>Thoughtful curation</b><p>We keep the storefront focused, elegant and easy to browse instead of overwhelming you with endless choices.</p></article><article class="trust-card"><b>Simple, clear shopping</b><p>Search, filter, save favourites and build your bag without losing your place.</p></article><article class="trust-card"><b>Human customer care</b><p>For the current preview, checkout sends an enquiry so availability, delivery and final pricing can be confirmed personally.</p></article></div>
+</section>
+
+<section class="newsletter" id="journal"><div class="eyebrow">Stay in the Haven</div><h2>Beautiful things, in your inbox.</h2><p>New arrivals, beauty edits and little inspiration — only when there's something worth sharing.</p><form class="signup" onsubmit="subscribe(event)"><input type="email" required placeholder="Your email address" aria-label="Email address"><button type="submit">SUBSCRIBE</button></form></section>
 </main>
-<footer class="footer" id="contact"><div class="shell"><div class="footer-grid"><div><div class="footer-logo">PHELINE’S HAVEN<span>YOUR BEAUTY, YOUR RITUAL</span></div><p>Your destination for skincare, makeup, haircare, fragrance and everyday beauty essentials.</p></div><div><h4>Shop beauty</h4><a href="#shop">Shop all</a><a href="#collections">Beauty categories</a><a href="#journal">Beauty journal</a></div><div><h4>Explore</h4><a href="#story">Our philosophy</a><a href="#journal">Journal</a><a href="#home">Back to top ↑</a></div><div><h4>Customer care</h4><p>Kenya</p><p>For product enquiries and orders, add items to your bag and send us an enquiry through WhatsApp.</p></div></div><div class="copyright"><span>© 2026 Pheline’s Haven. All rights reserved.</span><span>Made with care in Kenya&nbsp; ♡</span></div></div></footer>
-<nav class="mobile-nav"><a href="#home"><b>⌂</b>Home</a><a href="#collections"><b>▦</b>Explore</a><a href="#shop"><b>⌕</b>Shop</a><a href="#" onclick="showWishlist();return false"><b>♡</b>Saved</a><a href="#" onclick="openCart();return false"><b>♧</b>Bag</a></nav>
-<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer" aria-label="Shopping bag"><div class="drawer-head"><h2>Your shopping bag</h2><button class="close" onclick="closeCart()" aria-label="Close bag">×</button></div><div id="cartItems"></div><div class="cart-total"><span>Subtotal preview</span><span id="cartTotal">KSh 0</span></div><button class="btn checkout" onclick="checkout()">Send order enquiry&nbsp; →</button><p class="drawer-note">This is an enquiry only, not a completed order or payment. We’ll confirm real stock, final pricing, delivery and payment details with you.</p></aside></div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer class="footer" id="contact">
+<div class="container footer-grid"><div class="footer-brand"><img src="assets/phelines-haven-logo.jpg" alt="Pheline's Haven"><p>Beauty, fashion and lifestyle essentials for your everyday ritual.</p></div><div><h4>Shop</h4><a href="#shop">All products</a><a href="#categories">Categories</a><a href="#shop" onclick="setCategory('Skincare')">Skincare</a><a href="#shop" onclick="setCategory('Makeup')">Makeup</a></div><div><h4>Explore</h4><a href="#about">Our story</a><a href="#journal">Journal</a><a href="#home">Back to top ↑</a></div><div><h4>Customer care</h4><p>Kenya</p><p>Orders are currently enquiry-based. We'll confirm stock, delivery and payment details before fulfilment.</p></div></div>
+<div class="container copyright"><span>© 2026 Pheline's Haven. All rights reserved.</span><span>Made with care in Kenya ♡</span></div>
+</footer>
+
+<nav class="mobile-nav"><a href="#home"><b>⌂</b>Home</a><a href="#categories"><b>▦</b>Explore</a><a href="#shop"><b>⌕</b>Shop</a><a href="#" onclick="showWishlist();return false"><b>♡</b>Saved</a><a href="#" onclick="openCart();return false"><b>♧</b>Bag</a></nav>
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawer-head"><h2>Your bag</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="total"><span>Subtotal</span><span id="total">KSh 0</span></div><button class="btn checkout" onclick="checkout()">Send order enquiry&nbsp; →</button><p class="note">This preview does not take payment. We'll confirm real stock, final pricing, delivery and payment details with you.</p></aside></div>
+<div class="toast" id="toast"></div>
+
 <script>
 const products=[
-{id:1,name:"Daily Hydration Serum",cat:"Skincare",price:1850,tag:"SKINCARE FAVOURITE",img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=800&q=85",desc:"A sample skincare pick for a fresh, hydrated-looking glow."},
-{id:2,name:"The Nude Lip Edit",cat:"Makeup",price:1450,tag:"BEAUTY BAG ESSENTIAL",img:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=85",desc:"An easy everyday lip look for your makeup routine."},
-{id:3,name:"Gentle Skin Cleanser",cat:"Skincare",price:1650,tag:"DAILY RITUAL",img:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=800&q=85",desc:"A gentle cleanser-inspired addition to your skincare shelf."},
-{id:4,name:"The Soft Glam Palette",cat:"Makeup",price:2200,tag:"SOFT GLAM",img:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=85",desc:"A makeup edit inspired by soft, wearable beauty."},
-{id:5,name:"Nourishing Body Care",cat:"Bodycare",price:1250,tag:"BODY LOVE",img:"https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=800&q=85",desc:"A little self-care moment for your everyday body-care routine."},
-{id:6,name:"The Scent Story",cat:"Fragrance",price:2750,tag:"SIGNATURE SCENT",img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=85",desc:"A fragrance-inspired finishing touch for your day."},
-{id:7,name:"Haircare Essentials",cat:"Haircare",price:1950,tag:"HAIR RITUAL",img:"https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=85",desc:"A sample edit for your wash-day and hair-care routine."},
-{id:8,name:"Beauty Tool Set",cat:"Tools",price:1350,tag:"THE BEAUTY TOOLKIT",img:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=85",desc:"Beauty tools to help complete your everyday routine."}
+{id:1,name:"Daily Hydration Serum",cat:"Skincare",price:1850,tag:"BESTSELLER",img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=88"},
+{id:2,name:"The Nude Lip Edit",cat:"Makeup",price:1450,tag:"BEAUTY FAVOURITE",img:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=88"},
+{id:3,name:"Gentle Skin Cleanser",cat:"Skincare",price:1650,tag:"DAILY RITUAL",img:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=900&q=88"},
+{id:4,name:"The Soft Glam Palette",cat:"Makeup",price:2200,tag:"SOFT GLAM",img:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=88"},
+{id:5,name:"Nourishing Body Care",cat:"Bodycare",price:1250,tag:"BODY LOVE",img:"https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=900&q=88"},
+{id:6,name:"The Scent Story",cat:"Fragrance",price:2750,tag:"SIGNATURE SCENT",img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=88"},
+{id:7,name:"Haircare Essentials",cat:"Haircare",price:1950,tag:"HAIR RITUAL",img:"https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=900&q=88"},
+{id:8,name:"Beauty Tool Set",cat:"Tools",price:1350,tag:"THE TOOLKIT",img:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=88"}
 ];
 let category="All",cart=[],wishlist=[];
 const money=n=>"KSh "+n.toLocaleString("en-KE");
-function render(){const q=(document.getElementById("searchTop").value||"").trim().toLowerCase();let shown=products.filter(p=>(category==="All"||p.cat===category)&&(p.name+" "+p.cat+" "+p.desc).toLowerCase().includes(q));const sort=document.getElementById("sort").value;if(sort==="low")shown.sort((a,b)=>a.price-b.price);if(sort==="high")shown.sort((a,b)=>b.price-a.price);if(sort==="az")shown.sort((a,b)=>a.name.localeCompare(b.name));document.getElementById("products").innerHTML=shown.map(p=>'<article class="product"><div class="product-image"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"><span class="product-tag">'+p.tag+'</span><button class="wish '+(wishlist.includes(p.id)?"saved":"")+'" onclick="toggleWish('+p.id+')" aria-label="Save '+p.name+'">'+(wishlist.includes(p.id)?"♥":"♡")+'</button><button class="quick" onclick="quickView('+p.id+')">Piece details</button></div><div class="product-info"><div class="product-category">'+p.cat+'</div><h3>'+p.name+'</h3><div class="product-bottom"><span class="price">'+money(p.price)+'</span><button class="add" onclick="addCart('+p.id+')">Add +</button></div></div></article>').join("")||'<p class="empty">No pieces found. Try a different search or category.</p>'}
-function setCategory(c){category=c;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.cat===c));render()}
-document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button[data-cat]");if(b)setCategory(b.dataset.cat)});
-document.getElementById("searchTop").addEventListener("input",()=>{document.getElementById("shop").scrollIntoView({behavior:"smooth",block:"start"});render()});
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.t);window.t=setTimeout(()=>t.classList.remove("show"),2200)}
+function render(){const q=(document.getElementById("search").value||"").toLowerCase().trim();let a=products.filter(p=>(category==="All"||p.cat===category)&&(p.name+" "+p.cat).toLowerCase().includes(q));const s=document.getElementById("sort").value;if(s==="low")a.sort((x,y)=>x.price-y.price);if(s==="high")a.sort((x,y)=>y.price-x.price);if(s==="az")a.sort((x,y)=>x.name.localeCompare(y.name));document.getElementById("products").innerHTML=a.length?a.map(p=>'<article class="product"><div class="photo"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"><span class="pill">'+p.tag+'</span><button class="heart '+(wishlist.includes(p.id)?"saved":"")+'" onclick="toggleWish('+p.id+')" aria-label="Save '+p.name+'">'+(wishlist.includes(p.id)?"♥":"♡")+'</button><button class="quick" onclick="quick('+p.id+')">View details</button></div><div class="info"><div class="catname">'+p.cat+'</div><h3>'+p.name+'</h3><div class="bottom"><span class="price">'+money(p.price)+'</span><button class="add" onclick="add('+p.id+')">Add to bag</button></div></div></article>').join(""):'<div class="empty">No products found. Try another search or category.</div>'}
+function setCategory(c){category=c;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x.dataset.cat===c));render();document.getElementById("shop").scrollIntoView({behavior:"smooth"})}
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest(".filter");if(b)setCategory(b.dataset.cat)});
 document.getElementById("sort").addEventListener("change",render);
-function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),2300)}
-function addCart(id){const item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({id,qty:1});updateCart();toast("Added to your bag ♡")}
-function updateCart(){document.getElementById("bagCount").textContent=cart.reduce((a,x)=>a+x.qty,0);document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{const p=products.find(y=>y.id===x.id);return '<div class="cart-item"><img src="'+p.img+'" alt=""><div style="flex:1"><h4>'+p.name+'</h4><small>'+money(p.price)+'</small><div class="qty"><button onclick="changeQty('+p.id+',-1)" aria-label="Decrease quantity">−</button>'+x.qty+'<button onclick="changeQty('+p.id+',1)" aria-label="Increase quantity">+</button><button style="margin-left:auto;width:auto;border:0" onclick="removeItem('+p.id+')">Remove</button></div></div></div>'}).join(""):'<div class="empty">Your bag is waiting for something lovely.</div>';document.getElementById("cartTotal").textContent=money(cart.reduce((a,x)=>a+products.find(p=>p.id===x.id).price*x.qty,0))}
-function changeQty(id,d){const x=cart.find(x=>x.id===id);if(x)x.qty+=d;cart=cart.filter(x=>x.qty>0);updateCart()}
-function removeItem(id){cart=cart.filter(x=>x.id!==id);updateCart()}
-function openCart(){document.getElementById("cartOverlay").classList.add("open");updateCart();document.body.style.overflow="hidden"}
-function closeCart(){document.getElementById("cartOverlay").classList.remove("open");document.body.style.overflow=""}
-function toggleWish(id){wishlist.includes(id)?wishlist=wishlist.filter(x=>x!==id):wishlist.push(id);render();toast(wishlist.includes(id)?"Saved to your wishlist ♡":"Removed from wishlist")}
-function showWishlist(){const names=wishlist.map(id=>products.find(p=>p.id===id).name);toast(names.length?"Your saved pieces: "+names.join(", "):"Your wishlist is empty")}
-function quickView(id){const p=products.find(x=>x.id===id);toast(p.name+" — "+p.desc)}
-function checkout(){if(!cart.length){toast("Your bag is empty");return}const lines=cart.map(x=>{const p=products.find(y=>y.id===x.id);return p.name+" x"+x.qty+" — "+money(p.price*x.qty)}).join("\n");const total=money(cart.reduce((a,x)=>a+products.find(p=>p.id===x.id).price*x.qty,0));const msg="Hello Pheline’s Haven! I’d like to enquire about these sample items:\n"+lines+"\nSample subtotal: "+total+"\nPlease confirm the real products, availability, final prices, delivery and payment options.";window.open("https://wa.me/254116400947?text="+encodeURIComponent(msg),"_blank","noopener")}
-function subscribe(e){e.preventDefault();toast("Thank you! Newsletter sign-up will be enabled soon.");e.target.reset()}
-document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("nav").classList.toggle("open"));
+document.getElementById("search").addEventListener("input",render);
+function add(id){const x=cart.find(i=>i.id===id);if(x)x.qty++;else cart.push({id:id,qty:1});updateCart();toast("Added to your bag ♡")}
+function updateCart(){document.getElementById("count").textContent=cart.reduce((a,x)=>a+x.qty,0);document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{const p=products.find(y=>y.id===x.id);return '<div class="cart-item"><img src="'+p.img+'" alt=""><div style="flex:1"><h4>'+p.name+'</h4><small>'+money(p.price)+'</small><div class="qty"><button onclick="qty('+p.id+',-1)">−</button>'+x.qty+'<button onclick="qty('+p.id+',1)">+</button><button class="remove" onclick="removeItem('+p.id+')">Remove</button></div></div></div>'}).join(""):'<div class="empty">Your bag is waiting for something lovely.</div>';document.getElementById("total").textContent=money(cart.reduce((a,x)=>a+products.find(p=>p.id===x.id).price*x.qty,0))}
+function qty(id,d){const x=cart.find(i=>i.id===id);if(x)x.qty+=d;cart=cart.filter(i=>i.qty>0);updateCart()}
+function removeItem(id){cart=cart.filter(i=>i.id!==id);updateCart()}
+function openCart(){document.getElementById("overlay").classList.add("open");document.body.style.overflow="hidden";updateCart()}
+function closeCart(){document.getElementById("overlay").classList.remove("open");document.body.style.overflow=""}
+function toggleWish(id){wishlist.includes(id)?wishlist=wishlist.filter(x=>x!==id):wishlist.push(id);render();toast(wishlist.includes(id)?"Saved to wishlist ♡":"Removed from wishlist")}
+function showWishlist(){toast(wishlist.length?"Saved: "+wishlist.map(id=>products.find(p=>p.id===id).name).join(", "):"Your wishlist is empty")}
+function quick(id){const p=products.find(x=>x.id===id);toast(p.name+" — "+money(p.price))}
+function checkout(){if(!cart.length){toast("Your bag is empty");return}const lines=cart.map(x=>{const p=products.find(y=>y.id===x.id);return p.name+" x"+x.qty+" — "+money(p.price*x.qty)}).join("\\n");const total=money(cart.reduce((a,x)=>a+products.find(p=>p.id===x.id).price*x.qty,0));const msg="Hello Pheline's Haven! I'd like to enquire about:\\n"+lines+"\\nSubtotal: "+total+"\\nPlease confirm availability, final price, delivery and payment.";window.open("https://wa.me/254116400947?text="+encodeURIComponent(msg),"_blank","noopener")}
+function subscribe(e){e.preventDefault();toast("Thank you — you're on the list ♡");e.target.reset()}
+document.getElementById("menu").addEventListener("click",()=>document.getElementById("nav").classList.toggle("open"));
 document.querySelectorAll(".nav a").forEach(a=>a.addEventListener("click",()=>document.getElementById("nav").classList.remove("open")));
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart()});
 render();updateCart();
 </script>
-</body></html>
+</body>
+</html>
