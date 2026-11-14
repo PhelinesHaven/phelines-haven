@@ -108,4 +108,40 @@ function checkout(){if(!bag.length)return toast("Your bag is empty");let msg="He
 function subscribe(e){e.preventDefault();toast("Welcome to the Haven ♡");e.target.reset()}function toggleNav(){document.getElementById("nav").classList.toggle("open")}
 render();update();
 </script>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const supabase = createClient(
+  "https://fuckvbsuhjdknguutnxc.supabase.co",
+  "sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8"
+);
+const categoryMap = {
+  "Women's Fashion":"Women",
+  "Men's Fashion":"Men",
+  "Kids' Fashion":"Kids",
+  "Beauty & Skincare":"Beauty",
+  "Hair & Beauty Accessories":"Accessories",
+  "Shoes & Bags":"Shoes"
+};
+async function loadHavenCatalog(){
+  const {data,error}=await supabase
+    .from("products")
+    .select("id,name,slug,price,is_featured,categories(name),product_images(storage_path,sort_order)")
+    .eq("is_active",true)
+    .order("created_at",{ascending:false});
+  if(error){ console.warn("PhelinesHaven catalog connection:",error.message); return; }
+  if(!Array.isArray(data) || !data.length) return;
+  const live = data.map(p => ({
+    id:p.id,
+    n:p.name,
+    c:categoryMap[p.categories?.name] || p.categories?.name || "New In",
+    p:Number(p.price),
+    i:(p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path || ""
+  }));
+  P.splice(0,P.length,...live);
+  render();
+}
+loadHavenCatalog();
+window.PhelinesHavenSupabase = supabase;
+</script>
 </body></html>
