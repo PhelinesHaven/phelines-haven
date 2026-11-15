@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
+<title id="title">Pheline's Haven</title><desc id="desc">Luxury beauty, fashion and lifestyle wordmark with a refined PH monogram.</desc>
+<defs>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5d58a"/><stop offset=".5" stop-color="#b88935"/><stop offset="1" stop-color="#f0d18a"/></linearGradient>
+ <linearGradient id="berry" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9b1c78"/><stop offset="1" stop-color="#4a145e"/></linearGradient>
+</defs>
+<g transform="translate(28 18)">
+ <path d="M125 12 L139 0 L153 12 L167 0 L181 12" fill="none" stroke="url(#gold)" stroke-width="4" stroke-linecap="round"/>
+ <circle cx="153" cy="0" r="4" fill="#bd8d3d"/>
+ <text x="153" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="94" font-weight="bold" fill="url(#berry)">P</text>
+ <text x="177" y="111" text-anchor="middle" font-family="Georgia,serif" font-size="79" font-style="italic" fill="#bd2a8a">H</text>
+ <path d="M82 125 H224" stroke="url(#gold)" stroke-width="2"/>
+</g>
+<g transform="translate(270 0)">
+ <text x="0" y="132" font-family="Georgia,'Times New Roman',serif" font-size="77" letter-spacing="-2" fill="#351044">Pheline's</text>
+ <text x="0" y="211" font-family="Georgia,'Times New Roman',serif" font-size="82" font-style="italic" fill="#a91f78">Haven</text>
+ <path d="M2 231 H570" stroke="url(#gold)" stroke-width="2"/>
+ <text x="4" y="267" font-family="Arial,sans-serif" font-size="17" letter-spacing="6" fill="#5c4b55">BEAUTY  •  FASHION  •  LIFESTYLE  •  KENYA</text>
+</g>
+</svg>
