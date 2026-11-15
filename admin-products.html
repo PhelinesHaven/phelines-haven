@@ -28,7 +28,7 @@ body{margin:0;background:#faf7fb;color:#211525;font-family:"DM Sans",sans-serif}
 import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 const db=createClient("https://fuckvbsuhjdknguutnxc.supabase.co","sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8");
 const $=id=>document.getElementById(id);
-async function init(){const {data:{session}}=await db.auth.getSession(); session?showApp():showAuth(); const {data:c}=await db.from("categories").select("id,name").eq("is_active",true).order("sort_order"); if(c) $("category").innerHTML=c.map(x=>'<option value="'+x.id+'">'+x.name+'</option>').join("")}
+async function init(){const {data:{session}}=await db.auth.getSession(); session?showApp():showAuth(); const {data:c}=await db.from("categories").select("id,name,parent_id").eq("is_active",true).order("sort_order"); if(c) $("category").innerHTML=c.map(x=>'<option value="'+x.id+'">'+(x.parent_id?"MITUMBA / ":"")+x.name+'</option>').join("")}
 function showAuth(){$("auth").classList.remove("hidden");$("app").classList.add("hidden")} function showApp(){$("auth").classList.add("hidden");$("app").classList.remove("hidden")}
 window.login=async()=>{const {error}=await db.auth.signInWithPassword({email:$("email").value,password:$("password").value});$("authmsg").textContent=error?error.message:"Signed in.";if(!error)showApp()}
 window.logout=async()=>{await db.auth.signOut();showAuth()}
