@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Product | Pheline's Haven</title>
+<meta name="description" content="Shop Pheline's Haven beauty and fashion products in Kenya.">
+<style>
+:root{--purple:#5d1198;--deep:#26003f;--magenta:#e60091;--muted:#776c7b;--line:#eee5f0}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#211525;background:#fff}
+a{text-decoration:none;color:inherit}.top{background:var(--deep);color:#fff;text-align:center;padding:9px;font-size:10px;letter-spacing:1px}
+header{border-bottom:1px solid var(--line);background:#fff}.head{max-width:1200px;margin:auto;height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}.logo{width:145px}.logo img{width:100%;display:block}.back{border:1px solid #ddd0e2;padding:12px 18px;color:var(--purple);font-size:11px;font-weight:700}
+main{max-width:1200px;margin:0 auto;padding:55px 20px}.product{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.image{background:#f5f0f6;min-height:500px;display:flex;align-items:center;justify-content:center}.image img{width:100%;height:100%;max-height:650px;object-fit:cover;display:block}.cat{color:var(--magenta);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.name{font:600 clamp(38px,5vw,64px)/1 "Georgia",serif;color:var(--deep);margin:12px 0}.desc{font-size:14px;line-height:1.9;color:var(--muted)}.price{font-size:24px;font-weight:800;color:var(--purple);margin:22px 0}.old{text-decoration:line-through;color:#998e9f;font-size:13px;margin-left:10px;font-weight:400}.stock{color:var(--magenta);font-weight:800;font-size:11px;margin-bottom:20px}.btn{display:inline-block;background:var(--purple);color:#fff;padding:15px 24px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:0}.btn:hover{background:var(--magenta)}.error{text-align:center;padding:80px 20px}.error h1{font:500 42px Georgia;color:var(--deep)}@media(max-width:700px){.head{height:70px}.product{grid-template-columns:1fr;gap:30px}.image{min-height:360px}.name{font-size:42px}main{padding:35px 15px}}
+</style>
+</head>
+<body>
+<div class="top">PHELINE'S HAVEN · BEAUTY · FASHION · LIFESTYLE · KENYA</div>
+<header><div class="head">
+<a class="logo" href="/"><img src="/assets/file_00000000c4ac82089b4d548c0c56ec8b.png" alt="Pheline's Haven" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PhelinesHaven/phelines-haven/main/assets/file_00000000c4ac82089b4d548c0c56ec8b.png'"></a>
+<a class="back" href="/">← BACK TO SHOP</a>
+</div></header>
+<main id="app"><div class="error"><h1>Loading product…</h1><p>Please wait.</p></div></main>
+<script type="module">
+import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const supabase=createClient("https://fuckvbsuhjdknguutnxc.supabase.co","sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8");
+const slug=new URLSearchParams(location.search).get("product");
+const app=document.getElementById("app");
+function imageUrl(path){if(!path)return "";if(/^https?:\\/\\//i.test(path))return path;return "https://fuckvbsuhjdknguutnxc.supabase.co/storage/v1/object/public/product-images/"+String(path).replace(/^\\/+,"");}
+function money(n){return "KSh "+Number(n||0).toLocaleString("en-KE");}
+async function load(){
+ if(!slug){app.innerHTML='<div class="error"><h1>Product not specified</h1><a class="btn" href="/">Back to shop</a></div>';return;}
+ const {data,error}=await supabase.from("products").select("id,name,slug,description,brand,price,compare_at_price,stock_quantity,low_stock_threshold,categories(name),product_images(storage_path,sort_order)").eq("slug",slug).eq("is_active",true).maybeSingle();
+ if(error||!data){app.innerHTML='<div class="error"><h1>Product not found</h1><p>The product may have been removed or is not currently available.</p><a class="btn" href="/">Back to shop</a></div>';return;}
+ const imgs=(data.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0));
+ const img=imageUrl(imgs[0]?.storage_path);
+ const cat=data.categories?.name||"Pheline's Haven";
+ const stock=Number(data.stock_quantity||0), threshold=Number(data.low_stock_threshold??20);
+ const stockText=stock===0?"OUT OF STOCK":stock<=threshold?"Only "+stock+" left":"In stock";
+ document.title=data.name+" | Pheline's Haven";
+ app.innerHTML='<section class="product"><div class="image"><img src="'+img+'" alt="'+data.name+'"></div><div><div class="cat">'+cat+'</div><h1 class="name">'+data.name+'</h1><p class="desc">'+(data.description||"Shop this beautiful Pheline's Haven selection, curated for you.")+'</p><div class="price">'+money(data.price)+(data.compare_at_price?'<span class="old">'+money(data.compare_at_price)+'</span>':"")+'</div><div class="stock">'+stockText+'</div>'+(stock>0?'<a class="btn" href="https://wa.me/254116400947?text='+encodeURIComponent("Hello Pheline's Haven! I would like to order "+data.name+" for "+money(data.price)+".")+" target="_blank">ORDER ON WHATSAPP →</a>":"<span class="btn" style="opacity:.5;pointer-events:none">OUT OF STOCK</span>")+'</div></section>';
+}
+load();
+</script>
+</body></html>
