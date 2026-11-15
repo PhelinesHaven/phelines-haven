@@ -333,15 +333,36 @@ function closeMobileDrawer(){document.getElementById("mobileDrawer")?.classList.
 function subscribe(e){e.preventDefault();toast("Welcome to the Haven ♡");e.target.reset()}
 document.addEventListener("DOMContentLoaded",()=>{document.getElementById("search")?.addEventListener("input",render);document.getElementById("filters")?.addEventListener("click",e=>{const b=e.target.closest(".filter");if(b)setCat(b.dataset.cat)});document.getElementById("sortProducts")?.addEventListener("change",render);document.getElementById("minPrice")?.addEventListener("input",render);document.getElementById("maxPrice")?.addEventListener("input",render);document.getElementById("inStockOnly")?.addEventListener("change",render);buildMiniCats();render();renderPicks();update()});
 async function loadLiveProducts(){
+ const headers={apikey:SUPABASE_KEY,Authorization:"Bearer "+SUPABASE_KEY};
  try{
-  const url=SUPABASE_URL+"/rest/v1/products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,categories(name),product_images(storage_path,sort_order)&is_active=eq.true&order=created_at.desc";
-  const res=await fetch(url,{headers:{apikey:SUPABASE_KEY,Authorization:"Bearer "+SUPABASE_KEY}});
-  if(!res.ok)throw new Error("Catalogue request "+res.status);
-  const data=await res.json();
-  if(!Array.isArray(data)||!data.length)throw new Error("Catalogue returned no products");
-  P.splice(0,P.length,...data.map(p=>({id:p.id,slug:p.slug,n:p.name,d:p.description||"",brand:p.brand||"",sku:p.sku||"",c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),compare_at_price:Number(p.compare_at_price||0),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),i:(p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||""})));
+  const base=SUPABASE_URL+"/rest/v1/";
+  const urls=[
+   base+"products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,category_id,is_active&is_active=eq.true&order=created_at.desc&limit=1000",
+   base+"categories?select=id,name",
+   base+"product_images?select=product_id,storage_path,sort_order&order=sort_order.asc&limit=2000"
+  ];
+  const responses=await Promise.all(urls.map(url=>fetch(url,{headers})));
+  const failed=responses.find(x=>!x.ok);
+  if(failed)throw new Error("Catalogue request failed: "+failed.status);
+  const [products,categories,images]=await Promise.all(responses.map(x=>x.json()));
+  if(!Array.isArray(products)||!products.length)throw new Error("No active products returned");
+  const categoryById=Object.fromEntries((categories||[]).map(x=>[String(x.id),x.name]));
+  const imagesByProduct={};
+  (images||[]).forEach(img=>{const k=String(img.product_id);if(!imagesByProduct[k])imagesByProduct[k]=[];imagesByProduct[k].push(img)});
+  P.splice(0,P.length,...products.map(p=>{
+   const image=(imagesByProduct[String(p.id)]||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||"";
+   const category=categoryById[String(p.category_id)]||"New In";
+   const imageUrl=/^https?:\/\//i.test(image)?image:(image?SUPABASE_URL+"/storage/v1/object/public/product-images/"+String(image).replace(/^\/+/, ""):"");
+   return {id:p.id,slug:p.slug,n:p.name,d:p.description||"",brand:p.brand||"",sku:p.sku||"",c:categoryMap[category]||category,p:Number(p.price),compare_at_price:Number(p.compare_at_price||0),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),i:imageUrl};
+  }));
   buildMiniCats();render();renderPicks();update();
- }catch(e){console.error("Pheline's Haven catalogue:",e)}
+ }catch(e){
+  console.error("Pheline's Haven catalogue:",e);
+  const grid=document.getElementById("products");
+  if(grid)grid.innerHTML='<div class="empty">We are refreshing the collection. Please try again shortly or contact us on WhatsApp.</div>';
+  const picks=document.getElementById("featuredPicks");
+  if(picks)picks.innerHTML='<p>Our latest edit is being refreshed.</p>';
+ }
 }
 loadLiveProducts();
 </script>
