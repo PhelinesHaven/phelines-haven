@@ -156,7 +156,7 @@ async function loadHavenCatalog(){
  const {data,error}=await supabase.from("products").select("id,name,slug,price,is_featured,categories(name),product_images(storage_path,sort_order)").eq("is_active",true).order("created_at",{ascending:false});
  if(error){console.warn("PhelinesHaven catalog connection:",error.message);return}
  if(!Array.isArray(data)||!data.length)return;
- const live=data.map(p=>({id:p.id,n:p.name,c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),i:publicProductImage((p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||"")}));
+ const live=data.map(p=>({id:p.id,n:p.name,c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),compare_at_price:Number(p.compare_at_price||0),i:publicProductImage((p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||"")}));
  P.splice(0,P.length,...live);render(); if(window.updateProductSEO) updateProductSEO(P);
 }
 loadHavenCatalog();window.PhelinesHavenSupabase=supabase;
