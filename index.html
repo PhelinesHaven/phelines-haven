@@ -151,7 +151,8 @@ render();update(); if(window.updateProductSEO) updateProductSEO(P);
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 const supabase=createClient("https://fuckvbsuhjdknguutnxc.supabase.co","sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8");
-const categoryMap={"Women's Fashion":"Women","Men's Fashion":"Men","Kids' Fashion":"Kids","Beauty & Skincare":"Beauty","Hair & Beauty Accessories":"Accessories","Shoes & Bags":"Shoes & Bags"};\nfunction publicProductImage(path){if(!path)return "";if(/^https?:\\/\\//i.test(path))return path;return "https://fuckvbsuhjdknguutnxc.supabase.co/storage/v1/object/public/product-images/"+String(path).replace(/^\\/+/,"");}
+const categoryMap={"Women's Fashion":"Women","Men's Fashion":"Men","Kids' Fashion":"Kids","Beauty & Skincare":"Beauty","Hair & Beauty Accessories":"Accessories","Shoes & Bags":"Shoes & Bags"};
+function publicProductImage(path){if(!path)return "";if(/^https?:\\/\\//i.test(path))return path;return "https://fuckvbsuhjdknguutnxc.supabase.co/storage/v1/object/public/product-images/"+String(path).replace(/^\\/+/,"");}
 async function loadHavenCatalog(){
  const {data,error}=await supabase.from("products").select("id,name,slug,price,compare_at_price,stock_quantity,low_stock_threshold,is_featured,categories(name),product_images(storage_path,sort_order)").eq("is_active",true).order("created_at",{ascending:false});
  if(error){console.warn("PhelinesHaven catalog connection:",error.message);return}
