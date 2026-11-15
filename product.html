@@ -32,6 +32,15 @@ function renderProduct(p){
  const stock=Number(p.stock||0), threshold=Number(p.low_stock_threshold??20);
  const stockText=stock===0?"OUT OF STOCK":stock<=threshold?"Only "+stock+" left":"In stock";
  document.title=esc(p.name)+" | Pheline's Haven";
+ const metaDescription=(document.querySelector('meta[name="description"]')||(()=>{const m=document.createElement("meta");m.name="description";document.head.appendChild(m);return m;})());
+ metaDescription.content=(p.seo_description||p.description||("Shop "+p.name+" in Kenya at Pheline's Haven.")).slice(0,160);
+ let canonical=document.querySelector('link[rel="canonical"]');
+ if(!canonical){canonical=document.createElement("link");canonical.rel="canonical";document.head.appendChild(canonical);}
+ canonical.href=location.origin+location.pathname+"?product="+encodeURIComponent(p.slug);
+ const oldLd=document.getElementById("product-schema"); if(oldLd)oldLd.remove();
+ const ld=document.createElement("script"); ld.id="product-schema"; ld.type="application/ld+json";
+ ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Product","name":p.name,"description":p.description||p.seo_description||"","sku":p.sku||undefined,"brand":{"@type":"Brand","name":p.brand||"Pheline's Haven"},"image":p.image?[p.image]:undefined,"offers":{"@type":"Offer","priceCurrency":"KES","price":Number(p.price||0),"availability":Number(p.stock||0)>0?"https://schema.org/InStock":"https://schema.org/OutOfStock","url":location.href}});
+ document.head.appendChild(ld);
  const productUrl=location.origin+location.pathname+"?product="+encodeURIComponent(p.slug);
  const inquiry="Hello Pheline's Haven! I'd like to enquire about this product:\n\nProduct: "+p.name+"\nCategory: "+p.category+"\nBrand: "+(p.brand||"Pheline's Haven")+"\nPrice: "+money(p.price)+"\nAvailability: "+stockText+"\nSKU: "+(p.sku||"Not listed")+"\nDescription: "+(p.description||"Not provided")+"\n\nProduct link: "+productUrl+"\n\nPlease confirm availability, delivery options and how I can pay.";
  const desc=String(p.description||"");
