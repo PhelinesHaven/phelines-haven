@@ -181,10 +181,10 @@ const supabase=createClient("https://fuckvbsuhjdknguutnxc.supabase.co","sb_publi
 const categoryMap={"Women's Fashion":"Women","Men's Fashion":"Men","Kids' Fashion":"Kids","Beauty & Skincare":"Beauty","Hair & Beauty Accessories":"Accessories","Shoes & Bags":"Shoes & Bags"};
 function publicProductImage(path){if(!path)return "";if(/^https?:\\/\\//i.test(path))return path;return "https://fuckvbsuhjdknguutnxc.supabase.co/storage/v1/object/public/product-images/"+String(path).replace(/^\\/+/,"");}
 async function loadHavenCatalog(){
- const {data,error}=await supabase.from("products").select("id,name,slug,price,compare_at_price,stock_quantity,low_stock_threshold,is_featured,categories(name),product_images(storage_path,sort_order)").eq("is_active",true).order("created_at",{ascending:false});
+ const {data,error}=await supabase.from("products").select("id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,is_featured,categories(name),product_images(storage_path,sort_order)").eq("is_active",true).order("created_at",{ascending:false});
  if(error){console.warn("PhelinesHaven catalog connection:",error.message);return}
  if(!Array.isArray(data)||!data.length)return;
- const live=data.map(p=>({id:p.id,slug:p.slug,n:p.name,c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),compare_at_price:Number(p.compare_at_price||0),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),i:publicProductImage((p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||"")}));
+ const live=data.map(p=>({id:p.id,slug:p.slug,n:p.name,d:p.description||"",brand:p.brand||"",sku:p.sku||"",c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),compare_at_price:Number(p.compare_at_price||0),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),i:publicProductImage((p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||"")}));
  P.splice(0,P.length,...live);render(); if(productSlug){document.getElementById("shop")?.scrollIntoView({behavior:"smooth"});} if(window.updateProductSEO) updateProductSEO(P);
 }
 loadHavenCatalog();window.PhelinesHavenSupabase=supabase;
