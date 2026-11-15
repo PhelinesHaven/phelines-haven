@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://phelineshaven.co.ke/</loc></url>
-  <url><loc>https://phelineshaven.co.ke/collection.html</loc></url>
-  <url><loc>https://phelineshaven.co.ke/blog.html</loc></url>
-  <url><loc>https://phelineshaven.co.ke/blog.html?slug=how-to-build-a-beauty-and-fashion-wardrobe-in-kenya</loc></url>
-  <url><loc>https://phelineshaven.co.ke/blog.html?slug=beauty-essentials-for-an-everyday-glow</loc></url>
-  <url><loc>https://phelineshaven.co.ke/blog.html?slug=style-guide-for-women-men-and-kids</loc></url>
+  <url><loc>https://phelineshaven.co.ke/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://phelineshaven.co.ke/collection.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://phelineshaven.co.ke/about.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://phelineshaven.co.ke/contact.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=ferulic-acid</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=ginseng-liquid-extract</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=aloevera-gel</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=10-azelaic-gel-cream</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=amla-oil</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=argan-oil</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=5ml-spray-bottle-atomizer</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=acne-set-niacinamide-salicylic-pha</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=activated-charcoal</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=african-black-soap</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=african-grape-fragrance</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://phelineshaven.co.ke/product.html?product=aha-fruit-acid-mix-liquid</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
