@@ -9,8 +9,8 @@
 :root{--purple:#5d1198;--deep:#26003f;--magenta:#e60091;--muted:#776c7b;--line:#eee5f0}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#211525;background:#fff}
 a{text-decoration:none;color:inherit}.top{background:var(--deep);color:#fff;text-align:center;padding:9px;font-size:10px;letter-spacing:1px}
-header{border-bottom:1px solid var(--line);background:#fff}.head{max-width:1200px;margin:auto;height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}.logo{width:145px}.logo img{width:100%;display:block}.back{border:1px solid #ddd0e2;padding:12px 18px;color:var(--purple);font-size:11px;font-weight:700}
-main{max-width:1200px;margin:0 auto;padding:55px 20px}.product{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.image{background:#f5f0f6;min-height:500px;display:flex;align-items:center;justify-content:center}.image img{width:100%;height:100%;max-height:650px;object-fit:cover;display:block}.cat{color:var(--magenta);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.name{font:600 clamp(38px,5vw,64px)/1 "Georgia",serif;color:var(--deep);margin:12px 0}.desc{font-size:14px;line-height:1.9;color:var(--muted)}.price{font-size:24px;font-weight:800;color:var(--purple);margin:22px 0}.old{text-decoration:line-through;color:#998e9f;font-size:13px;margin-left:10px;font-weight:400}.stock{color:var(--magenta);font-weight:800;font-size:11px;margin-bottom:20px}.btn{display:inline-block;background:var(--purple);color:#fff;padding:15px 24px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:0}.btn:hover{background:var(--magenta)}.whatsapp{display:inline-flex;align-items:center;justify-content:center;background:#25D366;color:#fff;padding:15px 24px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:0;margin-top:8px}.whatsapp:hover{background:#128C7E}.inquiry-note{margin-top:14px;font-size:11px;line-height:1.7;color:var(--muted)}.error{text-align:center;padding:80px 20px}.error h1{font:500 42px Georgia;color:var(--deep)}@media(max-width:700px){.head{height:70px}.product{grid-template-columns:1fr;gap:30px}.image{min-height:360px}.name{font-size:42px}main{padding:35px 15px}}
+header{border-bottom:1px solid var(--line);background:#fff}.head{max-width:1200px;margin:auto;min-height:82px;display:flex;align-items:center;justify-content:space-between;padding:10px 20px}.logo{display:block}.logo img{height:64px;width:auto;display:block}.back{border:1px solid #ddd0e2;padding:12px 18px;color:var(--purple);font-size:11px;font-weight:700}
+main{max-width:1200px;margin:0 auto;padding:55px 20px}.product{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.image{background:#f5f0f6;display:flex;align-items:center;justify-content:center}.image img{width:100%;height:auto;aspect-ratio:4/5;max-height:650px;object-fit:cover;display:block}.cat{color:var(--magenta);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.name{font:600 clamp(38px,5vw,64px)/1 "Georgia",serif;color:var(--deep);margin:12px 0}.desc{font-size:14px;line-height:1.9;color:var(--muted)}.price{font-size:24px;font-weight:800;color:var(--purple);margin:22px 0}.old{text-decoration:line-through;color:#998e9f;font-size:13px;margin-left:10px;font-weight:400}.stock{color:var(--magenta);font-weight:800;font-size:11px;margin-bottom:20px}.btn{display:inline-block;background:var(--purple);color:#fff;padding:15px 24px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:0}.btn:hover{background:var(--magenta)}.whatsapp{display:inline-flex;align-items:center;justify-content:center;background:#25D366;color:#fff;padding:15px 24px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:0;margin-top:8px}.whatsapp:hover{background:#128C7E}.inquiry-note{margin-top:14px;font-size:11px;line-height:1.7;color:var(--muted)}.error{text-align:center;padding:80px 20px}.error h1{font:500 42px Georgia;color:var(--deep)}@media(max-width:700px){.head{min-height:70px}.logo img{height:56px}.product{grid-template-columns:1fr;gap:30px}.name{font-size:42px}main{padding:35px 15px}}
 </style>
 </head>
 <body>
@@ -29,10 +29,11 @@ const headers={"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY};
 function money(n){return "KSh "+Number(n||0).toLocaleString("en-KE");}
 function imageUrl(path){if(!path)return "";if(/^https?:\/\//i.test(path))return path;return SUPABASE_URL+"/storage/v1/object/public/product-images/"+String(path).replace(/^\/+/,"");}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
+function setMeta(sel,attr,val){let el=document.querySelector(sel);if(!el){el=document.createElement(sel.startsWith("link")?"link":"meta");const m=sel.match(/\[([\w:]+)="([^"]+)"\]/);if(m)el.setAttribute(m[1],m[2]);document.head.appendChild(el);}el.setAttribute(attr,val);}
 async function load(){
  try{
   if(!slug){app.innerHTML='<div class="error"><h1>Product not specified</h1><a class="btn" href="/">Back to shop</a></div>';return;}
-  const pUrl=SUPABASE_URL+"/rest/v1/products?select=id,name,slug,description,brand,price,compare_at_price,stock_quantity,low_stock_threshold,category_id&slug=eq."+encodeURIComponent(slug)+"&is_active=eq.true&limit=1";
+  const pUrl=SUPABASE_URL+"/rest/v1/products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,category_id&slug=eq."+encodeURIComponent(slug)+"&is_active=eq.true&limit=1";
   const pr=await fetch(pUrl,{headers});
   if(!pr.ok)throw new Error("Product request failed: "+pr.status);
   const products=await pr.json();
@@ -48,8 +49,20 @@ async function load(){
   const cat=cats[0]?.name||"Pheline's Haven";
   const stock=Number(p.stock_quantity||0),threshold=Number(p.low_stock_threshold??20);
   const stockText=stock===0?"OUT OF STOCK":stock<=threshold?"Only "+stock+" left":"In stock";
-  document.title=esc(p.name)+" | Pheline's Haven";
+  document.title=p.name+" | Pheline's Haven";
   const productUrl=location.origin+location.pathname+"?product="+encodeURIComponent(p.slug);
+  const canonical="https://phelineshaven.co.ke/product.html?product="+encodeURIComponent(p.slug);
+  const seoDesc=String(p.description||("Shop "+p.name+" at Pheline's Haven, Kenya.")).replace(/\s+/g," ").slice(0,155);
+  setMeta('meta[name="description"]',"content",seoDesc);
+  setMeta('link[rel="canonical"]',"href",canonical);
+  setMeta('meta[property="og:title"]',"content",p.name+" | Pheline's Haven");
+  setMeta('meta[property="og:description"]',"content",seoDesc);
+  setMeta('meta[property="og:type"]',"content","product");
+  setMeta('meta[property="og:url"]',"content",canonical);
+  if(img)setMeta('meta[property="og:image"]',"content",img);
+  const ld=document.createElement("script");ld.type="application/ld+json";
+  ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Product","name":p.name,"description":seoDesc,"image":img?[img]:[],"sku":String(p.sku||p.id),"brand":{"@type":"Brand","name":p.brand||"Pheline's Haven"},"offers":{"@type":"Offer","priceCurrency":"KES","price":Number(p.price)||0,"availability":stock>0?"https://schema.org/InStock":"https://schema.org/OutOfStock","url":canonical}});
+  document.head.appendChild(ld);
   const inquiry="Hello Pheline's Haven! I'd like to enquire about this product:\n\nProduct: "+p.name+"\nCategory: "+cat+"\nBrand: "+(p.brand||"Pheline's Haven")+"\nPrice: "+money(p.price)+"\nAvailability: "+stockText+"\nSKU: "+(p.sku||"Not listed")+"\nDescription: "+(p.description||"Not provided")+"\n\nProduct link: "+productUrl+"\n\nPlease confirm availability, delivery options and how I can pay.";
   app.innerHTML='<section class="product"><div class="image">'+(img?'<img src="'+esc(img)+'" alt="'+esc(p.name)+'">':'<div>No product image available</div>')+'</div><div><div class="cat">'+esc(cat)+'</div><h1 class="name">'+esc(p.name)+'</h1><p class="desc">'+esc(p.description||"Shop this beautiful Pheline's Haven selection, curated for you.")+'</p><div class="price">'+money(p.price)+(p.compare_at_price?'<span class="old">'+money(p.compare_at_price)+'</span>':"")+'</div><div class="stock">'+stockText+'</div>'+(stock>0?'<a class="whatsapp" href="https://wa.me/254116400947?text='+encodeURIComponent(inquiry)+'" target="_blank" rel="noopener">💬 WHATSAPP PRODUCT INQUIRY →</a><p class="inquiry-note">Tap WhatsApp and the product details will be pre-filled for you. Just send the message to enquire.</p>':'<span class="btn" style="opacity:.5;pointer-events:none">OUT OF STOCK</span>')+'</div></section>';
  }catch(e){
