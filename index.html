@@ -181,100 +181,55 @@ footer{background:#fbf8f1}
 <div class="drawer-bg" id="drawer" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawer-top"><h2>Your bag</h2><button class="close" onclick="closeCart()">×</button></div><div id="cart"></div><div class="total"><span>Subtotal</span><span id="total">KSh 0</span></div><button class="btn" style="width:100%" onclick="checkout()">Send order enquiry →</button></aside></div><div class="toast" id="toast"></div>
 
 <script>
+const SUPABASE_URL="https://fuckvbsuhjdknguutnxc.supabase.co";
+const SUPABASE_KEY="sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8";
+const categoryMap={"Women's Fashion":"Women","Men's Fashion":"Men","Kids' Fashion":"Kids","Beauty & Skincare":"Beauty","Hair & Beauty Accessories":"Accessories","Shoes & Bags":"Shoes & Bags","Women's Formal Shoes":"Women Formal","Women's Casual Shoes":"Women Casual","Men's Formal Shoes":"Men Formal","Men's Casual Shoes":"Men Casual","Sneakers & Sports":"Sneakers & Sports","Boots":"Boots","Sandals & Slides":"Sandals & Slides","Kids' Shoes":"Kids Shoes","School Shoes":"School Shoes","Safety & Work Shoes":"Safety & Work Shoes"};
 const P=[
-{id:1,n:"Glow Ritual Serum",slug:"glow-ritual-serum",c:"Beauty",p:1850,i:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:2,n:"Signature Lip Edit",slug:"signature-lip-edit",c:"Beauty",p:1450,i:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:3,n:"Luxe Signature Scent",slug:"luxe-signature-scent",c:"Fragrance",p:2750,i:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:4,n:"Statement Dress",slug:"statement-dress",c:"Women",p:4200,i:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:5,n:"The Luxe Handbag",slug:"the-luxe-handbag",c:"Bags",p:5800,i:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:6,n:"Classic Sneakers",slug:"classic-sneakers",c:"Shoes & Bags",p:3900,i:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:7,n:"Modern Man Edit",slug:"modern-man-edit",c:"Men",p:4500,i:"https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:8,n:"Little Style Set",slug:"little-style-set",c:"Kids",p:2800,i:"https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:9,n:"Everyday Gold Set",slug:"everyday-gold-set",c:"Accessories",p:1750,i:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:10,n:"Nourishing Hair Ritual",slug:"nourishing-hair-ritual",c:"Beauty",p:1950,i:"https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:11,n:"Weekend Shoulder Bag",slug:"weekend-shoulder-bag",c:"Bags",p:4600,i:"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:12,n:"Essential Slides",slug:"essential-slides",c:"Shoes & Bags",p:2400,i:"https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:13,n:"Haven Home Candle",slug:"haven-home-candle",c:"Lifestyle",p:2200,i:"https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=900&q=88",stock:100},
-{id:14,n:"Fresh Arrival Set",slug:"fresh-arrival-set",c:"New In",p:3200,i:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=88",stock:100}
+{id:"fallback-1",n:"Glow Ritual Serum",slug:"glow-ritual-serum",c:"Beauty",p:1850,i:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=88",stock:100},
+{id:"fallback-2",n:"Signature Lip Edit",slug:"signature-lip-edit",c:"Beauty",p:1450,i:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=88",stock:100},
+{id:"fallback-3",n:"Statement Dress",slug:"statement-dress",c:"Women",p:4200,i:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=88",stock:100},
+{id:"fallback-4",n:"Classic Sneakers",slug:"classic-sneakers",c:"Shoes & Bags",p:3900,i:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=88",stock:100}
 ];
-let cat="All",bag=[];
-let productSlug=new URLSearchParams(location.search).get("product");
+let cat="All",bag=[],productSlug=new URLSearchParams(location.search).get("product");
 const money=n=>"KSh "+Number(n||0).toLocaleString("en-KE");
-
 function render(){
- const el=document.getElementById("products"); if(!el)return;
- const q=(document.getElementById("search")?.value||"").trim().toLowerCase();
- const min=Number(document.getElementById("minPrice")?.value||0);
- const max=Number(document.getElementById("maxPrice")?.value||0);
- const stockOnly=!!document.getElementById("inStockOnly")?.checked;
- let items=P.filter(x=>(cat==="All"||x.c===cat)&&(String(x.n+" "+x.c).toLowerCase().includes(q))&&Number(x.p)>=min&&(!max||Number(x.p)<=max)&&(!stockOnly||Number(x.stock)>0));
+ const el=document.getElementById("products");if(!el)return;
+ const q=(document.getElementById("search")?.value||"").toLowerCase().trim(),min=Number(document.getElementById("minPrice")?.value||0),max=Number(document.getElementById("maxPrice")?.value||0),stockOnly=!!document.getElementById("inStockOnly")?.checked;
+ let items=P.filter(x=>(cat==="All"||x.c===cat)&&(x.n+" "+x.c+" "+(x.brand||"")).toLowerCase().includes(q)&&Number(x.p)>=min&&(!max||Number(x.p)<=max)&&(!stockOnly||Number(x.stock)>0));
  const sort=document.getElementById("sortProducts")?.value||"featured";
- if(sort==="price-low")items.sort((a,b)=>a.p-b.p);
- if(sort==="price-high")items.sort((a,b)=>b.p-a.p);
- if(sort==="name")items.sort((a,b)=>a.n.localeCompare(b.n));
+ if(sort==="price-low")items.sort((a,b)=>a.p-b.p);if(sort==="price-high")items.sort((a,b)=>b.p-a.p);if(sort==="name")items.sort((a,b)=>a.n.localeCompare(b.n));
  if(productSlug)items=items.filter(x=>x.slug===productSlug);
- el.innerHTML=items.length?items.map(x=>`
- <article class="product" style="cursor:pointer" onclick="openProduct('${String(x.slug).replace(/'/g,"\\'")}')">
-  <div class="photo"><img src="${x.i||""}" alt="${x.n}" loading="lazy"><span class="badge">PHELINE'S HAVEN</span><button type="button" class="heart" onclick="event.stopPropagation();toast('Saved to your wishlist ♡')">♡</button></div>
-  <div class="info"><small>${x.c}</small><h3>${x.n}</h3><div class="product-row"><div><b class="price">${money(x.p)}</b>${x.compare_at_price?'<span style="margin-left:7px;color:#998e9f;text-decoration:line-through;font-size:8px">'+money(x.compare_at_price)+"</span>":""}${Number(x.stock)<=Number(x.low_stock_threshold||0)?'<span style="display:block;color:var(--magenta);font-size:7px;font-weight:800;margin-top:5px">'+(Number(x.stock)===0?"OUT OF STOCK":"Only "+x.stock+" left")+"</span>":""}</div><div style="display:flex;gap:6px;align-items:center"><button type="button" class="add" ${Number(x.stock)===0?"disabled":""} onclick="event.stopPropagation();add('${String(x.id).replace(/'/g,"\\'")}')">Add to bag</button><button type="button" class="add" style="border-color:#25D366;color:#128C7E" onclick="event.stopPropagation();whatsappProduct('${String(x.id).replace(/'/g,"\\'")}')">WhatsApp</button></div></div></div>
- </article>`).join(""):'<div class="empty">No products found. Try another category or clear the filters.</div>';
+ el.innerHTML=items.length?items.map(x=>`<article class="product" style="cursor:pointer" onclick="openProduct('${String(x.slug).replace(/'/g,"\\'")}')"><div class="photo"><img src="${x.i||""}" alt="${x.n}" loading="lazy"><span class="badge">PHELINE'S HAVEN</span><button type="button" class="heart" onclick="event.stopPropagation();toast('Saved to your wishlist ♡')">♡</button></div><div class="info"><small>${x.c}</small><h3>${x.n}</h3><div class="product-row"><div><b class="price">${money(x.p)}</b>${x.compare_at_price?'<span style="margin-left:7px;color:#998e9f;text-decoration:line-through;font-size:8px">'+money(x.compare_at_price)+"</span>":""}${Number(x.stock)<=Number(x.low_stock_threshold||0)?'<span style="display:block;color:var(--magenta);font-size:7px;font-weight:800;margin-top:5px">'+(Number(x.stock)===0?"OUT OF STOCK":"Only "+x.stock+" left")+"</span>":""}</div><div style="display:flex;gap:6px;align-items:center"><button type="button" class="add" ${Number(x.stock)===0?"disabled":""} onclick="event.stopPropagation();add('${String(x.id).replace(/'/g,"\\'")}')">Add to bag</button><button type="button" class="add" style="border-color:#25D366;color:#128C7E" onclick="event.stopPropagation();whatsappProduct('${String(x.id).replace(/'/g,"\\'")}')">WhatsApp</button></div></div></div></article>`).join(""):'<div class="empty">No products found. Try another category or clear the filters.</div>';
 }
-
-function openProduct(slug){
- if(!slug)return;
- location.href="/product.html?product="+encodeURIComponent(slug);
-}
-function setCat(c){
- productSlug=null;cat=c;
- document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.cat===c));
- buildMiniCats();render();scrollToSection("shop");
-}
-function buildMiniCats(){
- const el=document.getElementById("miniCats");if(!el)return;
- const cats=["All","Women","Men","Kids","Beauty","Shoes & Bags","Bags","Women Formal","Women Casual","Men Formal","Men Casual","Sneakers & Sports","Boots","Sandals & Slides","Kids Shoes","School Shoes","Safety & Work Shoes","Accessories","Fragrance"];
- el.innerHTML=cats.map(x=>`<button type="button" class="${cat===x?"active":""}" onclick="setCat('${x.replace(/'/g,"\\'")}')">${x}</button>`).join("");
-}
+function openProduct(slug){location.href="/product.html?product="+encodeURIComponent(slug)}
+function setCat(c){productSlug=null;cat=c;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.cat===c));buildMiniCats();render();scrollToSection("shop")}
+function buildMiniCats(){const el=document.getElementById("miniCats");if(!el)return;const cats=["All","Women","Men","Kids","Beauty","Shoes & Bags","Women Formal","Women Casual","Men Formal","Men Casual","Sneakers & Sports","Boots","Sandals & Slides","Kids Shoes","School Shoes","Safety & Work Shoes","Accessories","Fragrance"];el.innerHTML=cats.map(x=>`<button type="button" class="${cat===x?"active":""}" onclick="setCat('${x.replace(/'/g,"\\'")}')">${x}</button>`).join("")}
 function toggleFilters(){document.getElementById("filterPanel")?.classList.toggle("open")}
-function clearFilters(){
- const min=document.getElementById("minPrice"),max=document.getElementById("maxPrice"),stock=document.getElementById("inStockOnly");
- if(min)min.value="";if(max)max.value="";if(stock)stock.checked=false;cat="All";productSlug=null;buildMiniCats();render();
-}
-function scrollToSection(id){const el=document.getElementById(id);if(!el)return;window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.scrollY-80),behavior:"smooth"});}
+function clearFilters(){["minPrice","maxPrice"].forEach(id=>{const e=document.getElementById(id);if(e)e.value=""});const s=document.getElementById("inStockOnly");if(s)s.checked=false;cat="All";productSlug=null;buildMiniCats();render()}
+function scrollToSection(id){const e=document.getElementById(id);if(e)window.scrollTo({top:Math.max(0,e.getBoundingClientRect().top+window.scrollY-80),behavior:"smooth"})}
 function toast(s){const t=document.getElementById("toast");if(!t)return;t.textContent=s;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),1800)}
-function add(id){const key=String(id),x=bag.find(i=>String(i.id)===key);if(x)x.q++;else bag.push({id:key,q:1});update();toast("Added to your bag ♡")}
-function update(){
- const cart=document.getElementById("cart"),total=document.getElementById("total");if(!cart||!total)return;
- cart.innerHTML=bag.length?bag.map(x=>{const p=P.find(y=>String(y.id)===String(x.id));return p?`<div class="cartrow"><img src="${p.i}" alt=""><div style="flex:1"><h4>${p.n}</h4><small>${money(p.p)}</small><div class="qty"><button onclick="change('${x.id}',-1)">−</button>${x.q}<button onclick="change('${x.id}',1)">+</button></div></div></div>`:""}).join(""):'<div class="empty">Your bag is waiting for something beautiful.</div>';
- total.textContent=money(bag.reduce((s,x)=>{const p=P.find(y=>String(y.id)===String(x.id));return s+(p?p.p*x.q:0)},0);
-}
+function add(id){const x=bag.find(i=>String(i.id)===String(id));if(x)x.q++;else bag.push({id:String(id),q:1});update();toast("Added to your bag ♡")}
+function update(){const cart=document.getElementById("cart"),total=document.getElementById("total");if(!cart||!total)return;cart.innerHTML=bag.length?bag.map(x=>{const p=P.find(y=>String(y.id)===String(x.id));return p?`<div class="cartrow"><img src="${p.i}" alt=""><div style="flex:1"><h4>${p.n}</h4><small>${money(p.p)}</small><div class="qty"><button onclick="change('${x.id}',-1)">−</button>${x.q}<button onclick="change('${x.id}',1)">+</button></div></div></div>`:""}).join(""):'<div class="empty">Your bag is waiting for something beautiful.</div>';total.textContent=money(bag.reduce((s,x)=>{const p=P.find(y=>String(y.id)===String(x.id));return s+(p?p.p*x.q:0)},0)}
 function change(id,d){const x=bag.find(i=>String(i.id)===String(id));if(!x)return;x.q+=d;bag=bag.filter(i=>i.q>0);update()}
 function openCart(){document.getElementById("drawer")?.classList.add("open");update()}
 function closeCart(){document.getElementById("drawer")?.classList.remove("open")}
-function checkout(){if(!bag.length)return toast("Your bag is empty");const msg="Hello Pheline's Haven! I'd like to enquire about:\n"+bag.map(x=>{const p=P.find(y=>String(y.id)===String(x.id));return p?p.n+" x"+x.q+" — "+money(p.p*x.q):""}).join("\n");window.open("https://wa.me/254116400947?text="+encodeURIComponent(msg),"_blank")}
-function whatsappProduct(id){const p=P.find(x=>String(x.id)===String(id));if(!p)return;const url=location.origin+"/product.html?product="+encodeURIComponent(p.slug);const msg="Hello Pheline's Haven! I'd like to enquire about this product:\n\nProduct: "+p.n+"\nCategory: "+p.c+"\nPrice: "+money(p.p)+"\nAvailability: "+(Number(p.stock)===0?"OUT OF STOCK":"In stock")+"\nSKU: "+(p.sku||"Not listed")+"\nDescription: "+(p.d||"Not provided")+"\n\nProduct link: "+url;window.open("https://wa.me/254116400947?text="+encodeURIComponent(msg),"_blank")}
+function checkout(){if(!bag.length)return toast("Your bag is empty");window.open("https://wa.me/254116400947?text="+encodeURIComponent("Hello Pheline's Haven! I'd like to enquire about:\n"+bag.map(x=>{const p=P.find(y=>String(y.id)===String(x.id));return p?p.n+" x"+x.q+" — "+money(p.p*x.q):""}).join("\n")),"_blank")}
+function whatsappProduct(id){const p=P.find(x=>String(x.id)===String(id));if(!p)return;window.open("https://wa.me/254116400947?text="+encodeURIComponent("Hello Pheline's Haven! I'd like to enquire about:\n\nProduct: "+p.n+"\nCategory: "+p.c+"\nPrice: "+money(p.p)+"\nAvailability: "+(p.stock>0?"In stock":"OUT OF STOCK")+"\nSKU: "+(p.sku||"Not listed")+"\nDescription: "+(p.d||"")+"\n\nProduct link: "+location.origin+"/product.html?product="+encodeURIComponent(p.slug)),"_blank")}
 function openMobileDrawer(){document.getElementById("mobileDrawer")?.classList.add("open");document.getElementById("mobileDrawerOverlay")?.classList.add("open");document.body.style.overflow="hidden"}
 function closeMobileDrawer(){document.getElementById("mobileDrawer")?.classList.remove("open");document.getElementById("mobileDrawerOverlay")?.classList.remove("open");document.body.style.overflow=""}
 function subscribe(e){e.preventDefault();toast("Welcome to the Haven ♡");e.target.reset()}
-document.getElementById("search")?.addEventListener("input",render);
-document.getElementById("filters")?.addEventListener("click",e=>{const b=e.target.closest(".filter");if(b)setCat(b.dataset.cat)});
-document.getElementById("sortProducts")?.addEventListener("change",render);
-document.getElementById("minPrice")?.addEventListener("input",render);
-document.getElementById("maxPrice")?.addEventListener("input",render);
-document.getElementById("inStockOnly")?.addEventListener("change",render);
-buildMiniCats();render();update();
-</script>
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const supabase=createClient("https://fuckvbsuhjdknguutnxc.supabase.co","sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8");
-const categoryMap={"Women's Fashion":"Women","Men's Fashion":"Men","Kids' Fashion":"Kids","Beauty & Skincare":"Beauty","Hair & Beauty Accessories":"Accessories","Shoes & Bags":"Shoes & Bags","Women's Formal Shoes":"Women Formal","Women's Casual Shoes":"Women Casual","Men's Formal Shoes":"Men Formal","Men's Casual Shoes":"Men Casual","Sneakers & Sports":"Sneakers & Sports","Boots":"Boots","Sandals & Slides":"Sandals & Slides","Kids' Shoes":"Kids Shoes","School Shoes":"School Shoes","Safety & Work Shoes":"Safety & Work Shoes"};
-function publicProductImage(path){if(!path)return "";if(/^https?:\\/\\//i.test(path))return path;return "https://fuckvbsuhjdknguutnxc.supabase.co/storage/v1/object/public/product-images/"+String(path).replace(/^\\/+/,"");}
-async function loadHavenCatalog(){
- const {data,error}=await supabase.from("products").select("id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,is_featured,categories(name),product_images(storage_path,sort_order)").eq("is_active",true).order("created_at",{ascending:false});
- if(error){console.warn("PhelinesHaven catalog connection:",error.message);return}
- if(!Array.isArray(data)||!data.length)return;
- const live=data.map(p=>({id:p.id,slug:p.slug,n:p.name,d:p.description||"",brand:p.brand||"",sku:p.sku||"",c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),compare_at_price:Number(p.compare_at_price||0),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),i:publicProductImage((p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||"")}));
- P.splice(0,P.length,...live);buildMiniCats();render(); if(productSlug){document.getElementById("shop")?.scrollIntoView({behavior:"smooth"});} if(window.updateProductSEO) updateProductSEO(P);
+document.addEventListener("DOMContentLoaded",()=>{document.getElementById("search")?.addEventListener("input",render);document.getElementById("filters")?.addEventListener("click",e=>{const b=e.target.closest(".filter");if(b)setCat(b.dataset.cat)});document.getElementById("sortProducts")?.addEventListener("change",render);document.getElementById("minPrice")?.addEventListener("input",render);document.getElementById("maxPrice")?.addEventListener("input",render);document.getElementById("inStockOnly")?.addEventListener("change",render);buildMiniCats();render();update()});
+async function loadLiveProducts(){
+ try{
+  const url=SUPABASE_URL+"/rest/v1/products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,categories(name),product_images(storage_path,sort_order)&is_active=eq.true&order=created_at.desc";
+  const res=await fetch(url,{headers:{apikey:SUPABASE_KEY,Authorization:"Bearer "+SUPABASE_KEY}});
+  if(!res.ok)throw new Error("Catalogue request "+res.status);
+  const data=await res.json();
+  if(!Array.isArray(data)||!data.length)throw new Error("Catalogue returned no products");
+  P.splice(0,P.length,...data.map(p=>({id:p.id,slug:p.slug,n:p.name,d:p.description||"",brand:p.brand||"",sku:p.sku||"",c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),compare_at_price:Number(p.compare_at_price||0),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),i:(p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||""})));
+  buildMiniCats();render();update();
+ }catch(e){console.error("Pheline's Haven catalogue:",e)}
 }
-loadHavenCatalog();window.PhelinesHavenSupabase=supabase;
+loadLiveProducts();
 </script>
 </body></html>
