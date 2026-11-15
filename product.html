@@ -43,6 +43,7 @@ function renderProduct(p){
  const rangeMatch=desc.match(/(?:Size|sizes)\\s*([0-9]+(?:-[0-9]+)?)/i); if(rangeMatch && !sizeMatch) facts.push("<strong>Sizes:</strong> "+esc(rangeMatch[1]));
  const colourMatch=desc.match(/(?:different colours|multiple colour variants|multiple solid colours|multiple prints|colour options|color options|colour variants|shade is unavailable|colours?\\.)/i); if(colourMatch) facts.push("<strong>Colour options:</strong> See available variants in the supplier description.");
  const materialMatch=desc.match(/(?:Cotton|Satin|Silk|canvas|material|rubber|gold foil|floral|peplum)/i); if(materialMatch) facts.push("<strong>Material/style:</strong> "+esc(materialMatch[0]));
+ const factsHtml=facts.length?'<div class="facts">'+facts.map(x=>'<p>'+x+'</p>').join("")+'</div>':"";
  const sourceBlock=p.source_url?'<p><strong>Supplier listing:</strong> <a href="'+esc(p.source_url)+'" target="_blank" rel="noopener" style="color:var(--purple);text-decoration:underline">View original product listing</a></p>':"";
  const detailHtml=core.map(x=>"<p>"+esc(x)+"</p>").join("")||"<p>Product information supplied by the wholesaler.</p>";
  const noticeText=notice.replace(/^Color Substitution Notice:\\s*/i,"").replace(/^Colour Substitution Notice:\\s*/i,"").trim();
