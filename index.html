@@ -219,6 +219,16 @@ footer .copy{border-color:#57392b;color:#bda895}
  .zuri-newsletter h2{font-size:39px}
  .foot{grid-template-columns:1fr 1fr}
 }
+</style><style id="haven-featured-picks">
+.haven-edit{background:#075a43;color:#fff;padding:60px 0}
+.haven-edit .section-head h2,.haven-edit .section-head p{color:#fff}
+.haven-edit .section-head .eyebrow{color:#f4c46b}
+.pick-list{display:grid;gap:9px;max-width:760px;margin:0 auto}
+.pick-row{display:grid;grid-template-columns:62px 1fr 24px;gap:14px;align-items:center;background:#117354;border-radius:18px;padding:8px 13px;color:#fff;min-height:78px}
+.pick-row img{width:58px;height:58px;object-fit:cover;border-radius:12px;background:#f8eee0}
+.pick-row span{font-size:13px;font-weight:500}.pick-row b{font-size:20px;font-weight:400;text-align:right}
+.pick-more{text-align:center;margin-top:22px}.pick-more .btn{background:#f2b52e;color:#26150e;border-color:#f2b52e;border-radius:30px;text-transform:none;letter-spacing:0;font-size:10px}
+@media(max-width:650px){.haven-edit{padding:43px 0}.pick-row{min-height:72px;grid-template-columns:54px 1fr 20px;padding:7px 10px}.pick-row img{width:50px;height:50px}.pick-row span{font-size:11px}}
 </style></head>
 <body data-build="2026-11-15-v3">
 <div class="topbar">KENYA-WIDE DELIVERY <span>✦</span> M-PESA & CARD PAYMENTS <span>✦</span> WHATSAPP: <a href="tel:+254116400947" style="color:#fff">+254 116 400 947</a></div>
@@ -264,9 +274,7 @@ footer .copy{border-color:#57392b;color:#bda895}
 <div class="filters" id="filters"><button class="filter active" data-cat="All">All</button><button class="filter" data-cat="Women">Women</button><button class="filter" data-cat="Men">Men</button><button class="filter" data-cat="Kids">Kids</button><button class="filter" data-cat="Beauty">Beauty</button><button class="filter" data-cat="Shoes">Shoes</button><button class="filter" data-cat="Bags">Bags</button><button class="filter" data-cat="Shoes & Bags">Shoes & Bags</button><button class="filter" data-cat="Women Formal">Women Formal</button><button class="filter" data-cat="Women Casual">Women Casual</button><button class="filter" data-cat="Men Formal">Men Formal</button><button class="filter" data-cat="Men Casual">Men Casual</button><button class="filter" data-cat="Sneakers & Sports">Sneakers & Sports</button><button class="filter" data-cat="Boots">Boots</button><button class="filter" data-cat="Sandals & Slides">Sandals & Slides</button><button class="filter" data-cat="Kids Shoes">Kids Shoes</button><button class="filter" data-cat="School Shoes">School Shoes</button><button class="filter" data-cat="Safety & Work Shoes">Safety & Work</button><button class="filter" data-cat="Accessories">Accessories</button><button class="filter" data-cat="Fragrance">Fragrance</button></div>
 <div class="products" id="products"></div></div></section>
 
-<section class="deals" id="deals"><div class="wrap"><div class="section-head"><span class="eyebrow">Haven deals</span><h2>Beautiful offers, for a little less.</h2><p>Discover special edits and seasonal favourites while they last.</p></div>
-<div class="deal-grid"><a class="deal" href="#shop" onclick="setCat('Beauty')"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1200&q=88"><div class="deal-copy"><small>Beauty edit</small><h3>Glow & care</h3><p>Everyday beauty essentials to keep your routine feeling special.</p><span class="btn">Shop beauty</span></div></a>
-<a class="deal" href="#shop" onclick="setCat('Women')"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=88"><div class="deal-copy"><small>Fashion edit</small><h3>New season style</h3><p>Easy pieces for work, weekends, celebrations and everything between.</p><span class="btn">Shop women</span></div></a></div></div></section>
+<section class="deals haven-edit" id="deals"><div class="wrap"><div class="section-head"><span class="eyebrow">THE HAVEN EDIT</span><h2>Trending in the Haven</h2><p>Fresh finds selected for your everyday glow and style.</p></div><div class="pick-list" id="featuredPicks"></div><div class="pick-more"><button class="btn" onclick="scrollToSection('shop')">Explore all products →</button></div></div></section>
 
 <section class="story" id="story"><div class="story-image"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=88" alt="Pheline's Haven style"></div><div class="story-copy"><span class="eyebrow">Why Pheline's Haven</span><h2>Curated with beauty in mind.</h2><p>We are building a Kenyan shopping destination where fashion and beauty meet a clean, welcoming experience. From everyday essentials to statement pieces, the goal is simple: make it easier to find something you genuinely love.</p><div class="stats"><div class="stat"><strong>295+</strong><span>Live products</span></div><div class="stat"><strong>6</strong><span>Shopping worlds</span></div><div class="stat"><strong>Kenya</strong><span>Made for our market</span></div></div></div></section>
 
@@ -296,6 +304,7 @@ const P=[
 ];
 let cat="All",bag=[],productSlug=new URLSearchParams(location.search).get("product");
 const money=n=>"KSh "+Number(n||0).toLocaleString("en-KE");
+function renderPicks(){const el=document.getElementById("featuredPicks");if(!el)return;const picks=P.filter(p=>Number(p.stock)>0).slice(0,4);el.innerHTML=picks.map(p=>`<a class="pick-row" href="/product.html?product=${encodeURIComponent(p.slug)}"><img src="${p.i||""}" alt="${p.n}"><span>${p.n}</span><b>→</b></a>`).join("")||'<p>New arrivals coming soon.</p>'}
 function render(){
  const el=document.getElementById("products");if(!el)return;
  const q=(document.getElementById("search")?.value||"").toLowerCase().trim(),min=Number(document.getElementById("minPrice")?.value||0),max=Number(document.getElementById("maxPrice")?.value||0),stockOnly=!!document.getElementById("inStockOnly")?.checked;
@@ -322,7 +331,7 @@ function whatsappProduct(id){const p=P.find(x=>String(x.id)===String(id));if(!p)
 function openMobileDrawer(){document.getElementById("mobileDrawer")?.classList.add("open");document.getElementById("mobileDrawerOverlay")?.classList.add("open");document.body.style.overflow="hidden"}
 function closeMobileDrawer(){document.getElementById("mobileDrawer")?.classList.remove("open");document.getElementById("mobileDrawerOverlay")?.classList.remove("open");document.body.style.overflow=""}
 function subscribe(e){e.preventDefault();toast("Welcome to the Haven ♡");e.target.reset()}
-document.addEventListener("DOMContentLoaded",()=>{document.getElementById("search")?.addEventListener("input",render);document.getElementById("filters")?.addEventListener("click",e=>{const b=e.target.closest(".filter");if(b)setCat(b.dataset.cat)});document.getElementById("sortProducts")?.addEventListener("change",render);document.getElementById("minPrice")?.addEventListener("input",render);document.getElementById("maxPrice")?.addEventListener("input",render);document.getElementById("inStockOnly")?.addEventListener("change",render);buildMiniCats();render();update()});
+document.addEventListener("DOMContentLoaded",()=>{document.getElementById("search")?.addEventListener("input",render);document.getElementById("filters")?.addEventListener("click",e=>{const b=e.target.closest(".filter");if(b)setCat(b.dataset.cat)});document.getElementById("sortProducts")?.addEventListener("change",render);document.getElementById("minPrice")?.addEventListener("input",render);document.getElementById("maxPrice")?.addEventListener("input",render);document.getElementById("inStockOnly")?.addEventListener("change",render);buildMiniCats();render();renderPicks();update()});
 async function loadLiveProducts(){
  try{
   const url=SUPABASE_URL+"/rest/v1/products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,categories(name),product_images(storage_path,sort_order)&is_active=eq.true&order=created_at.desc";
@@ -331,7 +340,7 @@ async function loadLiveProducts(){
   const data=await res.json();
   if(!Array.isArray(data)||!data.length)throw new Error("Catalogue returned no products");
   P.splice(0,P.length,...data.map(p=>({id:p.id,slug:p.slug,n:p.name,d:p.description||"",brand:p.brand||"",sku:p.sku||"",c:categoryMap[p.categories?.name]||p.categories?.name||"New In",p:Number(p.price),compare_at_price:Number(p.compare_at_price||0),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),i:(p.product_images||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0))[0]?.storage_path||""})));
-  buildMiniCats();render();update();
+  buildMiniCats();render();renderPicks();update();
  }catch(e){console.error("Pheline's Haven catalogue:",e)}
 }
 loadLiveProducts();
