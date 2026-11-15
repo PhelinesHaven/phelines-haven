@@ -35,7 +35,7 @@ function renderProduct(p){
  const productUrl=location.origin+location.pathname+"?product="+encodeURIComponent(p.slug);
  const inquiry="Hello Pheline's Haven! I'd like to enquire about this product:\n\nProduct: "+p.name+"\nCategory: "+p.category+"\nBrand: "+(p.brand||"Pheline's Haven")+"\nPrice: "+money(p.price)+"\nAvailability: "+stockText+"\nSKU: "+(p.sku||"Not listed")+"\nDescription: "+(p.description||"Not provided")+"\n\nProduct link: "+productUrl+"\n\nPlease confirm availability, delivery options and how I can pay.";
  const desc=String(p.description||"");
- const lines=desc.split(/\\n|\\r/).map(x=>x.trim()).filter(Boolean);
+ const lines=desc.split(/\\n|\\r|\n|\r/).map(x=>x.trim()).filter(Boolean);
  const notice=lines.find(x=>/Color Substitution Notice/i.test(x))||"";
  const core=lines.filter(x=>x!==notice);
  const facts=[];
