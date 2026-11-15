@@ -229,7 +229,21 @@ footer .copy{border-color:#57392b;color:#bda895}
 .pick-row span{font-size:13px;font-weight:500}.pick-row b{font-size:20px;font-weight:400;text-align:right}
 .pick-more{text-align:center;margin-top:22px}.pick-more .btn{background:#f2b52e;color:#26150e;border-color:#f2b52e;border-radius:30px;text-transform:none;letter-spacing:0;font-size:10px}
 @media(max-width:650px){.haven-edit{padding:43px 0}.pick-row{min-height:72px;grid-template-columns:54px 1fr 20px;padding:7px 10px}.pick-row img{width:50px;height:50px}.pick-row span{font-size:11px}}
-</style></head>
+</style><style id="logo-final-fix">
+/* Logo: big, transparent PNG straight on the header - no box, no blending */
+header .head{height:auto!important;min-height:150px;padding-top:8px;padding-bottom:8px}
+header .brand{width:auto!important;max-width:none!important;max-height:none!important;overflow:visible!important;background:transparent!important;padding:0!important;margin:auto;display:flex;align-items:center;justify-content:center}
+header .brand img{height:134px!important;width:auto!important;max-width:100%!important;max-height:none!important;background:transparent!important;mix-blend-mode:normal!important;object-fit:contain}
+footer .foot-logo{width:260px;height:auto}
+@media(max-width:1000px){header .head{grid-template-columns:1fr auto 1fr!important}}
+@media(max-width:650px){
+ header{position:relative!important}
+ header .head{min-height:118px;grid-template-columns:42px 1fr 80px!important}
+ header .brand img{height:104px!important}
+ footer .foot-logo{width:200px}
+}
+</style>
+</head>
 <body data-build="2026-11-15-v3">
 <div class="topbar">KENYA-WIDE DELIVERY <span>✦</span> M-PESA & CARD PAYMENTS <span>✦</span> WHATSAPP: <a href="tel:+254116400947" style="color:#fff">+254 116 400 947</a></div>
 <header><div class="wrap head">
