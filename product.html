@@ -31,7 +31,7 @@ function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&l
 function renderProduct(p){
  const stock=Number(p.stock||0), threshold=Number(p.low_stock_threshold??20);
  const stockText=stock===0?"OUT OF STOCK":stock<=threshold?"Only "+stock+" left":"In stock";
- document.title=esc(p.name)+" | Pheline's Haven";
+ document.title=esc(p.seo_title||p.name)+" | Pheline's Haven";
  const metaDescription=(document.querySelector('meta[name="description"]')||(()=>{const m=document.createElement("meta");m.name="description";document.head.appendChild(m);return m;})());
  metaDescription.content=(p.seo_description||p.description||("Shop "+p.name+" in Kenya at Pheline's Haven.")).slice(0,160);
  let canonical=document.querySelector('link[rel="canonical"]');
@@ -77,7 +77,7 @@ function renderProduct(p){
 async function fallbackLoad(){
  try{
   const headers={"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY};
-  const pr=await fetch(SUPABASE_URL+"/rest/v1/products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,category_id&slug=eq."+encodeURIComponent(slug)+"&is_active=eq.true&limit=1",{headers});
+  const pr=await fetch(SUPABASE_URL+"/rest/v1/products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,category_id,seo_title,seo_description,seo_keywords&slug=eq."+encodeURIComponent(slug)+"&is_active=eq.true&limit=1",{headers});
   if(!pr.ok)throw new Error("Product request failed");
   const rows=await pr.json();
   if(!rows.length){app.innerHTML='<div class="error"><h1>Product not found</h1><p>This product is not currently available.</p><a class="btn" href="/">Back to shop</a></div>';return;}
@@ -88,7 +88,7 @@ async function fallbackLoad(){
    fetch(SUPABASE_URL+"/rest/v1/product_variants?select=name,sku,price,stock_quantity,options,is_active&product_id=eq."+encodeURIComponent(p.id)+"&is_active=eq.true&order=created_at.asc",{headers})
   ]);
   const cats=cr.ok?await cr.json():[], imgs=ir.ok?await ir.json():[], vars=vr.ok?await vr.json():[];
-  renderProduct({name:p.name,slug:p.slug,description:p.description,brand:p.brand,sku:p.sku,price:Number(p.price),compare_at_price:p.compare_at_price==null?null:Number(p.compare_at_price),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),category:cats[0]?.name||"Pheline's Haven",variants:vars,image:imgs[0]?.storage_path&&/^https?:\/\//i.test(imgs[0].storage_path)?imgs[0].storage_path:(imgs[0]?.storage_path?SUPABASE_URL+"/storage/v1/object/public/product-images/"+String(imgs[0].storage_path).replace(/^\/+/, ""):"")});
+  renderProduct({name:p.name,slug:p.slug,description:p.description,brand:p.brand,sku:p.sku,price:Number(p.price),compare_at_price:p.compare_at_price==null?null:Number(p.compare_at_price),stock:Number(p.stock_quantity||0),low_stock_threshold:Number(p.low_stock_threshold??20),category:cats[0]?.name||"Pheline's Haven",seo_title:p.seo_title,seo_description:p.seo_description,seo_keywords:p.seo_keywords,variants:vars,image:imgs[0]?.storage_path&&/^https?:\/\//i.test(imgs[0].storage_path)?imgs[0].storage_path:(imgs[0]?.storage_path?SUPABASE_URL+"/storage/v1/object/public/product-images/"+String(imgs[0].storage_path).replace(/^\/+/, ""):"")});
  }catch(e){app.innerHTML='<div class="error"><h1>Unable to load product</h1><p>Please try again.</p><a class="btn" href="/">Back to shop</a></div>';}
 }
 if(!slug){app.innerHTML='<div class="error"><h1>Product not specified</h1><a class="btn" href="/">Back to shop</a></div>';}
