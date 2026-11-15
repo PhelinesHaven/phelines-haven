@@ -38,7 +38,7 @@ window.saveProduct=async()=>{
  const name=$("name").value.trim(), source=Number($("source").value), image=$("image").value.trim();
  if(!name||!source||!image)return $("status").textContent="Product name, source price and image URL are required.";
  const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
- const {data:{user}}=await db.auth.getUser(); if(!user)return $("status").textContent="Please sign in again.";
+ const {data:{user}}=await db.auth.getUser(); if(!user)return $("status").textContent="Please sign in again."; const allowed=["phelinesagero@gmail.com","pozelona@gmail.com","osocemissionus@gmail.com"]; if(!allowed.includes((user.email||"").toLowerCase())){await db.auth.signOut();showAuth();return $("authmsg").textContent="This account is not an authorized administrator.";}
  const {data:p,error}=await db.from("products").insert({category_id:Number($("category").value),name,slug,description:$("description").value,brand:$("brand").value||"Pheline's Haven",price:Number((source*1.3).toFixed(2)),compare_at_price:source,currency:"KES",sku:$("sku").value||("PH-"+Date.now()),stock_quantity:Number($("stock").value||0),is_active:true,is_featured:$("featured").value==="true",seo_title:$("seo_title").value||name+" Kenya | Pheline's Haven",seo_description:$("seo_description").value||$("description").value,seo_keywords:$("keywords").value.split(",").map(x=>x.trim()).filter(Boolean)});
  if(error)return $("status").textContent=error.message;
  const {error:ie}=await db.from("product_images").insert({product_id:p[0].id,storage_path:image,alt_text:name,sort_order:0});
