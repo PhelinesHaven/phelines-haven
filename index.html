@@ -112,6 +112,113 @@ footer{background:#fbf8f1}
 </style><style id="logo-background-fix">
 .brand{background:#fbf8f1 !important;padding:0 !important}
 .brand img{background:transparent !important;mix-blend-mode:multiply;display:block}
+</style>
+<style id="zuri-inspired-redesign">
+:root{--cream:#fff8ee;--ink:#26150e;--muted:#78685f;--line:#eadfd2;--purple:#3a170e;--deep:#26110b;--magenta:#b9783b}
+body{background:var(--cream);color:var(--ink)}
+.topbar{background:#28120b;color:#fff0d6;letter-spacing:.6px;text-transform:none;font-size:9px;height:29px}
+header{background:#f8f0e5;border-bottom:1px solid #eadfD2}
+.head{height:68px;grid-template-columns:1fr 1fr 1fr}
+.brand{width:150px;max-height:58px;overflow:hidden;background:transparent!important}
+.brand img{mix-blend-mode:multiply;max-height:56px;object-fit:contain}
+.icon{border:0;background:transparent;color:#2d1a12;border-radius:0}
+.search{background:transparent;border-color:#e6d8c9}
+.nav{background:#f8f0e5;border-top:1px solid #e9dfd4;height:42px}
+.nav a{color:#3b251a}
+.announce{background:#f8f0e5;color:#6c4327;border-color:#e9dfd4}
+.zuri-hero{display:block;min-height:0;background:#26150e}
+.zuri-hero .hero-image{height:min(690px,76vw);min-height:510px;position:relative;background:#392319}
+.zuri-hero .hero-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.zuri-hero .hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#170c08a8 0%,#170c0840 55%,#170c0805 100%)}
+.zuri-hero-copy{position:absolute;z-index:2;left:max(6vw,calc((100vw - 1280px)/2));top:50%;transform:translateY(-50%);max-width:610px;color:#fff;padding:28px}
+.hero-pill{display:inline-block;border:1px solid #ffffff55;border-radius:40px;background:#28150d66;padding:8px 15px;font-size:9px;letter-spacing:2px;color:#fff0d4}
+.zuri-hero h1{font:700 clamp(44px,6vw,78px)/.98 "DM Sans",sans-serif;color:#fff;margin:22px 0 16px;letter-spacing:-2.5px}
+.zuri-hero h1 em{font:italic 500 1em "Playfair Display",serif;color:#e4b75c}
+.zuri-hero p{font-size:14px;line-height:1.8;color:#fff4e8;max-width:490px}
+.zuri-hero .btn{border-radius:40px;background:#f4b52e;border-color:#f4b52e;color:#2b160b;min-height:48px;font-size:10px;letter-spacing:.3px;text-transform:none}
+.zuri-hero .btn.light{background:#ffffff20;border-color:#ffffff55;color:#fff}
+.zuri-benefits{background:#fff9f0;border:0;grid-template-columns:repeat(4,1fr);padding:24px max(4vw,calc((100vw - 1280px)/2));gap:12px}
+.zuri-benefits div{border:0;display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;text-align:left;align-items:center;padding:6px 8px;column-gap:10px}
+.zuri-benefits b{grid-row:1/3;width:38px;height:38px;border-radius:50%;background:#f3e8d8;color:#9b6131;display:grid;place-items:center;font-size:18px}
+.zuri-benefits strong{font-size:10px;letter-spacing:0;text-transform:none;color:#2f1c12}
+.zuri-benefits span{font-size:8px;line-height:1.5;color:#88796d}
+.section{padding:66px 0}
+.section-head{text-align:left;margin-bottom:25px}
+.section-head .eyebrow{color:#a76d3d}
+.section-head h2{font:700 clamp(32px,4vw,46px)/1.1 "DM Sans",sans-serif;color:#26150e;letter-spacing:-1.5px;margin:8px 0}
+.section-head h2 em{font-family:"Playfair Display";color:#b77844}
+.section-head p{margin:0;max-width:540px}
+.categories{grid-template-columns:repeat(3,1fr);gap:16px}
+.cat{height:360px;border-radius:22px;background:#e6d2b9}
+.cat img{transition:transform .5s}
+.cat:after{background:linear-gradient(0deg,#1c100bbd,transparent 60%)}
+.cat-copy h3{font:600 27px "DM Sans"}
+.shop{background:#fff8ee}
+.filters{justify-content:flex-start}
+.filter{border-radius:30px;border-color:#e6d8c9;background:transparent;color:#553724;text-transform:none;letter-spacing:.2px;font-size:9px}
+.filter.active,.filter:hover{background:#2b170f;color:#fff;border-color:#2b170f}
+.products{grid-template-columns:repeat(4,minmax(0,1fr));gap:25px 16px}
+.photo{border-radius:14px;background:#f1e6d8}
+.badge{background:#fff8ee;color:#63452e;border-radius:30px}
+.heart{background:#fff8ee;color:#7a482a}
+.add{background:#2a170f;color:#fff;border-color:#2a170f;border-radius:24px;text-transform:none;letter-spacing:0;font-size:8px}
+.add:hover{background:#a46b3c;color:#fff}
+.deals{background:#075b45;color:#fff}
+.deals .section-head h2,.deals .section-head p{color:#fff}
+.deals .eyebrow{color:#f3c16c}
+.deal{border-radius:22px}
+.deal-copy .btn{border-radius:30px}
+.story{background:#f8efe3}
+.story-copy h2{color:#2a170f}
+.reviews{background:#fff8ee}
+.review{background:#f2e8db;border-radius:18px}
+.faq{background:#f8efe3}
+.faq summary{color:#2b180f}
+.zuri-newsletter{margin:54px auto;max-width:1200px;width:calc(100% - 36px);border-radius:28px;text-align:left;padding:48px;background:linear-gradient(115deg,#e65a18,#f4a323 80%);color:white}
+.zuri-newsletter h2{font:800 clamp(34px,5vw,54px)/.98 "DM Sans";margin:12px 0;letter-spacing:-1.5px}
+.zuri-newsletter p{color:#fff2df;max-width:440px;line-height:1.7}
+.zuri-newsletter .signup{margin:22px 0 0;background:#fff;border-radius:30px;overflow:hidden;max-width:440px}
+.zuri-newsletter .signup button{background:#2b170f;border-radius:30px;padding:14px 22px}
+footer{background:#28120b;color:#fff2e4;border:0;padding:55px 0 22px}
+footer .foot h4{color:#d9a34f}
+footer .foot a,footer .foot p{color:#ddcbb9}
+footer .copy{border-color:#57392b;color:#bda895}
+.drawer{background:#fff8ee}
+.drawer h2{color:#2b170f}
+@media(max-width:650px){
+ .topbar{height:25px;font-size:7px}
+ .head{height:54px;grid-template-columns:42px 1fr 80px;padding:0 12px}
+ .brand{width:115px;max-height:48px}.brand img{max-height:46px}
+ .nav{height:35px;gap:18px;padding:0 15px}
+ .nav a{font-size:7px}
+ .zuri-hero .hero-image{height:610px;min-height:610px}
+ .zuri-hero .hero-image img{object-position:48% center}
+ .zuri-hero .hero-image:after{background:linear-gradient(0deg,#170c08b8 0%,#170c0855 58%,#170c080c 100%)}
+ .zuri-hero-copy{left:0;right:0;top:auto;bottom:24px;transform:none;padding:20px 18px}
+ .hero-pill{font-size:7px;padding:7px 11px}
+ .zuri-hero h1{font-size:43px;line-height:1.02;letter-spacing:-1.6px;margin:14px 0}
+ .zuri-hero p{font-size:11px;line-height:1.65;max-width:340px}
+ .zuri-hero .actions{gap:8px;margin-top:16px}
+ .zuri-hero .btn{min-height:43px;padding:0 17px;font-size:9px}
+ .zuri-benefits{padding:16px 12px;grid-template-columns:1fr 1fr;gap:10px}
+ .zuri-benefits div{grid-template-columns:34px 1fr;column-gap:8px;padding:4px}
+ .zuri-benefits b{width:32px;height:32px;font-size:15px}
+ .zuri-benefits strong{font-size:8px}.zuri-benefits span{font-size:7px}
+ .section{padding:44px 0}
+ .section-head{margin-bottom:20px}
+ .section-head h2{font-size:31px}
+ .categories{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 14px 8px}
+ .categories .cat{flex:0 0 78%;height:300px;scroll-snap-align:start;border-radius:20px}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 10px}
+ .info h3{font-size:16px}
+ .product-row{align-items:flex-start;flex-direction:column}
+ .product-row>div:last-child{width:100%}
+ .add{padding:9px 11px;font-size:8px}
+ .deal{min-height:280px;border-radius:18px}
+ .zuri-newsletter{width:calc(100% - 28px);margin:35px auto;padding:30px 22px;border-radius:22px}
+ .zuri-newsletter h2{font-size:39px}
+ .foot{grid-template-columns:1fr 1fr}
+}
 </style></head>
 <body data-build="2026-11-15-v3">
 <div class="topbar">KENYA-WIDE DELIVERY <span>✦</span> M-PESA & CARD PAYMENTS <span>✦</span> WHATSAPP: <a href="tel:+254116400947" style="color:#fff">+254 116 400 947</a></div>
@@ -137,12 +244,9 @@ footer{background:#fbf8f1}
 </aside><div class="announce">NEW ARRIVALS · BEAUTY ESSENTIALS · FASHION FOR HER, HIM & LITTLE ONES</div>
 
 <main id="home">
-<section class="hero">
-<div class="hero-copy"><span class="eyebrow">Welcome to Pheline's Haven</span><h1>Your style.<br><em>Your beauty.</em><br>Your haven.</h1><p>Discover fashion, beauty and lifestyle finds curated for women, men and kids. Easy shopping, beautiful pieces and a little luxury in every order.</p><div class="actions"><button type="button" class="btn" onclick="scrollToSection('shop')">Shop now</button><button type="button" class="btn light" onclick="scrollToSection('categories')">Explore collections</button></div></div>
-<div class="hero-image"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1500&q=90" alt="Pheline's Haven fashion collection"><div class="hero-badge"><small>THE HAVEN EDIT</small><strong>Made for you</strong></div></div>
-</section>
+<section class="hero zuri-hero"><div class="hero-image"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1800&q=90" alt="Beauty and fashion celebrating Kenyan style"><div class="zuri-hero-copy"><span class="hero-pill">✦ NEW · THE NAIROBI EDIT</span><h1>Beauty with a<br><em>Kenyan accent.</em></h1><p>Skincare, makeup, haircare and fashion made for every shade and every texture — delivered to your door.</p><div class="actions"><button type="button" class="btn" onclick="scrollToSection('shop')">Shop the edit →</button><button type="button" class="btn light" onclick="setCat('Women')">Explore collection</button></div></div></div></section>
 
-<div class="strip"><div>Women<span>Fashion & beauty</span></div><div>Men<span>Modern essentials</span></div><div>Kids<span>Little style</span></div><div>Beauty<span>Glow & care</span></div></div><div class="trust-strip"><div><strong>Kenya-wide delivery</strong><span>Reliable delivery options</span></div><div><strong>M-Pesa & cards</strong><span>Easy payment options</span></div><div><strong>WhatsApp support</strong><span>Product help before you buy</span></div><div><strong>Easy shopping</strong><span>Clear prices & live stock</span></div></div>
+<div class="trust-strip zuri-benefits"><div><b>♧</b><strong>Same-day delivery</strong><span>Across Nairobi, free over KSh 5,000</span></div><div><b>▯</b><strong>Pay with M-Pesa</strong><span>Plus Visa & Mastercard</span></div><div><b>✧</b><strong>100% authentic</strong><span>Sourced direct from brands & artisans</span></div><div><b>♙</b><strong>Haven Rewards</strong><span>Earn points on every order</span></div></div>
 
 <section class="section wrap" id="categories"><div class="section-head"><span class="eyebrow">Shop by category</span><h2>Find what feels like you.</h2><p>Explore our main shopping worlds and discover something beautiful for every member of the family.</p></div>
 <div class="categories">
@@ -173,7 +277,7 @@ footer{background:#fbf8f1}
 <details><summary>Do you deliver across Kenya?</summary><p>Yes. We serve customers across Kenya. Delivery timing and fee can be confirmed with your order enquiry.</p></details>
 <details><summary>Can I pay with M-Pesa?</summary><p>Yes. M-Pesa is supported for order enquiries and payment arrangements. Card payment can also be offered where available at checkout.</p></details>
 <details><summary>Can I ask about size or availability?</summary><p>Yes. The WhatsApp button carries the product name, price, SKU, availability and product link so our team can help quickly.</p></details>
-</div></div></section><section class="newsletter"><span class="eyebrow" style="color:#ff73cf">Join the Haven</span><h2>Be first to the beautiful.</h2><p>Get new arrivals, special offers and curated edits in your inbox.</p><form class="signup" onsubmit="subscribe(event)"><input required type="email" placeholder="Your email address"><button>JOIN THE HAVEN</button></form></section>
+</div></div></section><section class="newsletter zuri-newsletter"><span class="eyebrow" style="color:#fff3d7">EXCLUSIVE OFFER</span><h2>15% off your<br>first order</h2><p>Join the Haven community for new arrivals, exclusive edits and a welcome treat.</p><form class="signup" onsubmit="subscribe(event)"><input required type="email" placeholder="Your email address"><button>Join →</button></form></section>
 </main>
 
 <footer id="contact"><div class="wrap foot"><div><img class="foot-logo" src="./assets/file_00000000c4ac82089b4d548c0c56ec8b.png" alt="Pheline's Haven" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/PhelinesHaven/phelines-haven/main/assets/file_00000000c4ac82089b4d548c0c56ec8b.png';"><p>Beauty · Fashion · Lifestyle<br>Women · Men · Kids<br>Kenya</p></div><div><h4>Shop</h4><a href="#shop" onclick="scrollToSection('shop');return false">All products</a><a href="#categories" onclick="scrollToSection('categories');return false">Categories</a><a href="#deals" onclick="scrollToSection('deals');return false">Deals</a><a href="#story" onclick="scrollToSection('story');return false">Our story</a><a href="blog.html">Journal</a></div><div><h4>Categories</h4><a href="#shop" onclick="setCat('Women')">Women</a><a href="#shop" onclick="setCat('Men')">Men</a><a href="#shop" onclick="setCat('Kids')">Kids</a><a href="#shop" onclick="setCat('Beauty')">Beauty</a><a href="#shop" onclick="setCat('Shoes')">Shoes & bags</a></div><div><h4>Haven care</h4><p>Questions about products, delivery or an order? Contact us through WhatsApp and we'll help you choose.</p><p><strong>Call or WhatsApp:</strong><br><a href="tel:+254116400947">+254 116 400 947</a><br><a href="https://wa.me/254116400947" target="_blank" rel="noopener">Chat on WhatsApp →</a></p><p>Secure checkout and order confirmation are being connected as the store grows.</p></div></div><div class="wrap copy"><span>© 2026 Pheline's Haven</span><span>Beauty · Fashion · Lifestyle · Kenya</span></div></footer>
@@ -209,7 +313,7 @@ function clearFilters(){["minPrice","maxPrice"].forEach(id=>{const e=document.ge
 function scrollToSection(id){const e=document.getElementById(id);if(e)window.scrollTo({top:Math.max(0,e.getBoundingClientRect().top+window.scrollY-80),behavior:"smooth"})}
 function toast(s){const t=document.getElementById("toast");if(!t)return;t.textContent=s;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),1800)}
 function add(id){const x=bag.find(i=>String(i.id)===String(id));if(x)x.q++;else bag.push({id:String(id),q:1});update();toast("Added to your bag ♡")}
-function update(){const cart=document.getElementById("cart"),total=document.getElementById("total");if(!cart||!total)return;cart.innerHTML=bag.length?bag.map(x=>{const p=P.find(y=>String(y.id)===String(x.id));return p?`<div class="cartrow"><img src="${p.i}" alt=""><div style="flex:1"><h4>${p.n}</h4><small>${money(p.p)}</small><div class="qty"><button onclick="change('${x.id}',-1)">−</button>${x.q}<button onclick="change('${x.id}',1)">+</button></div></div></div>`:""}).join(""):'<div class="empty">Your bag is waiting for something beautiful.</div>';total.textContent=money(bag.reduce((s,x)=>{const p=P.find(y=>String(y.id)===String(x.id));return s+(p?p.p*x.q:0)},0)}
+function update(){const cart=document.getElementById("cart"),total=document.getElementById("total");if(!cart||!total)return;cart.innerHTML=bag.length?bag.map(x=>{const p=P.find(y=>String(y.id)===String(x.id));return p?`<div class="cartrow"><img src="${p.i}" alt=""><div style="flex:1"><h4>${p.n}</h4><small>${money(p.p)}</small><div class="qty"><button onclick="change('${x.id}',-1)">−</button>${x.q}<button onclick="change('${x.id}',1)">+</button></div></div></div>`:""}).join(""):'<div class="empty">Your bag is waiting for something beautiful.</div>';total.textContent=money(bag.reduce((s,x)=>{const p=P.find(y=>String(y.id)===String(x.id));return s+(p?p.p*x.q:0)},0))}
 function change(id,d){const x=bag.find(i=>String(i.id)===String(id));if(!x)return;x.q+=d;bag=bag.filter(i=>i.q>0);update()}
 function openCart(){document.getElementById("drawer")?.classList.add("open");update()}
 function closeCart(){document.getElementById("drawer")?.classList.remove("open")}
