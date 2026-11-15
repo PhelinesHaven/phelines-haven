@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Product Manager | Pheline's Haven</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:wght@500;600&display=swap">
+<style>
+body{margin:0;background:#faf7fb;color:#211525;font-family:"DM Sans",sans-serif}.wrap{max-width:900px;margin:auto;padding:28px 18px}.card{background:#fff;border:1px solid #eee5f0;padding:24px;margin:18px 0}.brand{color:#5d1198;font:600 30px "Playfair Display"}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-size:11px;font-weight:700;color:#5d1198;margin-bottom:5px}input,textarea,select{width:100%;box-sizing:border-box;border:1px solid #ded3e2;padding:11px;font:inherit}textarea{min-height:100px}.btn{border:0;background:#5d1198;color:#fff;padding:12px 18px;font-weight:700;cursor:pointer}.btn.alt{background:#e60091}.note{font-size:12px;color:#776c7b;line-height:1.7}.price{font-weight:700;color:#5d1198}.status{margin-top:12px;font-size:12px}.preview{max-width:160px;max-height:160px;display:none;margin-top:8px}.hidden{display:none}@media(max-width:650px){.grid{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<div class="brand">Pheline's Haven</div><p class="note">Product Manager — add products, SEO fields and an image directly from an internet image URL. The 30% selling price is calculated automatically from the source price.</p>
+<div id="auth" class="card"><h2>Admin sign in</h2><div class="grid"><div><label>Email</label><input id="email" type="email"></div><div><label>Password</label><input id="password" type="password"></div></div><br><button class="btn" onclick="login()">Sign in</button><div id="authmsg" class="status"></div></div>
+<div id="app" class="card hidden"><div style="display:flex;justify-content:space-between;gap:10px"><h2>Add product</h2><button class="btn" onclick="logout()">Sign out</button></div>
+<div class="grid">
+<div><label>Category</label><select id="category"></select></div>
+<div><label>Product name</label><input id="name"></div>
+<div><label>Brand</label><input id="brand" value="Pheline's Haven"></div>
+<div><label>SKU</label><input id="sku"></div>
+<div><label>Online/source price (KES)</label><input id="source" type="number" step="0.01" oninput="calc()"></div>
+<div><label>Your selling price (+30%)</label><input id="price" type="number" step="0.01" readonly></div>
+<div style="grid-column:1/-1"><label>Internet image URL</label><input id="image" placeholder="https://images.example.com/product.jpg" oninput="preview()"><img id="imgpreview" class="preview"></div>
+<div style="grid-column:1/-1"><label>Product description</label><textarea id="description"></textarea></div>
+<div style="grid-column:1/-1"><label>SEO title</label><input id="seo_title"></div>
+<div style="grid-column:1/-1"><label>SEO description</label><textarea id="seo_description"></textarea></div>
+<div style="grid-column:1/-1"><label>SEO keywords (comma separated)</label><input id="keywords"></div>
+<div><label>Stock quantity</label><input id="stock" type="number" value="20"></div>
+<div><label>Featured</label><select id="featured"><option value="false">No</option><option value="true">Yes</option></select></div>
+</div><br><button class="btn alt" onclick="saveProduct()">Publish product</button><div id="status" class="status"></div></div>
+</div>
+<script type="module">
+import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const db=createClient("https://fuckvbsuhjdknguutnxc.supabase.co","sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8");
+const $=id=>document.getElementById(id);
+async function init(){const {data:{session}}=await db.auth.getSession(); session?showApp():showAuth(); const {data:c}=await db.from("categories").select("id,name").eq("is_active",true).order("sort_order"); if(c) $("category").innerHTML=c.map(x=>'<option value="'+x.id+'">'+x.name+'</option>').join("")}
+function showAuth(){$("auth").classList.remove("hidden");$("app").classList.add("hidden")} function showApp(){$("auth").classList.add("hidden");$("app").classList.remove("hidden")}
+window.login=async()=>{const {error}=await db.auth.signInWithPassword({email:$("email").value,password:$("password").value});$("authmsg").textContent=error?error.message:"Signed in.";if(!error)showApp()}
+window.logout=async()=>{await db.auth.signOut();showAuth()}
+window.calc=()=>{$("price").value=($("source").value?Number($("source").value)*1.3:0).toFixed(2)}
+window.preview=()=>{const u=$("image").value.trim();const i=$("imgpreview");i.src=u;i.style.display=u?"block":"none"}
+window.saveProduct=async()=>{
+ const name=$("name").value.trim(), source=Number($("source").value), image=$("image").value.trim();
+ if(!name||!source||!image)return $("status").textContent="Product name, source price and image URL are required.";
+ const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+ const {data:{user}}=await db.auth.getUser(); if(!user)return $("status").textContent="Please sign in again.";
+ const {data:p,error}=await db.from("products").insert({category_id:Number($("category").value),name,slug,description:$("description").value,brand:$("brand").value||"Pheline's Haven",price:Number((source*1.3).toFixed(2)),compare_at_price:source,currency:"KES",sku:$("sku").value||("PH-"+Date.now()),stock_quantity:Number($("stock").value||0),is_active:true,is_featured:$("featured").value==="true",seo_title:$("seo_title").value||name+" Kenya | Pheline's Haven",seo_description:$("seo_description").value||$("description").value,seo_keywords:$("keywords").value.split(",").map(x=>x.trim()).filter(Boolean)});
+ if(error)return $("status").textContent=error.message;
+ const {error:ie}=await db.from("product_images").insert({product_id:p[0].id,storage_path:image,alt_text:name,sort_order:0});
+ $("status").textContent=ie?ie.message:"Published successfully at "+Number((source*1.3).toFixed(2)).toLocaleString("en-KE",{style:"currency",currency:"KES"});
+}
+init();
+</script></body></html>
