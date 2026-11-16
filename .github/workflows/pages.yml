@@ -28,7 +28,16 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Generate SEO product pages
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
         run: node scripts/generate-product-pages.mjs
+
+      - name: Generate live sitemap and robots.txt
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: node scripts/generate-sitemap.mjs
 
       - name: Restore custom domain marker
         run: printf '%s\n' 'phelineshaven.co.ke' > CNAME
