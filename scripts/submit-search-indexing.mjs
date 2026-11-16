@@ -1,0 +1,9 @@
+import crypto from "node:crypto";
+const SITE="https://phelineshaven.co.ke/";
+const SITEMAPS=["https://phelineshaven.co.ke/sitemap.xml","https://phelineshaven.co.ke/product-sitemap.xml"];
+const raw=process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
+function b64(s){return Buffer.from(s).toString("base64url");}
+function makeJwt(sa){const now=Math.floor(Date.now()/1000),h=b64(JSON.stringify({alg:"RS256",typ:"JWT"})),p=b64(JSON.stringify({iss:sa.client_email,scope:"https://www.googleapis.com/auth/webmasters",aud:"https://oauth2.googleapis.com/token",iat:now,exp:now+3600}));const sig=crypto.createSign("RSA-SHA256").update(h+"."+p).sign(sa.private_key,"base64url");return h+"."+p+"."+sig;}
+async function token(sa){const r=await fetch("https://oauth2.googleapis.com/token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams({grant_type:"urn:ietf:params:oauth:grant-type:jwt-bearer",assertion:makeJwt(sa)})});if(!r.ok)throw new Error("Google OAuth "+r.status+" "+await r.text());return(await r.json()).access_token;}
+if(raw){const t=await token(JSON.parse(raw));for(const sm of SITEMAPS){const u="https://www.googleapis.com/webmasters/v3/sites/"+encodeURIComponent(SITE)+"/sitemaps/"+encodeURIComponent(sm);const r=await fetch(u,{method:"PUT",headers:{Authorization:"Bearer "+t}});if(!r.ok)throw new Error("Google sitemap "+r.status+" "+await r.text());console.log("Submitted",sm);}}else console.log("GOOGLE_SERVICE_ACCOUNT_JSON not set; Google sitemap submission skipped.");
+const bing=process.env.BING_INDEXNOW_KEY;if(bing){const r=await fetch("https://www.bing.com/indexnow?"+new URLSearchParams({url:SITE,key:bing}));console.log("Bing IndexNow",r.status);}else console.log("BING_INDEXNOW_KEY not set; Bing submission skipped.");
