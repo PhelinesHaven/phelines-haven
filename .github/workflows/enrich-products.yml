@@ -1,0 +1,20 @@
+name: Enrich product catalog
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+  repository_dispatch:
+    types: [product-catalog-updated]
+permissions:
+  contents: read
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enrich products, SEO and images
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          BING_IMAGE_SEARCH_KEY: ${{ secrets.BING_IMAGE_SEARCH_KEY }}
+        run: node scripts/enrich-products.mjs
