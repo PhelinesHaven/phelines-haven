@@ -8,7 +8,7 @@
 <section class="card"><h2>Articles</h2><div id="posts">Loading…</div></section></main>
 <script>
 const SUPABASE_URL="https://fuckvbsuhjdknguutnxc.supabase.co";
-const SUPABASE_ANON_KEY=""; // set from your existing public client configuration
+const SUPABASE_ANON_KEY="sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8"; // set from your existing public client configuration
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 let editing=null;
 async function init(){const {data:{session}}=await sb.auth.getSession();if(!session){status.textContent="Please sign in as an administrator.";return}status.textContent="Admin blog manager ready.";loadPosts()}
