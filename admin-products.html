@@ -10,7 +10,7 @@ body{margin:0;background:#faf7fb;color:#211525;font-family:"DM Sans",sans-serif}
 </style></head><body><div class="wrap">
 <div class="brand">Pheline's Haven</div><p class="note">Product Manager — add products with AI-written descriptions and SEO (Claude and/or ChatGPT) and photos found on the internet. The 30% selling price is calculated automatically from the source price.</p>
 <div id="auth" class="card"><h2>Admin sign in</h2><div class="grid"><div><label>Email</label><input id="email" type="email"></div><div><label>Password</label><input id="password" type="password"></div></div><br><button class="btn" onclick="login()">Sign in</button><div id="authmsg" class="status"></div></div>
-<div id="app" class="card hidden"><div style="display:flex;justify-content:space-between;gap:10px"><h2>Add product</h2><button class="btn" onclick="logout()">Sign out</button></div>
+<div class="card" style="margin-top:14px"><strong>SEO & Content Tools</strong><div class="row"><a class="btn ghost" href="admin-seo.html">SEO Control Center</a><a class="btn ghost" href="admin-blog.html">Blog Manager</a><a class="btn ghost" href="blog.html">View Blog</a><a class="btn ghost" href="sitemap.xml" target="_blank">Sitemap</a></div></div><div id="app" class="card hidden"><div style="display:flex;justify-content:space-between;gap:10px"><h2>Add product</h2><button class="btn" onclick="logout()">Sign out</button></div>
 <div class="grid">
 <div><label>Category</label><select id="category"></select></div>
 <div><label>Product name</label><input id="name"></div>
