@@ -30,6 +30,9 @@ jobs:
       - name: Generate SEO product pages
         run: node scripts/generate-product-pages.mjs
 
+      - name: Verify site entrypoint
+        run: test -f index.html
+
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
