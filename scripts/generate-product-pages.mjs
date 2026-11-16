@@ -16,7 +16,7 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&l
 const text = s => String(s ?? "").replace(/\r?\n/g, " ").replace(/\s+/g, " ").trim();
 const money = n => "KSh " + Number(n || 0).toLocaleString("en-KE");
 
-const products = await api("/rest/v1/products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,seo_title,seo_description,category_id&is_active=eq.true&order=name.asc");
+const products = await api("/rest/v1/products?select=id,name,slug,description,brand,sku,price,compare_at_price,stock_quantity,low_stock_threshold,seo_title,seo_description,category_id,image_url&is_active=eq.true&order=name.asc");
 const images = await api("/rest/v1/product_images?select=product_id,storage_path,alt_text,sort_order&order=sort_order.asc");
 const categories = await api("/rest/v1/categories?select=id,name");
 const catMap = new Map(categories.map(c => [String(c.id), c.name]));
@@ -31,7 +31,7 @@ for (const p of products) {
   if (!p.slug) continue;
   const url = SITE + "/product/" + encodeURIComponent(p.slug) + "/";
   const category = catMap.get(String(p.category_id)) || "Beauty & Lifestyle";
-  const image = imageMap.get(p.id) || "";
+  const image = p.image_url || imageMap.get(p.id) || "";
   const description = text(p.description || p.seo_description || ("Shop " + p.name + " in Kenya at Pheline's Haven."));
   const title = text(p.seo_title || (p.name + " | Pheline's Haven Kenya")).slice(0, 65);
   const seo = text(p.seo_description || description).slice(0, 160);
