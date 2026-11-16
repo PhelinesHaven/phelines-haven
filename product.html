@@ -55,14 +55,14 @@ function renderProduct(p){
  setMeta('meta[name="twitter:image"]',{name:"twitter:image"},p.image||"https://phelineshaven.co.ke/assets/file_00000000c4ac82089b4d548c0c56ec8b.png");
  let canonical=document.querySelector('link[rel="canonical"]');
  if(!canonical){canonical=document.createElement("link");canonical.rel="canonical";document.head.appendChild(canonical);}
- canonical.href=location.origin+location.pathname+"?product="+encodeURIComponent(p.slug);
+ canonical.href=location.origin+"/product/"+encodeURIComponent(p.slug)+"/";
  const oldLd=document.getElementById("product-schema"); if(oldLd)oldLd.remove();
  const oldCrumbs=document.getElementById("breadcrumb-schema"); if(oldCrumbs)oldCrumbs.remove();
  const bc=document.createElement("script"); bc.id="breadcrumb-schema"; bc.type="application/ld+json";
- bc.textContent=JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":location.origin+"/"},{"@type":"ListItem","position":2,"name":p.category||"Shop","item":location.origin+"/collection.html?cat="+encodeURIComponent(p.category||"")},{"@type":"ListItem","position":3,"name":p.name,"item":location.href}]});
+ bc.textContent=JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":location.origin+"/"},{"@type":"ListItem","position":2,"name":p.category||"Shop","item":location.origin+"/collection.html?cat="+encodeURIComponent(p.category||"")},{"@type":"ListItem","position":3,"name":p.name,"item":location.origin+"/product/"+encodeURIComponent(p.slug)+"/"}]});
  document.head.appendChild(bc);
  const ld=document.createElement("script"); ld.id="product-schema"; ld.type="application/ld+json";
- ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Product","name":p.name,"description":p.description||p.seo_description||"","sku":p.sku||undefined,"brand":{"@type":"Brand","name":p.brand||"Pheline's Haven"},"image":p.image?[p.image]:undefined,"offers":{"@type":"Offer","priceCurrency":"KES","price":Number(p.price||0),"availability":Number(p.stock||0)>0?"https://schema.org/InStock":"https://schema.org/OutOfStock","url":location.href}});
+ ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Product","name":p.name,"description":p.description||p.seo_description||"","sku":p.sku||undefined,"brand":{"@type":"Brand","name":p.brand||"Pheline's Haven"},"image":p.image?[p.image]:undefined,"offers":{"@type":"Offer","priceCurrency":"KES","price":Number(p.price||0),"availability":Number(p.stock||0)>0?"https://schema.org/InStock":"https://schema.org/OutOfStock","url":location.origin+"/product/"+encodeURIComponent(p.slug)+"/"}});
  document.head.appendChild(ld);
  const productUrl=location.origin+location.pathname+"?product="+encodeURIComponent(p.slug);
  const imgPre=document.getElementById("product-image-preload"); if(imgPre)imgPre.remove();
