@@ -31,7 +31,7 @@ jobs:
         run: node scripts/generate-product-pages.mjs
 
       - name: Restore custom domain marker
-        run: printf '%s\\n' 'phelineshaven.co.ke' > CNAME
+        run: printf '%s\n' 'phelineshaven.co.ke' > CNAME
 
       - name: Verify site entrypoint and custom domain
         run: |
