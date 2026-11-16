@@ -84,7 +84,7 @@ body{margin:0;font-family:Arial,sans-serif;color:#211525;background:#fff}main{ma
 <div class="stock">${stock > 0 ? "In stock" : "Currently out of stock"}</div>
 <div class="desc">${esc(description)}</div>
 <div class="notice">Pheline's Haven Kenya — beauty, haircare, fashion and lifestyle shopping with nationwide delivery options.</div>
-<p><a class="btn" href="/product.html?product=${encodeURIComponent(p.slug)}">VIEW PRODUCT & BUY</a></p>
+<p><a class="btn" href="${esc(url)}">VIEW PRODUCT & BUY</a></p>
 <div class="meta"><strong>Brand:</strong> ${esc(p.brand || "Pheline's Haven")}<br><strong>SKU:</strong> ${esc(p.sku || "Not listed")}<br><strong>Category:</strong> ${esc(category)}</div>
 </section>
 </div>
