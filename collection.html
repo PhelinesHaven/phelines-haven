@@ -6,6 +6,8 @@
 <title>Shop the Collection | Pheline's Haven</title>
 <meta name="description" content="Browse Pheline's Haven fashion, beauty and lifestyle collection in Kenya. Filter by category, price and availability.">
 <link rel="canonical" href="https://phelineshaven.co.ke/collection.html">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Pheline's Haven"><meta property="og:title" content="Shop Beauty, Fashion & Lifestyle in Kenya | Pheline's Haven"><meta property="og:description" content="Browse beauty, skincare, hair, fashion, shoes and lifestyle products at Pheline's Haven Kenya."><meta property="og:url" content="https://phelineshaven.co.ke/collection.html"><meta property="og:image" content="https://phelineshaven.co.ke/assets/file_00000000c4ac82089b4d548c0c56ec8b.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -104,12 +106,21 @@ function renderChips(){
  if(S.instock)c.push(["instock","In stock"]);if(S.onsale)c.push(["onsale","On sale"]);if(S.q)c.push(["q",'"'+S.q+'"']);
  $("chips").innerHTML=c.map(x=>'<span class="chip">'+esc(x[1])+'<button data-k="'+esc(x[0])+'" aria-label="Remove filter">×</button></span>').join("");
 }
+function updateCollectionSEO(one){
+ const title=one?one+" | Pheline's Haven Kenya":"Shop Beauty, Fashion & Lifestyle in Kenya | Pheline's Haven";
+ const desc=one?("Shop "+one+" products in Kenya at Pheline's Haven. Browse products, prices and availability online."): "Browse beauty, skincare, hair, fashion, shoes and lifestyle products at Pheline's Haven Kenya.";
+ document.title=title;
+ const m=document.querySelector('meta[name="description"]');if(m)m.content=desc.slice(0,160);
+ const setMeta=(sel,attrs,val)=>{let e=document.querySelector(sel);if(!e){e=document.createElement("meta");Object.keys(attrs).forEach(k=>e.setAttribute(k,attrs[k]));document.head.appendChild(e);}e.setAttribute("content",val);};
+ setMeta('meta[property="og:title"]',{property:"og:title"},title);setMeta('meta[property="og:description"]',{property:"og:description"},desc);setMeta('meta[property="og:url"]',{property:"og:url"},location.href);
+ const old=document.getElementById("collection-schema");if(old)old.remove();const ld=document.createElement("script");ld.id="collection-schema";ld.type="application/ld+json";ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"CollectionPage","name":title,"description":desc,"url":location.href,"isPartOf":{"@type":"WebSite","name":"Pheline's Haven","url":"https://phelineshaven.co.ke/"}});document.head.appendChild(ld);
+}
 function renderHead(){
  const one=S.cat.size===1?[...S.cat][0]:null;
  $("title").textContent=one||"The Haven Collection";
  $("crumb").textContent=one||"Shop";
  $("blurb").textContent=one?(blurbs[one]||""):"Fashion, beauty and lifestyle finds for her, him and little ones. Filter by category, price and availability to find your next favourite.";
- document.title=(one||"Shop the Collection")+" | Pheline's Haven";
+ updateCollectionSEO(one);
 }
 function render(){
  const a=filtered();
