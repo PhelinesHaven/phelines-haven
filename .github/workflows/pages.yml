@@ -30,11 +30,14 @@ jobs:
       - name: Generate SEO product pages
         run: node scripts/generate-product-pages.mjs
 
-      - name: Verify site entrypoint
+      - name: Restore custom domain marker
+        run: printf '%s\\n' 'phelineshaven.co.ke' > CNAME
+
+      - name: Verify site entrypoint and custom domain
         run: |
           test -f index.html
           test -f CNAME
-          grep -qx 'phelineshaven.co.ke' CNAME
+          test "$(cat CNAME)" = "phelineshaven.co.ke"
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
