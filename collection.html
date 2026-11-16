@@ -130,7 +130,7 @@ function render(){
  $("grid").innerHTML=a.slice(0,shown).map(p=>{
   const tag=p.stock===0?'<span class="tag out">SOLD OUT</span>':p.sale?'<span class="tag sale">SALE</span>':p.featured?'<span class="tag">FEATURED</span>':"";
   const low=p.stock>0&&p.stock<=p.low?'<span class="low">Only '+p.stock+' left</span>':"";
-  return '<a class="card" href="product.html?product='+encodeURIComponent(p.slug)+'"><div class="photo">'+(p.img?'<img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy">':"")+tag+'</div><div class="info"><small>'+esc(p.cat)+'</small><h3>'+esc(p.name)+'</h3><span class="p">'+money(p.price)+'</span>'+(p.sale?'<span class="old">'+money(p.compare)+'</span>':"")+low+'</div></a>';
+  return '<a class="card" href="/product/'+encodeURIComponent(p.slug)+'/"><div class="photo">'+(p.img?'<img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" loading="lazy">':"")+tag+'</div><div class="info"><small>'+esc(p.cat)+'</small><h3>'+esc(p.name)+'</h3><span class="p">'+money(p.price)+'</span>'+(p.sale?'<span class="old">'+money(p.compare)+'</span>':"")+low+'</div></a>';
  }).join("");
  $("more").innerHTML=a.length>shown?'<p>Showing '+Math.min(shown,a.length)+' of '+a.length+'</p><button class="btn" id="loadmore">Load more</button>':'<p>You have seen all '+a.length+' products</p>';
 }
