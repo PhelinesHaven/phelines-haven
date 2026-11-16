@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog Manager | Pheline's Haven</title>
+<meta name="robots" content="noindex,nofollow"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>body{font-family:Arial,sans-serif;background:#faf8fb;color:#241b27;margin:0;padding:24px}main{max-width:1000px;margin:auto}h1{color:#26003f}.card{background:#fff;border:1px solid #e6dce9;border-radius:14px;padding:20px;margin:16px 0}input,textarea,select{width:100%;box-sizing:border-box;padding:12px;margin:7px 0;border:1px solid #d9cddd;border-radius:8px}textarea{min-height:180px}button{background:#26003f;color:#fff;border:0;border-radius:8px;padding:11px 16px;margin:5px;cursor:pointer}.secondary{background:#eee;color:#26003f}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.row{grid-template-columns:1fr}}.status{padding:10px;border-radius:8px;background:#f0eaf4;margin:10px 0}</style></head>
+<body><main><h1>Blog & Content Manager</h1><div id="status" class="status">Checking admin access…</div>
+<section class="card"><h2>Create / edit article</h2><input id="title" placeholder="Article title"><input id="slug" placeholder="seo-friendly-slug"><div class="row"><input id="seoTitle" placeholder="SEO title"><input id="seoDesc" placeholder="SEO description"></div><input id="keywords" placeholder="Keywords separated by commas"><input id="cover" placeholder="Featured image URL"><textarea id="excerpt" placeholder="Short excerpt"></textarea><textarea id="content" placeholder="Full article content"></textarea><select id="published"><option value="false">Draft</option><option value="true">Publish</option></select><button onclick="savePost()">Save article</button><button class="secondary" onclick="clearForm()">Clear</button></section>
+<section class="card"><h2>Articles</h2><div id="posts">Loading…</div></section></main>
+<script>
+const SUPABASE_URL="https://fuckvbsuhjdknguutnxc.supabase.co";
+const SUPABASE_ANON_KEY=""; // set from your existing public client configuration
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+let editing=null;
+async function init(){const {data:{session}}=await sb.auth.getSession();if(!session){status.textContent="Please sign in as an administrator.";return}status.textContent="Admin blog manager ready.";loadPosts()}
+async function loadPosts(){const {data,error}=await sb.from("blog_posts").select("*").order("created_at",{ascending:false});posts.innerHTML=error?error.message:(data||[]).map(p=>`<div class="card"><b>${esc(p.title)}</b><br><small>${p.is_published?"Published":"Draft"} · ${p.slug}</small><br><button onclick='editPost(${JSON.stringify(p)})'>Edit</button></div>`).join("")||"No articles yet."}
+async function savePost(){const payload={title:title.value,slug:slug.value.trim().toLowerCase(),excerpt:excerpt.value,content:content.value,cover_image_url:cover.value,seo_title:seoTitle.value,seo_description:seoDesc.value,keywords:keywords.value.split(",").map(x=>x.trim()).filter(Boolean),is_published:published.value==="true",published_at:published.value==="true"?new Date().toISOString():null,updated_at:new Date().toISOString()};let r=editing?await sb.from("blog_posts").update(payload).eq("id",editing):await sb.from("blog_posts").insert(payload);status.textContent=r.error?r.error.message:"Article saved.";if(!r.error){clearForm();loadPosts()}}
+function editPost(p){editing=p.id;title.value=p.title||"";slug.value=p.slug||"";excerpt.value=p.excerpt||"";content.value=p.content||"";cover.value=p.cover_image_url||"";seoTitle.value=p.seo_title||"";seoDesc.value=p.seo_description||"";keywords.value=(p.keywords||[]).join(", ");published.value=String(!!p.is_published)}
+function clearForm(){editing=null;document.querySelectorAll("input,textarea").forEach(x=>x.value="");published.value="false"}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+init();
+</script></body></html>
