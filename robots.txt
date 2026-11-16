@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://phelineshaven.co.ke/sitemap.xml
+Sitemap: https://phelineshaven.co.ke/product-sitemap.xml
