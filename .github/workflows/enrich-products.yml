@@ -12,9 +12,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Enrich products, SEO and images
+      - name: Check required secrets
+        id: secrets
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::SUPABASE_SERVICE_ROLE_KEY is not configured. Add it in GitHub Settings > Secrets and variables > Actions."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Enrich products, SEO and images
+        if: steps.secrets.outputs.configured == 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://fuckvbsuhjdknguutnxc.supabase.co' }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           BING_IMAGE_SEARCH_KEY: ${{ secrets.BING_IMAGE_SEARCH_KEY }}
         run: node scripts/enrich-products.mjs
+      - name: Report configuration status
+        if: steps.secrets.outputs.configured != 'true'
+        run: echo "Enrichment skipped until SUPABASE_SERVICE_ROLE_KEY is configured."
