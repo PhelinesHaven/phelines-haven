@@ -31,10 +31,13 @@ jobs:
         run: node scripts/generate-product-pages.mjs
 
       - name: Verify site entrypoint
-        run: test -f index.html
+        run: |
+          test -f index.html
+          test -f CNAME
+          grep -qx 'phelineshaven.co.ke' CNAME
 
       - name: Upload site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .
 
