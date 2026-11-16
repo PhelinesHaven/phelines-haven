@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
 <title>Product Manager | Pheline's Haven</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:wght@500;600&display=swap">
 <style>
-body{margin:0;background:#faf7fb;color:#211525;font-family:"DM Sans",sans-serif}.wrap{max-width:900px;margin:auto;padding:28px 18px}.card{background:#fff;border:1px solid #eee5f0;padding:24px;margin:18px 0}.brand{color:#5d1198;font:600 30px "Playfair Display"}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-size:11px;font-weight:700;color:#5d1198;margin-bottom:5px}input,textarea,select{width:100%;box-sizing:border-box;border:1px solid #ded3e2;padding:11px;font:inherit}textarea{min-height:100px}.btn{border:0;background:#5d1198;color:#fff;padding:12px 18px;font-weight:700;cursor:pointer}.btn.alt{background:#e60091}.note{font-size:12px;color:#776c7b;line-height:1.7}.price{font-weight:700;color:#5d1198}.status{margin-top:12px;font-size:12px}.preview{max-width:160px;max-height:160px;display:none;margin-top:8px}.hidden{display:none}@media(max-width:650px){.grid{grid-template-columns:1fr}}
+body{margin:0;background:#faf7fb;color:#211525;font-family:"DM Sans",sans-serif}.wrap{max-width:900px;margin:auto;padding:28px 18px}.card{background:#fff;border:1px solid #eee5f0;padding:24px;margin:18px 0}.brand{color:#5d1198;font:600 30px "Playfair Display"}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-size:11px;font-weight:700;color:#5d1198;margin-bottom:5px}input,textarea,select{width:100%;box-sizing:border-box;border:1px solid #ded3e2;padding:11px;font:inherit}textarea{min-height:100px}.btn{border:0;background:#5d1198;color:#fff;padding:12px 18px;font-weight:700;cursor:pointer}.btn.alt{background:#e60091}.btn.ghost{background:#fff;color:#5d1198;border:1px solid #5d1198}.btn:disabled{opacity:.55;cursor:wait}.note{font-size:12px;color:#776c7b;line-height:1.7}.price{font-weight:700;color:#5d1198}.status{margin-top:12px;font-size:12px}.preview{max-width:160px;max-height:160px;display:none;margin-top:8px}.hidden{display:none}
+.sub{border-top:1px solid #eee5f0;margin-top:22px;padding-top:18px}.sub h3{margin:0 0 6px;font-size:15px;color:#5d1198}.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:12px}.thumb{border:2px solid transparent;background:#faf7fb;padding:0;cursor:pointer}.thumb.sel{border-color:#e60091}.thumb img{width:100%;height:110px;object-fit:contain;display:block}.res{border:1px solid #ded3e2;padding:14px;margin-top:12px;font-size:13px;line-height:1.6}.res h4{margin:0 0 6px;color:#5d1198}.res p{margin:4px 0}.err{color:#b00020}
+@media(max-width:650px){.grid{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
-<div class="brand">Pheline's Haven</div><p class="note">Product Manager — add products, SEO fields and an image directly from an internet image URL. The 30% selling price is calculated automatically from the source price.</p>
+<div class="brand">Pheline's Haven</div><p class="note">Product Manager — add products with AI-written descriptions and SEO (Claude and/or ChatGPT) and photos found on the internet. The 30% selling price is calculated automatically from the source price.</p>
 <div id="auth" class="card"><h2>Admin sign in</h2><div class="grid"><div><label>Email</label><input id="email" type="email"></div><div><label>Password</label><input id="password" type="password"></div></div><br><button class="btn" onclick="login()">Sign in</button><div id="authmsg" class="status"></div></div>
 <div id="app" class="card hidden"><div style="display:flex;justify-content:space-between;gap:10px"><h2>Add product</h2><button class="btn" onclick="logout()">Sign out</button></div>
 <div class="grid">
@@ -15,34 +18,127 @@ body{margin:0;background:#faf7fb;color:#211525;font-family:"DM Sans",sans-serif}
 <div><label>SKU</label><input id="sku"></div>
 <div><label>Online/source price (KES)</label><input id="source" type="number" step="0.01" oninput="calc()"></div>
 <div><label>Your selling price (+30%)</label><input id="price" type="number" step="0.01" readonly></div>
-<div style="grid-column:1/-1"><label>Internet image URL</label><input id="image" placeholder="https://images.example.com/product.jpg" oninput="preview()"><img id="imgpreview" class="preview"></div>
+</div>
+
+<div class="sub"><h3>Photo from the internet</h3>
+<p class="note">Paste a product page link (brand or shop) or a direct image link, then pick a photo. Or let Claude search the web for the product.</p>
+<label>Product page or image link</label><input id="imgsource" placeholder="https://www.example.com/product-page">
+<div class="row"><button class="btn ghost" id="btnPage" onclick="imagesFromPage()">Get images from link</button><button class="btn ghost" id="btnSearch" onclick="searchImages()">Search the web (Claude)</button></div>
+<div id="imgstatus" class="status"></div><div id="thumbs" class="thumbs"></div>
+<div style="margin-top:14px"><label>Chosen image URL (you can also paste one directly)</label><input id="image" placeholder="https://images.example.com/product.jpg" oninput="preview()"><img id="imgpreview" class="preview" referrerpolicy="no-referrer"></div>
+<p class="note">Only use photos you have the right to use. Images from other sites stay hosted there and can disappear.</p></div>
+
+<div class="sub"><h3>AI description and SEO</h3>
+<p class="note">Uses the product name, brand, category and your notes. It will not invent ingredients or claims, so add any facts you want included in the notes.</p>
+<div class="grid"><div><label>Write with</label><select id="provider"><option value="claude">Claude</option><option value="chatgpt">ChatGPT</option><option value="both">Both (compare and choose)</option></select></div>
+<div><label>Notes for the AI (optional)</label><input id="notes" placeholder="e.g. for dry skin, 502ml pump bottle, made in USA"></div></div>
+<div class="row"><button class="btn ghost" id="btnGen" onclick="generate()">Write description + SEO</button></div>
+<div id="aistatus" class="status"></div><div id="airesults"></div></div>
+
+<div class="sub"><div class="grid">
 <div style="grid-column:1/-1"><label>Product description</label><textarea id="description"></textarea></div>
 <div style="grid-column:1/-1"><label>SEO title</label><input id="seo_title"></div>
 <div style="grid-column:1/-1"><label>SEO description</label><textarea id="seo_description"></textarea></div>
 <div style="grid-column:1/-1"><label>SEO keywords (comma separated)</label><input id="keywords"></div>
 <div><label>Stock quantity</label><input id="stock" type="number" value="20"></div>
 <div><label>Featured</label><select id="featured"><option value="false">No</option><option value="true">Yes</option></select></div>
-</div><br><button class="btn alt" onclick="saveProduct()">Publish product</button><div id="status" class="status"></div></div>
+</div><br><button class="btn alt" id="btnSave" onclick="saveProduct()">Publish product</button><div id="status" class="status"></div></div>
+</div>
 </div>
 <script type="module">
 import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const db=createClient("https://fuckvbsuhjdknguutnxc.supabase.co","sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8");
+const SUPA="https://fuckvbsuhjdknguutnxc.supabase.co", KEY="sb_publishable_xnx5yh1HPcxZlCMF86d2Ow_v-B49rj8";
+const db=createClient(SUPA,KEY);
 const $=id=>document.getElementById(id);
+const ALLOWED=["phelinesagero@gmail.com","pozelona@gmail.com","osocemissionus@gmail.com"];
 async function init(){const {data:{session}}=await db.auth.getSession(); session?showApp():showAuth(); const {data:c}=await db.from("categories").select("id,name,parent_id").eq("is_active",true).order("sort_order"); if(c) $("category").innerHTML=c.map(x=>'<option value="'+x.id+'">'+(x.parent_id?"MITUMBA / ":"")+x.name+'</option>').join("")}
 function showAuth(){$("auth").classList.remove("hidden");$("app").classList.add("hidden")} function showApp(){$("auth").classList.add("hidden");$("app").classList.remove("hidden")}
 window.login=async()=>{const {error}=await db.auth.signInWithPassword({email:$("email").value,password:$("password").value});$("authmsg").textContent=error?error.message:"Signed in.";if(!error)showApp()}
 window.logout=async()=>{await db.auth.signOut();showAuth()}
 window.calc=()=>{$("price").value=($("source").value?Number($("source").value)*1.3:0).toFixed(2)}
 window.preview=()=>{const u=$("image").value.trim();const i=$("imgpreview");i.src=u;i.style.display=u?"block":"none"}
+
+// Calls the ai-product-assistant Edge Function (API keys stay on the server)
+async function ai(body){
+ const {data:{session}}=await db.auth.getSession(); if(!session) throw new Error("Please sign in again.");
+ const r=await fetch(SUPA+"/functions/v1/ai-product-assistant",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+session.access_token,apikey:KEY},body:JSON.stringify(body)});
+ const j=await r.json().catch(()=>({}));
+ if(!r.ok) throw new Error(j.error||("Request failed ("+r.status+")"));
+ return j;
+}
+function busy(ids,on){ids.forEach(i=>$(i).disabled=on)}
+
+// ---- Images from the internet ----
+function showThumbs(list){
+ const box=$("thumbs"); box.innerHTML="";
+ list.forEach(im=>{
+  const b=document.createElement("button"); b.type="button"; b.className="thumb"; b.title=im.source||"";
+  const img=document.createElement("img"); img.src=im.url; img.alt="Candidate product photo"; img.loading="lazy"; img.referrerPolicy="no-referrer";
+  b.appendChild(img);
+  b.onclick=()=>{$("image").value=im.url;preview();box.querySelectorAll(".thumb").forEach(x=>x.classList.remove("sel"));b.classList.add("sel")};
+  box.appendChild(b);
+ });
+}
+window.imagesFromPage=async()=>{
+ const url=$("imgsource").value.trim(); if(!url) return $("imgstatus").textContent="Paste a product page or image link first.";
+ busy(["btnPage","btnSearch"],true); $("imgstatus").textContent="Looking for images…";
+ try{const {images}=await ai({action:"images_from_page",url}); showThumbs(images); $("imgstatus").textContent=images.length?"Pick the photo that matches your product.":"No usable images found on that page. Try another link.";
+  if(images.length===1){$("image").value=images[0].url;preview()}}
+ catch(e){$("imgstatus").textContent=e.message}
+ busy(["btnPage","btnSearch"],false);
+}
+window.searchImages=async()=>{
+ const q=(($("brand").value&&$("brand").value!=="Pheline's Haven"?$("brand").value+" ":"")+$("name").value).trim();
+ if(!q) return $("imgstatus").textContent="Enter the product name first.";
+ busy(["btnPage","btnSearch"],true); $("imgstatus").textContent="Claude is searching the web… this can take up to a minute.";
+ try{const {images}=await ai({action:"search_images",query:q}); showThumbs(images); $("imgstatus").textContent=images.length?"Pick the photo that matches your product.":"No usable images found. Try pasting a product page link instead."}
+ catch(e){$("imgstatus").textContent=e.message}
+ busy(["btnPage","btnSearch"],false);
+}
+
+// ---- AI description + SEO ----
+function apply(r){
+ $("description").value=r.description||""; $("seo_title").value=r.seo_title||""; $("seo_description").value=r.seo_description||""; $("keywords").value=(r.keywords||[]).join(", ");
+}
+function renderResults(results){
+ const box=$("airesults"); box.innerHTML="";
+ const names={claude:"Claude",chatgpt:"ChatGPT"}; const keys=Object.keys(results);
+ keys.forEach(k=>{
+  const v=results[k]; const d=document.createElement("div"); d.className="res";
+  const h=document.createElement("h4"); h.textContent=names[k]||k; d.appendChild(h);
+  if(v.error){const p=document.createElement("p"); p.className="err"; p.textContent=v.error; d.appendChild(p)}
+  else{
+   [["Description",v.description],["SEO title",v.seo_title],["SEO description",v.seo_description],["Keywords",(v.keywords||[]).join(", ")]].forEach(([l,t])=>{const p=document.createElement("p"); const s=document.createElement("strong"); s.textContent=l+": "; p.appendChild(s); p.appendChild(document.createTextNode(t||"")); d.appendChild(p)});
+   const b=document.createElement("button"); b.type="button"; b.className="btn"; b.textContent="Use this one"; b.style.marginTop="8px"; b.onclick=()=>{apply(v);$("aistatus").textContent="Filled in from "+(names[k]||k)+". You can still edit the fields below."}; d.appendChild(b);
+  }
+  box.appendChild(d);
+ });
+ if(keys.length===1&&!results[keys[0]].error){apply(results[keys[0]]);$("aistatus").textContent="Filled in from "+(names[keys[0]]||keys[0])+". You can still edit the fields below."}
+ else $("aistatus").textContent="";
+}
+window.generate=async()=>{
+ const name=$("name").value.trim(); if(!name) return $("aistatus").textContent="Enter the product name first.";
+ busy(["btnGen"],true); $("aistatus").textContent="Writing…"; $("airesults").innerHTML="";
+ try{const {results}=await ai({action:"generate",provider:$("provider").value,name,brand:$("brand").value,category:$("category").selectedOptions[0]?.textContent||"",price:$("price").value,notes:$("notes").value}); renderResults(results)}
+ catch(e){$("aistatus").textContent=e.message}
+ busy(["btnGen"],false);
+}
+
+// ---- Publish ----
 window.saveProduct=async()=>{
  const name=$("name").value.trim(), source=Number($("source").value), image=$("image").value.trim();
  if(!name||!source||!image)return $("status").textContent="Product name, source price and image URL are required.";
  const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
- const {data:{user}}=await db.auth.getUser(); if(!user)return $("status").textContent="Please sign in again."; const allowed=["phelinesagero@gmail.com","pozelona@gmail.com","osocemissionus@gmail.com"]; if(!allowed.includes((user.email||"").toLowerCase())){await db.auth.signOut();showAuth();return $("authmsg").textContent="This account is not an authorized administrator.";}
- const {data:p,error}=await db.from("products").insert({category_id:Number($("category").value),name,slug,description:$("description").value,brand:$("brand").value||"Pheline's Haven",price:Number((source*1.3).toFixed(2)),compare_at_price:source,currency:"KES",sku:$("sku").value||("PH-"+Date.now()),stock_quantity:Number($("stock").value||0),is_active:true,is_featured:$("featured").value==="true",seo_title:$("seo_title").value||name+" Kenya | Pheline's Haven",seo_description:$("seo_description").value||$("description").value,seo_keywords:$("keywords").value.split(",").map(x=>x.trim()).filter(Boolean)});
- if(error)return $("status").textContent=error.message;
- const {error:ie}=await db.from("product_images").insert({product_id:p[0].id,storage_path:image,alt_text:name,sort_order:0});
- $("status").textContent=ie?ie.message:"Published successfully at "+Number((source*1.3).toFixed(2)).toLocaleString("en-KE",{style:"currency",currency:"KES"});
+ const {data:{user}}=await db.auth.getUser(); if(!user)return $("status").textContent="Please sign in again."; if(!ALLOWED.includes((user.email||"").toLowerCase())){await db.auth.signOut();showAuth();return $("authmsg").textContent="This account is not an authorized administrator.";}
+ busy(["btnSave"],true);
+ const {data:p,error}=await db.from("products").insert({category_id:Number($("category").value),name,slug,description:$("description").value,brand:$("brand").value||"Pheline's Haven",price:Number((source*1.3).toFixed(2)),compare_at_price:source,currency:"KES",sku:$("sku").value||("PH-"+Date.now()),stock_quantity:Number($("stock").value||0),is_active:true,is_featured:$("featured").value==="true",seo_title:$("seo_title").value||name+" Kenya | Pheline's Haven",seo_description:$("seo_description").value||$("description").value,seo_keywords:$("keywords").value.split(",").map(x=>x.trim()).filter(Boolean)}).select("id,slug").single();
+ if(error){busy(["btnSave"],false);return $("status").textContent=error.code==="23505"?"A product with this name or SKU already exists. Change the name or SKU.":error.message}
+ const {error:ie}=await db.from("product_images").insert({product_id:p.id,storage_path:image,alt_text:name,sort_order:0});
+ busy(["btnSave"],false);
+ const st=$("status"); st.textContent="";
+ if(ie){st.textContent="Product saved, but the image failed: "+ie.message;return}
+ st.appendChild(document.createTextNode("Published at "+Number((source*1.3).toFixed(2)).toLocaleString("en-KE",{style:"currency",currency:"KES"})+". "));
+ const a=document.createElement("a"); a.href="product.html?product="+encodeURIComponent(p.slug); a.target="_blank"; a.textContent="View product page"; st.appendChild(a);
 }
 init();
 </script></body></html>
