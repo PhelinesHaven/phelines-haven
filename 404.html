@@ -40,10 +40,5 @@
     return;
   }
 
-  // Normalize the common /product/<slug>?... and /product/<slug>/?...
-  // cases without touching query parameters.
-  if(/^\\/product\\/[^/]+\\/\\/.test(path)){
-    location.replace(path.replace(/\\/+$ /,"/").replace(/\\/+$/,"/"));
-  }
 })();
 </script></main></body></html>
