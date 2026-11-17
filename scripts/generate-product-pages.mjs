@@ -91,9 +91,20 @@ body{margin:0;font-family:Arial,sans-serif;color:#211525;background:#fff}main{ma
 </main>
 </body>
 </html>`;
+  // Canonical URL is permanently locked to /product/<slug>/.
+  // Keep the slug exactly as stored in Supabase; do not derive/regenerate it from
+  // the product name during builds. This preserves existing shared URLs.
   const dir = path.join("product", p.slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, "index.html"), html);
+
+  // Compatibility route for the former /products/<slug>/ pattern.
+  // GitHub Pages serves this static redirect before the custom 404 fallback.
+  const alternateDir = path.join("products", p.slug);
+  fs.mkdirSync(alternateDir, { recursive: true });
+  const canonicalEsc = esc(url);
+  fs.writeFileSync(path.join(alternateDir, "index.html"), `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><link rel="canonical" href="${canonicalEsc}"><meta http-equiv="refresh" content="0;url=${canonicalEsc}"><script>location.replace(${JSON.stringify(url)});</script><title>Redirecting to ${esc(p.name)}</title></head><body>Redirecting to <a href="${canonicalEsc}">${esc(p.name)}</a>…</body></html>`);
+
   urls.push({url, lastmod:p.updated_at || p.created_at || new Date().toISOString(), image});
 }
 
