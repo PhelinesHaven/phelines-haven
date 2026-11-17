@@ -1,26 +1,49 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found | Pheline's Haven Kenya</title><meta name="robots" content="noindex,follow"><style>body{margin:0;font-family:Arial,sans-serif;background:#fff;color:#26003f;display:grid;place-items:center;min-height:100vh;text-align:center;padding:24px}main{max-width:560px}h1{font:600 58px Georgia;margin:0 0 10px}p{color:#776c7b;line-height:1.8}a{display:inline-block;margin:8px;padding:13px 20px;background:#5d1198;color:#fff;text-decoration:none;font-weight:700;font-size:12px}a.alt{background:#fff;color:#5d1198;border:1px solid #ddd0e2}</style></head><body><main><div>PHELINE'S HAVEN</div><h1>404</h1><p>The page you requested could not be found. Our product and category pages use real static URLs, so a valid link should load directly on refresh.</p><a href="/">Go home</a><a class="alt" href="/collection.html">Shop products</a><script>
 (function(){
-  const path=location.pathname;
-  if(/^\/product\/[^/]+$/.test(path)){ location.replace(path+"/"); return; }
+  const path=decodeURIComponent(location.pathname);
+  const clean=path.replace(/\\/+$/,"");
+  const productMatch=clean.match(/^\\/product\\/([^/]+)$/i);
+  const productsMatch=clean.match(/^\\/products\\/([^/]+)$/i);
+
+  // Canonical product URL is permanently /product/<slug>/.
+  if(productMatch){
+    location.replace("/product/"+encodeURIComponent(productMatch[1])+"/");
+    return;
+  }
+  if(productsMatch){
+    location.replace("/product/"+encodeURIComponent(productsMatch[1])+"/");
+    return;
+  }
+
+  // Legacy category URLs are kept compatible with the current static pages.
   const legacy={
-    "/beauty-skincare/":"/beauty-skincare.html",
-    "/hair-beauty-accessories/":"/hair-beauty-accessories.html",
-    "/womens-fashion/":"/womens-fashion.html",
-    "/womens-casual-shoes/":"/womens-casual-shoes.html",
-    "/womens-formal-shoes/":"/womens-formal-shoes.html",
-    "/mens-fashion/":"/mens-fashion.html",
-    "/mens-casual-shoes/":"/mens-casual-shoes.html",
-    "/mens-formal-shoes/":"/mens-formal-shoes.html",
-    "/kids-fashion/":"/kids-fashion.html",
-    "/kids-shoes/":"/kids-shoes.html",
-    "/shoes-bags/":"/shoes-bags.html",
-    "/sneakers-sports/":"/sneakers-sports.html",
-    "/boots/":"/boots.html",
-    "/sandals-slides/":"/sandals-slides.html",
-    "/school-shoes/":"/school-shoes.html",
-    "/safety-work-shoes/":"/safety-work-shoes.html"
+    "/beauty-skincare":"/beauty-skincare.html",
+    "/hair-beauty-accessories":"/hair-beauty-accessories.html",
+    "/womens-fashion":"/womens-fashion.html",
+    "/womens-casual-shoes":"/womens-casual-shoes.html",
+    "/womens-formal-shoes":"/womens-formal-shoes.html",
+    "/mens-fashion":"/mens-fashion.html",
+    "/mens-casual-shoes":"/mens-casual-shoes.html",
+    "/mens-formal-shoes":"/mens-formal-shoes.html",
+    "/kids-fashion":"/kids-fashion.html",
+    "/kids-shoes":"/kids-shoes.html",
+    "/shoes-bags":"/shoes-bags.html",
+    "/sneakers-sports":"/sneakers-sports.html",
+    "/boots":"/boots.html",
+    "/sandals-slides":"/sandals-slides.html",
+    "/school-shoes":"/school-shoes.html",
+    "/safety-work-shoes":"/safety-work-shoes.html"
   };
-  if(legacy[path]) location.replace(legacy[path]);
+  if(legacy[clean]){
+    location.replace(legacy[clean]);
+    return;
+  }
+
+  // Normalize the common /product/<slug>?... and /product/<slug>/?...
+  // cases without touching query parameters.
+  if(/^\\/product\\/[^/]+\\/\\/.test(path)){
+    location.replace(path.replace(/\\/+$ /,"/").replace(/\\/+$/,"/"));
+  }
 })();
 </script></main></body></html>
